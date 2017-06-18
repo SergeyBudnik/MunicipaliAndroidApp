@@ -1,0 +1,169 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+def AAVersion = '3.3'
+
+def final appId = 'acropollis.municipali'
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName 'acropollis.municipali'
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        applicationId appId
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 13
+        versionName "0.0.3"
+
+        buildConfigField "String", "ACCOUNT_TYPE", "\"${applicationId}.account\""
+        buildConfigField "String", "AUTHORITY", "\"${applicationId}.provider\""
+
+        resValue "string", "account_type", "${applicationId}.account"
+        resValue "string", "authority", "${applicationId}.provider"
+    }
+
+    flavorDimensions 'product', 'tier'
+
+    productFlavors {
+        municipali {
+            flavorDimension 'product'
+        }
+
+        democracy {
+            flavorDimension 'product'
+        }
+
+        QA {
+            flavorDimension 'tier'
+        }
+
+        AAA {
+            flavorDimension 'tier'
+        }
+
+        MacedoniaKarpos {
+            flavorDimension 'tier'
+        }
+
+        Arad {
+            flavorDimension 'tier'
+        }
+    }
+
+    def allowedFlavors = [
+            [product: 'democracy',  tier: 'QA'],
+            [product: 'municipali', tier: 'QA'],
+            [product: 'municipali', tier: 'AAA'],
+            [product: 'municipali', tier: 'MacedoniaKarpos'],
+            [product: 'municipali', tier: 'Arad']
+    ];
+
+    variantFilter {
+        variant ->
+            def product = variant.getFlavors().get(0).name
+            def tier = variant.getFlavors().get(1).name
+
+            def flavorVariant = allowedFlavors.find {it['product'] == product && it.tier == tier};
+
+            if (flavorVariant == null) {
+                variant.setIgnore(true)
+            }
+    }
+
+    applicationVariants.all { variant ->
+        println("Iterating variant: " + variant.getName())
+
+        def flavorVariant = allowedFlavors.find {
+            variant.name.contains(it.product) &&
+            variant.name.contains(it.tier)
+        };
+
+        def applicationId = appId + "." + flavorVariant.product + flavorVariant.tier;
+
+        variant.mergedFlavor.setApplicationId(applicationId);
+
+        variant.buildConfigField "String", "ACCOUNT_TYPE", "\"${applicationId}.account\""
+        variant.buildConfigField "String", "AUTHORITY", "\"${applicationId}.provider\""
+
+        variant.resValue "string", "account_type", "${applicationId}.account"
+        variant.resValue "string", "authority", "${applicationId}.provider"
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+
+        exclude 'META-INF/ASL2.0'
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:appcompat-v7:24.2.1'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+
+    provided 'org.projectlombok:lombok:1.12.6'
+    apt "org.projectlombok:lombok:1.12.6"
+
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    compile 'com.makeramen:roundedimageview:2.3.0'
+
+    compile 'org.apache.commons:commons-math3:3.0'
+
+    /* Exceptions reporting */
+    compile 'ch.acra:acra:4.5.0'
+
+    compile 'com.google.firebase:firebase-core:11.0.0'
+    compile 'com.google.firebase:firebase-messaging:11.0.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

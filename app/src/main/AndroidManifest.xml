@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="acropollis.municipali">
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".MunicipaliApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/launcher_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/BlueAppTheme">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <service android:name=".push.MunicipaliGcmListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".push.MunicipaliInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".StartActivity_" android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".DemoAppActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".DemoAppServerActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".CountryPlatformChooseCityActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".CountryPlatformCustomerLoadingActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".StandaloneCustomerLoadingActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".RegistrationActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".RegistrationSkipActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".RegistrationFacebookActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".ArticlesListActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".CityEventsListActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".ArticleQuestionsListActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".ArticleInformationActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".ArticleHistoryActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".FiveMarksVoteActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".FiveMarksVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".MultipleVariantsVoteActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".MultipleVariantsVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".VoteHiddenResultActivity_" android:screenOrientation="sensorPortrait"/>
+
+        <activity android:name=".ReportStartActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".ReportSendActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".ReportWriteCommentActivity_" android:screenOrientation="sensorPortrait"/>
+    </application>
+
+</manifest>

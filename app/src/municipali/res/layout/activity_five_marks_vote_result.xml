@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?header_background">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="?header_button_width"
+                android:layout_height="?header_button_height"
+                android:paddingTop="?header_button_vertical_padding"
+                android:paddingBottom="?header_button_vertical_padding"
+                android:paddingLeft="?header_button_horizontal_padding"
+                android:paddingRight="?header_button_horizontal_padding"
+                android:src="@drawable/back_button"
+                android:contentDescription="@string/img_description"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/question"
+                android:textColor="?header_title_color"
+                android:textSize="?header_title_size"/>
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <acropollis.municipali.bootstrap.view.MunicipaliRowView_
+                    android:id="@+id/article_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/continue_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="@string/button_continue"
+                    android:textColor="@color/primary_white"
+                    android:textSize="18sp"
+                    android:background="@drawable/primary_button_enabled"/>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@id/article_info"
+                    android:layout_above="@id/continue_button"
+                    android:background="@drawable/white_layout">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp">
+
+                        <TextView
+                            android:id="@+id/question_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:textColor="?text_primary_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:weightSum="2"
+                            android:layout_marginTop="20dp">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/five_marks_your_vote"
+                                    android:textSize="18sp"
+                                    android:textColor="?text_primary_color"/>
+
+                                <RelativeLayout
+                                    android:layout_width="106dp"
+                                    android:layout_height="106dp"
+                                    android:layout_marginTop="10dp">
+
+                                    <View
+                                        android:layout_width="106dp"
+                                        android:layout_height="106dp"
+                                        android:layout_centerInParent="true"
+                                        android:background="@drawable/five_marks_vote_result_oval"/>
+
+                                    <acropollis.municipali.view.common.SegmentedView_
+                                        android:id="@+id/your_vote_segmented_oval"
+                                        android:layout_width="106dp"
+                                        android:layout_height="106dp"/>
+
+                                    <View
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_centerInParent="true"
+                                        android:background="@drawable/oval_white"/>
+
+                                    <TextView
+                                        android:id="@+id/your_vote_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:textSize="36sp"
+                                        android:textColor="?text_primary_color"/>
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/five_marks_average_vote"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/primary_black"/>
+
+                                <RelativeLayout
+                                    android:layout_width="106dp"
+                                    android:layout_height="106dp"
+                                    android:layout_marginTop="10dp">
+
+                                    <View
+                                        android:layout_width="106dp"
+                                        android:layout_height="106dp"
+                                        android:layout_centerInParent="true"
+                                        android:background="@drawable/five_marks_vote_result_oval"/>
+
+                                    <acropollis.municipali.view.common.SegmentedView_
+                                        android:id="@+id/average_vote_segmented_oval"
+                                        android:layout_width="106dp"
+                                        android:layout_height="106dp"/>
+
+                                    <View
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_centerInParent="true"
+                                        android:background="@drawable/oval_white"/>
+
+                                    <TextView
+                                        android:id="@+id/average_vote_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:textSize="36sp"
+                                        android:textColor="@color/primary_gray"/>
+
+                                    <ImageView
+                                        android:id="@+id/average_vote_loading_spinner"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/red_spinner"
+                                        android:contentDescription="@string/img_description"/>
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </RelativeLayout>
+
+            <fragment
+                tools:layout="@layout/fragment_menu"
+                android:id="@+id/menu"
+                android:name="acropollis.municipali.fragments.MenuFragment_"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"/>
+
+        </android.support.v4.widget.DrawerLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

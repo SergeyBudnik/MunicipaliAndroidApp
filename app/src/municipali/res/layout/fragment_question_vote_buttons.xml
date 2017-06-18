@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/primary_button_enabled">
+
+    <TextView
+        android:id="@+id/vote_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:text="@string/button_vote"
+        android:textColor="@color/primary_white"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/skip_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:gravity="center"
+        android:text="@string/button_skip"
+        android:textColor="@color/primary_white"
+        android:textSize="18sp"/>
+
+    <RelativeLayout
+        android:id="@+id/loading_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:background="@drawable/primary_button_enabled">
+
+        <ImageView
+            android:id="@+id/loading_button_spinner"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/vote_spinner"
+            android:contentDescription="@string/img_description"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fontable_text_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/primary_blue"
+    card_view:cardElevation="5dp"
+    card_view:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <acropollis.municipali.view.common.FontableTextView
+            android:id="@+id/vote_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:text="@string/button_vote"
+            android:textColor="@color/primary_white"
+            android:textSize="18sp"
+            fontable_text_view:font="Oswald/Oswald-Regular"/>
+
+        <acropollis.municipali.view.common.FontableTextView
+            android:id="@+id/skip_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:gravity="center"
+            android:text="@string/button_skip"
+            android:textColor="@color/primary_white"
+            android:textSize="18sp"
+            fontable_text_view:font="Oswald/Oswald-Regular"/>
+
+        <RelativeLayout
+            android:id="@+id/loading_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            android:background="@drawable/primary_button_enabled">
+
+            <ImageView
+                android:id="@+id/loading_button_spinner"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/vote_spinner"
+                android:contentDescription="@string/img_description"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

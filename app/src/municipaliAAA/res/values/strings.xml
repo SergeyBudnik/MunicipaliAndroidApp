@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_id" translatable="false">MunicipaliDemo</string>
+    <string name="app_name">Municipali Demo</string>
+</resources>

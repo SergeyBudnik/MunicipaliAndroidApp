@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">Стевчо Јакимовски</string>
+
+    <string name="city_news">Карпош инфо</string>
+    <string name="all_articles">Сите вести</string>
+    <string name="article">Вест</string>
+    <string name="question">Прашање</string>
+
+    <string name="pull_to_retry">Повлечете се обидете повторно</string>
+    <string name="loading_failed_tap_to_retry">Неуспешно вчитување. Допрете за да се обидете повторно.</string>
+    <string name="loading_failed">Неуспешно вчитување. Проверете ја вашата интернет конекција.</string>
+    <string name="voting_failed">Гласање не успеа. Проверете ја вашата интернет конекција.</string>
+
+    <!-- Alpha -->
+
+    <string name="choose_your_city">Одбери град / општина</string>
+
+    <!-- Registration -->
+
+    <string name="registration_sign_up_with_facebook">Најави се со Facebook</string>
+    <string name="registration_sign_up_with_google_plus">Најави се со Google</string>
+    <string name="registration_skip">Прескокнете регистрација</string>
+    <string name="registration_or">или</string>
+
+    <string name="registration_fail_facebook">Не успеа да се најавите на Facebook. Ве молиме проверете ја вашата интернет конекција.</string>
+    <string name="registration_fail_google_plus">Не успеа да се најавите на Google Plus. Ве молиме проверете ја вашата интернет конекција.</string>
+
+    <!-- Buttons -->
+
+    <string name="button_continue">Продолжи</string>
+    <string name="button_vote">Гласај</string>
+    <string name="button_skip">Прескокни</string>
+    <string name="button_save">Зачувај</string>
+    <string name="button_back">Назад</string>
+    <string name="button_send">Испрати</string>
+    <string name="button_ok">OK</string>
+
+    <!-- Vote -->
+
+    <string name="no_vote_result">Резултатите од гласањето се скриени.</string>
+
+
+    <!-- Five marks vote -->
+
+    <string name="at_what_extent_are_you_satisfied">Колку сте задоволни?</string>
+
+    <string name="five_marks_your_vote">Твојот</string>
+    <string name="five_marks_average_vote">Просек</string>
+
+    <!-- Calendar -->
+
+    <string name="short_monday">ПО</string>
+    <string name="short_tuesday">ВТ</string>
+    <string name="short_wednesday">СР</string>
+    <string name="short_thursday">ЧЕ</string>
+    <string name="short_friday">ПЕ</string>
+    <string name="short_saturday">СА</string>
+    <string name="short_sunday">НЕ</string>
+
+    <string name="monday">Понеделник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четврток</string>
+    <string name="friday">Петок</string>
+    <string name="saturday">Сабота</string>
+    <string name="sunday">Недела</string>
+
+    <string name="january">Јануари</string>
+    <string name="february">Февруари</string>
+    <string name="march">Март</string>
+    <string name="april">Април</string>
+    <string name="may">Мај</string>
+    <string name="june">Јуни</string>
+    <string name="july">Јули</string>
+    <string name="august">Август</string>
+    <string name="september">Септември</string>
+    <string name="october">Октомври</string>
+    <string name="november">Ноември</string>
+    <string name="december">Декември</string>
+
+    <string name="today">Денес</string>
+    <string name="soon">Наскоро</string>
+
+    <!-- Events -->
+
+    <string name="no_today_events">Нема настани за избраниот датум</string>
+    <string name="no_soon_events">Нема настани наскоро</string>
+
+    <!-- Settings -->
+
+    <string name="settings">Подесувања</string>
+
+    <string name="language">Јазик:</string>
+
+    <string name="lang_hebrew">עברית‎</string>
+
+    <!-- Report -->
+
+    <string name="report_no_permissions">Се што ви треба се овозможи примена на пристап до камерата и читање / снимање операции на надворешната меморија, со цел да се користи камера</string>
+
+    <string name="title_report">Пријави проблем</string>
+
+    <string name="report_description">Испратете ни фотографија или опис на проблемот што се среќаваат во нашиот град. Ние ќе реагираме што е можно поскоро</string>
+    <string name="report_terms">Со испраќањето на извештајот, ќе им даде на вашиот договор за да ги чуваат и да ги користат содржините на нашите потреби.</string>
+
+    <string name="report_from_camera">Сфотографировать</string>
+    <string name="report_from_gallery">Выбрать из галереи</string>
+    <string name="report_without_photo">Без фото</string>
+
+    <string name="write_comment">Напиши коментар</string>
+
+    <string name="report_sent">Испратено.</string>
+
+    <!-- Menu -->
+
+    <string name="menu_news">Вести</string>
+    <string name="menu_events">Настани</string>
+    <string name="menu_report">Извести</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_change_city">Промени град/општина</string>
+
+    <!-- Common -->
+
+
+
+</resources>

@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "175632774293",
+    "firebase_url": "https://municipaliarad.firebaseio.com",
+    "project_id": "municipaliarad",
+    "storage_bucket": "municipaliarad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175632774293:android:3c942944cd558e01",
+        "android_client_info": {
+          "package_name": "acropollis.municipali.municipaliAAA"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175632774293-0fc6gq80h30vc0gedq194bchh71ma2dv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "acropollis.municipali.municipaliAAA",
+            "certificate_hash": "357CE4567FE59D266AC7F9194AEDCD9492480FEB"
+          }
+        },
+        {
+          "client_id": "175632774293-e7sqmfqbql21p05s1f1jdol5j41odpu6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "acropollis.municipali.municipaliAAA",
+            "certificate_hash": "CE1A6D0F7DF15F033F1759AF38C9DF0981FB1897"
+          }
+        },
+        {
+          "client_id": "175632774293-lmsku6hl9irqmv1j3fhofjjs63o7bj2s.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "175632774293-mf924v8fuik18qekvthjdjg6dojqghae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0wLEpKKwfkrRxGqKJm_FfsKAYy1Y6a6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175632774293-lmsku6hl9irqmv1j3fhofjjs63o7bj2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

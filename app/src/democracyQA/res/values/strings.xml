@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_id" translatable="false">DemocracyQA</string>
+    <string name="app_name">Democracy.QA</string>
+</resources>

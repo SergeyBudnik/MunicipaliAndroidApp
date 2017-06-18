@@ -1,0 +1,89 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Header -->
+
+        <item name="header_height">50dp</item>
+
+        <item name="header_title_color">@color/white</item>
+        <item name="header_title_size">18sp</item>
+
+        <item name="header_button_vertical_padding">15dp</item>
+        <item name="header_button_horizontal_padding">20dp</item>
+        <item name="header_button_width">60dp</item>
+        <item name="header_button_height">50dp</item>
+
+        <!-- Menu -->
+
+        <item name="menu_width">200dp</item>
+
+        <!-- Article -->
+
+        <item name="article_category_margin">5dp</item>
+        <item name="article_category_text_color">@color/white</item>
+
+        <!-- Text -->
+
+        <item name="text_secondary_color">@color/black</item>
+        <item name="text_support_color">@color/gray</item>
+    </style>
+
+    <style name="RedAppTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryDark">@color/black</item>
+
+        <!-- Header -->
+
+        <item name="header_background">@color/red</item>
+
+        <!-- Article -->
+
+        <item name="article_icon_missing">@color/red</item>
+
+        <item name="article_counter">@color/red</item>
+
+        <item name="article_category_background_color">@color/red</item>
+
+        <!-- Article. Five marks -->
+
+        <item name="article_five_marks_vote_result_outer_circle">@color/red</item>
+
+        <!-- Button -->
+
+        <item name="button_background_color">@color/red</item>
+
+        <!-- Text -->
+
+        <item name="text_primary_color">@color/red</item>
+    </style>
+
+    <style name="BlueAppTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/black</item>
+
+        <!-- Header -->
+
+        <item name="header_background">@color/blue</item>
+
+        <!-- Article -->
+
+        <item name="article_icon_missing">@color/blue</item>
+
+        <item name="article_counter">@color/blue</item>
+
+        <item name="article_category_background_color">@color/blue</item>
+
+        <!-- Article. Five marks -->
+
+        <item name="article_five_marks_vote_result_outer_circle">@color/blue</item>
+
+        <!-- Button -->
+
+        <item name="button_background_color">@color/blue</item>
+
+        <!-- Text -->
+
+        <item name="text_primary_color">@color/blue</item>
+    </style>
+
+</resources>

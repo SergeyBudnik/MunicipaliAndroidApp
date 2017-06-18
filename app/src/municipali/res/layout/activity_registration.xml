@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <acropollis.municipali.bootstrap.view.MunicipaliBrandingIconView_
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/sign_up_with_facebook_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="260dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/registration_sign_up_with_facebook"
+        android:textColor="@color/primary_white"
+        android:background="@drawable/facebook_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
+        android:text="@string/registration_or"
+        android:textColor="@color/primary_white"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/sign_up_with_google_button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="180dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@string/registration_sign_up_with_google_plus"-->
+        <!--android:textColor="@color/primary_white"-->
+        <!--android:background="@drawable/google_plus_button"/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="140dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@string/registration_or"-->
+        <!--android:textColor="@color/primary_white"/>-->
+
+    <TextView
+        android:id="@+id/skip_registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/registration_skip"
+        android:textColor="@color/primary_white"
+        android:background="@drawable/primary_button_enabled"/>
+
+</RelativeLayout>

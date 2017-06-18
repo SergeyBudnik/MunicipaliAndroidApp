@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="94dp"
+        android:layout_marginStart="94dp">
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_municipali_row_layout_white"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/primary_white"/>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/city_news_list_item_right_title_layout_white"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
+        android:paddingLeft="0dp"
+        android:paddingStart="0dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:maxLines="3"
+        android:gravity="center_vertical"
+        android:ellipsize="marquee"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+    <RelativeLayout
+        android:layout_width="104dp"
+        android:layout_height="104dp">
+
+        <acropollis.municipali.bootstrap.view.MunicipaliLoadableIconView_
+            android:id="@+id/loadable_icon"
+            android:layout_width="104dp"
+            android:layout_height="104dp"/>
+
+        <RelativeLayout
+            android:id="@+id/unanswered_questions_counter_container"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/article_counter_outer_cirtcle">
+
+            <TextView
+                android:id="@+id/unanswered_questions_counter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@drawable/article_counter_inner_cirtcle"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

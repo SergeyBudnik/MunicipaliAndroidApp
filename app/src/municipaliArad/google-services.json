@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "518524695191",
+    "firebase_url": "https://municipali-1f3e3.firebaseio.com",
+    "project_id": "municipali-1f3e3",
+    "storage_bucket": "municipali-1f3e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518524695191:android:06bb2cc5b7885bac",
+        "android_client_info": {
+          "package_name": "acropollis.municipali.municipaliArad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518524695191-dpljm896ntangp61p17mc6tfg70i8pqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATKNzuvv3uOz504VwHEtfU3Y6SAqaOcpk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

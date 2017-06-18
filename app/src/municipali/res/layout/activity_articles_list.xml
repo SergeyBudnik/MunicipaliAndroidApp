@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?header_height"
+            android:background="?header_background">
+
+            <ImageView
+                android:id="@+id/menu_button"
+                android:layout_width="?header_button_width"
+                android:layout_height="?header_button_height"
+                android:paddingTop="?header_button_vertical_padding"
+                android:paddingBottom="?header_button_vertical_padding"
+                android:paddingLeft="?header_button_vertical_padding"
+                android:paddingRight="?header_button_vertical_padding"
+                android:src="@drawable/menu_button"
+                android:contentDescription="@string/img_description"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/all_articles"
+                android:textColor="?header_title_color"
+                android:textSize="?header_title_size"/>
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <acropollis.municipali.bootstrap.view.MunicipaliRefreshableListView_
+                android:id="@+id/articles_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <fragment
+                tools:layout="@layout/fragment_menu"
+                android:id="@+id/menu"
+                android:name="acropollis.municipali.fragments.MenuFragment_"
+                android:layout_width="?menu_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"/>
+
+        </android.support.v4.widget.DrawerLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

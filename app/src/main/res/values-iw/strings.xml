@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_articles">כל הכתבות</string>
+    <string name="menu_login">התחבר</string>
+    <string name="registration_sign_up_with_facebook">התחבר עם פייסבוק</string>
+    <string name="registration_or">או</string>
+    <string name="registration_skip">דלג על הרשמה</string>
+
+    <string name="report_description">שלח לנו תמונה ותאור הבעיה שנתקלת בעירנו ואנו נגיב במהירות</string>
+    <string name="report_terms">אני מודע לכך שלמערכת יהיו כל זכויות השימוש בחומר המדווח</string>
+
+    <string name="report_from_camera">צלם</string>
+    <string name="report_from_gallery">בחר תמונה מגרליה</string>
+    <string name="report_without_photo">ללא תמונה</string>
+
+    <string name="write_comment">כתוב תאור קצר</string>
+    <string name="report_sent">הדיווח נשלח בהצלחה</string>
+
+    <string name="article">מאמר</string>
+    <string name="question">שְׁאֵלָה</string>
+
+    <string name="pull_to_retry">משוך כדי לנסות שוב</string>
+    <string name="loading_failed_tap_to_retry">טעינה נכשלה. הקש כדי לנסות שוב.</string>
+
+    <string name="choose_your_city">בחר את העיר שלך</string>
+    <string name="registration_sign_up_with_google_plus">הירשם ל- Google</string>
+    <string name="registration_fail_facebook">הכניסה לפייסבוק נכשלה. בדוק את חיבור האינטרנט שלך.</string>
+    <string name="registration_fail_google_plus">הכניסה ל- Google Plus נכשלה. בדוק את חיבור האינטרנט שלך.</string>
+
+    <string name="button_save">להציל</string>
+    <string name="button_back">חזור</string>
+    <string name="button_send">לִשְׁלוֹחַ</string>
+    <string name="button_ok">בסדר</string>
+
+    <!-- Vote -->
+
+    <string name="no_vote_result">תוצאות ההצבעה מוסתרות.</string>
+
+    <string name="short_monday">MO</string>
+    <string name="short_tuesday">TU</string>
+    <string name="short_wednesday">WE</string>
+    <string name="short_thursday">TH</string>
+    <string name="short_friday">FR</string>
+    <string name="short_saturday">SA</string>
+    <string name="short_sunday">SU</string>
+
+    <string name="lang_hebrew">עברית‎</string>
+
+    <string name="report_no_permissions">אתה צריך כל לאפשר ליישום לגשת פעולות מצלמה קריאה / כתיבה על אחסון חיצוני כדי להשתמש במצלמה</string>
+    <string name="menu_change_city">שנה את העיר</string>
+
+
+
+
+
+
+
+
+    <string name="app_name">מוניציפלי</string>
+
+    <string name="city_news">חדשות העיר</string>
+
+    <string name="loading_failed">הטעינה נכשלה. אנא בדקו את חיבור האינטרנט</string>
+
+    <string name="voting_failed">הצבעה נכשלה. אנא בדקו את חיבור האינטרנט</string>
+
+    <string name="button_continue">המשך</string>
+
+    <string name="button_vote">דרג</string>
+
+    <string name="button_skip">דלג</string>
+
+    <string name="at_what_extent_are_you_satisfied">באיזו מידה את/ה מרוצה?</string>
+
+    <string name="five_marks_your_vote">הציון שלך</string>
+
+    <string name="five_marks_average_vote">ממוצע</string>
+
+    <string name="monday">יום שני</string>
+
+    <string name="tuesday">יום שלישי</string>
+
+    <string name="wednesday">יום רביעי</string>
+
+    <string name="thursday">יום חמישי</string>
+
+    <string name="friday">יום שישי</string>
+
+    <string name="saturday">שבת</string>
+
+    <string name="sunday">יום ראשון</string>
+
+    <string name="january">ינואר</string>
+
+    <string name="february">פברואר</string>
+
+    <string name="march">מרץ</string>
+
+    <string name="april">אפריל</string>
+
+    <string name="may">מאי</string>
+
+    <string name="june">יוני</string>
+
+    <string name="july">יולי</string>
+
+    <string name="august">אוגוסט</string>
+
+    <string name="september">ספטמבר</string>
+
+    <string name="october">אוקטובר</string>
+
+    <string name="november">נובמבר</string>
+
+    <string name="december">דצמבר</string>
+
+    <string name="today">היום</string>
+
+    <string name="soon">בקרוב</string>
+
+    <string name="no_today_events">אין אירועים היום</string>
+
+    <string name="no_soon_events">אין אירועים ברקוב</string>
+
+    <string name="settings">הגדרות</string>
+
+    <string name="language">שפה</string>
+
+    <string name="title_report">דווח</string>
+
+    <string name="menu_news">חדשות</string>
+
+    <string name="menu_events">אירועים</string>
+
+    <string name="menu_report">דיווחים</string>
+
+    <string name="menu_settings">הגדרות</string>
+
+    <string name="menu_logout">התנתק</string>
+</resources>

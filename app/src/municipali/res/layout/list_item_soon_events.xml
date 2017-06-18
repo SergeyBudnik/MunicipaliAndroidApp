@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/scroll_to_animation"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/primary_red"
+        android:alpha="0"/>
+
+    <LinearLayout
+        android:id="@+id/dates"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_red"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_gray"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_gray"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <acropollis.municipali.view.question.WhiteArticleTitleView_
+        android:id="@+id/question_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/dates"
+        android:layout_toStartOf="@+id/dates"/>
+
+</RelativeLayout>
