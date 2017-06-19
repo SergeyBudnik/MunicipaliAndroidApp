@@ -2,5 +2,5 @@
 <PreferenceScreen>
     <external-path
         name="my_images"
-        path="Android/data/acropollis.municipali.municipaliMacedoniaKarpos/files/Pictures" />
+        path="Android/data/acropollis.municipali.municipaliProdMacedoniaKarpos/files/Pictures" />
 </PreferenceScreen>

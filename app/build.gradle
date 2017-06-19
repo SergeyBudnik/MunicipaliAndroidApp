@@ -59,7 +59,7 @@ android {
             flavorDimension 'tier'
         }
 
-        MacedoniaKarpos {
+        ProdMacedoniaKarpos {
             flavorDimension 'tier'
         }
 
@@ -72,7 +72,7 @@ android {
             [product: 'democracy',  tier: 'QA'],
             [product: 'municipali', tier: 'QA'],
             [product: 'municipali', tier: 'Demo'],
-            [product: 'municipali', tier: 'MacedoniaKarpos'],
+            [product: 'municipali', tier: 'ProdMacedoniaKarpos'],
             [product: 'municipali', tier: 'Arad']
     ];
 
