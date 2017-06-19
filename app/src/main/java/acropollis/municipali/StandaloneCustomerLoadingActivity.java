@@ -45,13 +45,10 @@ public class StandaloneCustomerLoadingActivity extends BaseActivity {
     }
 
     private void getBackendInfo() {
-        final ProductConfiguration currentProductConfiguration = ProductConfiguration
-                .getProductConfiguration(
-                        demoProductId == null ? getResources().getString(R.string.product_id) : demoProductId
-                );
+        String currentProductId = demoProductId == null ? getResources().getString(R.string.product_id) : demoProductId;
 
         standaloneProductRestWrapper.getBackendInfoWithHighQualityBranding(
-                currentProductConfiguration.getProductId(),
+                currentProductId,
                 new RestListener<BackendInfo>() {
                     @Override
                     public void onSuccess(BackendInfo backendInfo) {

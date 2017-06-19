@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="product_id" translatable="false">MunicipaliProdArad-User</string>
+    <string name="product_id" translatable="false">MunicipaliProd-Arad-User</string>
     <string name="app_name">הצבי</string>
 
     <string name="server_client_id" translatable="false">836440102241-aees7nld5sco2djipvfmg2qupeoi0s0u.apps.googleusercontent.com</string>

@@ -4,9 +4,12 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.rest.RestService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import acropollis.municipali.data.backend.Product;
+import acropollis.municipali.data.backend.ProductComponent;
+import acropollis.municipali.data.backend.ProductTier;
 import acropollis.municipali.rest.raw.alpha.AlphaProductRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
 
@@ -16,13 +19,21 @@ public class AlphaProductRestWrapper {
     AlphaProductRestService alphaProductRestService;
 
     @Background
-    public void getProducts(RestListener<List<Product>> products) {
+    public void getDemoProducts(RestListener<List<Product>> products) {
         try {
             products.onStart();
 
             List<Product> allProducts = alphaProductRestService.getAllProducts();
 
-            products.onSuccess(allProducts);
+            List<Product> filteredProducts = new ArrayList<>();
+
+            for (Product product : allProducts) {
+                if (product.getTier() == ProductTier.DEMO && product.getComponent() == ProductComponent.USER) {
+                    filteredProducts.add(product);
+                }
+            }
+
+            products.onSuccess(filteredProducts);
         } catch (Exception e) {
             products.onFailure();
         }

@@ -33,7 +33,7 @@ public class DemoAppServerActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        alphaProductRestWrapper.getProducts(new RestListener<List<Product>>() {
+        alphaProductRestWrapper.getDemoProducts(new RestListener<List<Product>>() {
             @Override
             public void onSuccess(List<Product> products) {
                 onProductsLoaded(products);

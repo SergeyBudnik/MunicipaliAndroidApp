@@ -5,8 +5,9 @@ import lombok.Getter;
 
 public enum ProductConfiguration {
     MUNICIPALI_QA("MunicipaliQA-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.ENGLISH),
-    MUNICIPALI_KARPOS("MunicipaliProdKarpos-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.MACEDONIAN),
-    MUNICIPALI_ARAD("MunicipaliProdArad-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.HEBREW),
+    MUNICIPALI_DEMO("MunicipaliDemo-User", ProductTier.DEMO, ProductType.MUNICIPALI, Language.ENGLISH, Language.ENGLISH),
+    MUNICIPALI_KARPOS("MunicipaliProd-Karpos-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.MACEDONIAN),
+    MUNICIPALI_ARAD("MunicipaliProd-Arad-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.HEBREW),
 
     DEMOCRACY_QA("DemocracyDev", ProductTier.STANDALONE, ProductType.DEMOCRACY, Language.ENGLISH, Language.ENGLISH);
 
