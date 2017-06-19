@@ -2,6 +2,7 @@ package acropollis.municipali.dao;
 
 import android.content.Context;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 import acropollis.municipali.data.article.Article;
 import acropollis.municipali.data.article.TranslatedArticle;
 import acropollis.municipali.data.common.Language;
+import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
@@ -27,25 +29,26 @@ class ArticlesData {
 
 @EBean(scope = EBean.Scope.Singleton)
 public class ArticlesDao extends CommonDao<ArticlesData> {
-    private String FILE_NAME = ArticlesDao.class.getCanonicalName();
-
     @RootContext
     Context context;
 
+    @Bean
+    ProductConfigurationService productConfigurationService;
+
     public Map<Long, Article> getArticles() {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getAllArticles();
     }
 
     public Map<Long, TranslatedArticle> getTranslatedArticles(Language language) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getAllTranslatedArticles().get(language);
     }
 
     public TranslatedArticle getTranslatedArticle(Language language, long id) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getAllTranslatedArticles().get(language).get(id);
     }
@@ -54,7 +57,7 @@ public class ArticlesDao extends CommonDao<ArticlesData> {
             Map<Long, Article> articles,
             Map<Language, Map<Long, TranslatedArticle>> translatedArticles
     ) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         cache.setAllArticles(articles);
         cache.setAllTranslatedArticles(translatedArticles);
@@ -69,6 +72,8 @@ public class ArticlesDao extends CommonDao<ArticlesData> {
 
     @Override
     protected String getFileName() {
-        return FILE_NAME;
+        return ArticlesDao.class.getCanonicalName() +
+                "." +
+                productConfigurationService.getProductConfiguration().getProductId();
     }
 }

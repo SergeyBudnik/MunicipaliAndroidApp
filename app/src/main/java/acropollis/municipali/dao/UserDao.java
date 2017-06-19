@@ -2,12 +2,14 @@ package acropollis.municipali.dao;
 
 import android.content.Context;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.io.Serializable;
 
 import acropollis.municipali.data.user.User;
+import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
@@ -19,31 +21,32 @@ class UserData implements Serializable {
 
 @EBean(scope = EBean.Scope.Singleton)
 public class UserDao extends CommonDao<UserData> {
-    private static final String FILE_NAME = UserDao.class.getCanonicalName();
-
     @RootContext
     Context context;
 
+    @Bean
+    ProductConfigurationService productConfigurationService;
+
     public User getUser() {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getUser();
     }
 
     public String getAuthToken() {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getAuthToken();
     }
 
     public byte [] getIcon() {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getUserIcon();
     }
 
     public void setUser(User user, String authToken, byte [] icon) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         cache.setUser(user);
         cache.setAuthToken(authToken);
@@ -59,6 +62,8 @@ public class UserDao extends CommonDao<UserData> {
 
     @Override
     protected String getFileName() {
-        return FILE_NAME;
+        return UserDao.class.getCanonicalName() +
+                "." +
+                productConfigurationService.getProductConfiguration().getProductId();
     }
 }

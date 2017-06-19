@@ -13,7 +13,6 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.bootstrap.view.MunicipaliLayoutListView;
@@ -122,22 +121,15 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
 
         long totalVotes = 0;
 
-//        for (long answerId : results.keySet()) {
-//            totalVotes += results.get(answerId);
-//        }
-
-        Random r = new Random();
+        for (long answerId : results.keySet()) {
+            totalVotes += results.get(answerId);
+        }
 
         for (TranslatedAnswer answer : answers) {
-            AnswerResult answerResult = new AnswerResult();
-
-            answerResult.setAnswerId(answer.getId());
-            answerResult.setText(answer.getText());
-
-            if (answers.size() == 3) {
-                answerResult.setPercents((2000 + r.nextInt(1300)) / 100.0);
-            } else {
-                answerResult.setPercents((4000 + r.nextInt(1000)) / 100.0);
+            AnswerResult answerResult = new AnswerResult(); {
+                answerResult.setAnswerId(answer.getId());
+                answerResult.setText(answer.getText());
+                answerResult.setPercents(100 * results.get(answer.getId()) / totalVotes);
             }
 
             answerResults.add(answerResult);

@@ -2,15 +2,15 @@ package acropollis.municipali.dao;
 
 import android.content.Context;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import acropollis.municipali.data.UserAnswer;
+import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
@@ -20,19 +20,20 @@ class UserAnswersData implements Serializable {
 
 @EBean(scope = EBean.Scope.Singleton)
 public class UserAnswersDao extends CommonDao<UserAnswersData> {
-    private static final String FILE_NAME = UserAnswersDao.class.getCanonicalName();
-
     @RootContext
     Context context;
 
+    @Bean
+    ProductConfigurationService productConfigurationService;
+
     public Long getAnswer(long articleId, long questionId) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getAnswers().get(getId(articleId, questionId));
     }
 
     public void addAnswer(long articleId, long questionId, long answerId) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         cache.getAnswers().put(getId(articleId, questionId), answerId);
     }
@@ -44,7 +45,9 @@ public class UserAnswersDao extends CommonDao<UserAnswersData> {
 
     @Override
     protected String getFileName() {
-        return FILE_NAME;
+        return UserAnswersDao.class.getCanonicalName() +
+                "." +
+                productConfigurationService.getProductConfiguration().getProductId();
     }
 
     private String getId(long articleId, long questionId) {

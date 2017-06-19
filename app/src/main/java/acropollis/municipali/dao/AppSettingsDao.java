@@ -2,12 +2,14 @@ package acropollis.municipali.dao;
 
 import android.content.Context;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.io.Serializable;
 
 import acropollis.municipali.data.common.Language;
+import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
@@ -17,19 +19,20 @@ class AppSettingsData implements Serializable {
 
 @EBean(scope = EBean.Scope.Singleton)
 public class AppSettingsDao extends CommonDao<AppSettingsData> {
-    private static final String FILE_NAME = AppSettingsDao.class.getCanonicalName();
-
     @RootContext
     Context context;
 
+    @Bean
+    ProductConfigurationService productConfigurationService;
+
     public Language getLanguage() {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         return cache.getLanguage();
     }
 
     public void setLanguage(Language language) {
-        readCache(context, FILE_NAME, false);
+        readCache(context, getFileName(), false);
 
         cache.setLanguage(language);
 
@@ -43,6 +46,8 @@ public class AppSettingsDao extends CommonDao<AppSettingsData> {
 
     @Override
     protected String getFileName() {
-        return FILE_NAME;
+        return AppSettingsDao.class.getCanonicalName() +
+                "." +
+                productConfigurationService.getProductConfiguration().getProductId();
     }
 }

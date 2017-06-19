@@ -2,10 +2,12 @@ package acropollis.municipali.dao;
 
 import android.content.Context;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import acropollis.municipali.data.backend.BackendInfo;
+import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
@@ -15,10 +17,11 @@ class BackendInfoData {
 
 @EBean(scope = EBean.Scope.Singleton)
 public class BackendInfoDao extends CommonDao<BackendInfoData> {
-    private static final String FILE_NAME = BackendInfoDao.class.getCanonicalName();
-
     @RootContext
     Context context;
+
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     public BackendInfo getBackendInfo() {
         readCache(context, getFileName(), false);
@@ -41,6 +44,8 @@ public class BackendInfoDao extends CommonDao<BackendInfoData> {
 
     @Override
     protected String getFileName() {
-        return FILE_NAME;
+        return BackendInfoDao.class.getCanonicalName() +
+                "." +
+                productConfigurationService.getProductConfiguration().getProductId();
     }
 }
