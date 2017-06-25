@@ -2,4 +2,6 @@
 <resources>
     <string name="product_id" translatable="false">MunicipaliQA-User</string>
     <string name="app_name">Municipali.QA</string>
+
+    <string name="facebook_app_id" translatable="false">1940339396242597</string>
 </resources>

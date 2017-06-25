@@ -9,7 +9,7 @@ public enum ProductConfiguration {
     MUNICIPALI_KARPOS("MunicipaliProd-Karpos-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.MACEDONIAN),
     MUNICIPALI_ARAD("MunicipaliProd-Arad-User", ProductTier.STANDALONE, ProductType.MUNICIPALI, Language.ENGLISH, Language.HEBREW),
 
-    DEMOCRACY_QA("DemocracyDev", ProductTier.STANDALONE, ProductType.DEMOCRACY, Language.ENGLISH, Language.ENGLISH);
+    DEMOCRACY_QA("DemocracyQA-User", ProductTier.STANDALONE, ProductType.DEMOCRACY, Language.ENGLISH, Language.ENGLISH);
 
     @Getter private String productId;
     @Getter private ProductTier productTier;

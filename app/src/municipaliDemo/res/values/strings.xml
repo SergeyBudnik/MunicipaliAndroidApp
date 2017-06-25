@@ -2,4 +2,6 @@
 <resources>
     <string name="product_id" translatable="false">MunicipaliDemo-User</string>
     <string name="app_name">Municipali Demo</string>
+
+    <string name="facebook_app_id" translatable="false">1599120216799018</string>
 </resources>

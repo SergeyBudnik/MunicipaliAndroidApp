@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/categories_layout"
+    android:visibility="gone"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+    <TextView
+        android:id="@+id/category_1"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="?article_category_margin"
+        android:layout_marginEnd="?article_category_margin"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/primary_white"
+        android:background="@drawable/category"/>
+
+    <TextView
+        android:id="@+id/category_2"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/primary_white"
+        android:background="@drawable/category"/>
+
+    <TextView
+        android:id="@+id/category_3"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/primary_white"
+        android:background="@drawable/category"/>
+
+</LinearLayout>
