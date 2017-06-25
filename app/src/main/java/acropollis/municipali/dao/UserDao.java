@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 class UserData implements Serializable {
-    private User user;
+    private User user = new User();
     private String authToken;
     private byte [] userIcon;
 }
