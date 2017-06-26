@@ -31,7 +31,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 15
-        versionName "0.0.6"
+        versionName "0.0.7"
 
         buildConfigField "String", "ACCOUNT_TYPE", "\"${applicationId}.account\""
         buildConfigField "String", "AUTHORITY", "\"${applicationId}.provider\""
