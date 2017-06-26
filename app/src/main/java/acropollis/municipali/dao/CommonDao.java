@@ -3,37 +3,44 @@ package acropollis.municipali.dao;
 import android.content.Context;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 import acropollis.municipali.utls.StorageUtils;
 
 abstract class CommonDao <T> {
-    protected T cache;
+    private AtomicReference<T> cache = new AtomicReference<>(null);
 
     protected abstract T newInstance();
 
     protected abstract String getFileName();
 
+    protected T getValue() {
+        return cache.get();
+    }
+
     public void persist(Context context) {
-        try {
-            StorageUtils.writeData(context, getFileName(), cache);
-        } catch (IOException e) {
-            /* ToDo: ex handling */
-            /* Do nothing */
+        if (cache.get() != null) {
+            try {
+                StorageUtils.writeData(context, getFileName(), cache.get());
+            } catch (IOException e) {
+                /* ToDo: ex handling */
+                /* Do nothing */
+            }
         }
     }
 
     protected void readCache(Context context, String fileName, boolean force) {
-        if (cache == null || force) {
+        if (cache.get() == null || force) {
             try {
-                cache = StorageUtils.readData(context, fileName);
+                cache.set((T) StorageUtils.readData(context, fileName));
             } catch (IOException e) {
                 /* ToDo: ex handling */
                 /* Do nothing */
             }
         }
 
-        if (cache == null) {
-            cache = newInstance();
+        if (cache.get() == null) {
+            cache.set(newInstance());
         }
     }
 }

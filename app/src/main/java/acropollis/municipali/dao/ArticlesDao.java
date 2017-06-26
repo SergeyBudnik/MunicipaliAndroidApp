@@ -38,19 +38,19 @@ public class ArticlesDao extends CommonDao<ArticlesData> {
     public Map<Long, Article> getArticles() {
         readCache(context, getFileName(), false);
 
-        return cache.getAllArticles();
+        return getValue().getAllArticles();
     }
 
     public Map<Long, TranslatedArticle> getTranslatedArticles(Language language) {
         readCache(context, getFileName(), false);
 
-        return cache.getAllTranslatedArticles().get(language);
+        return getValue().getAllTranslatedArticles().get(language);
     }
 
     public TranslatedArticle getTranslatedArticle(Language language, long id) {
         readCache(context, getFileName(), false);
 
-        return cache.getAllTranslatedArticles().get(language).get(id);
+        return getValue().getAllTranslatedArticles().get(language).get(id);
     }
 
     public void setArticles(
@@ -59,8 +59,8 @@ public class ArticlesDao extends CommonDao<ArticlesData> {
     ) {
         readCache(context, getFileName(), false);
 
-        cache.setAllArticles(articles);
-        cache.setAllTranslatedArticles(translatedArticles);
+        getValue().setAllArticles(articles);
+        getValue().setAllTranslatedArticles(translatedArticles);
 
         persist(context);
     }

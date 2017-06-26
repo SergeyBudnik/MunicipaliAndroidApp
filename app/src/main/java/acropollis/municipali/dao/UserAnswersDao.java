@@ -29,13 +29,13 @@ public class UserAnswersDao extends CommonDao<UserAnswersData> {
     public Long getAnswer(long articleId, long questionId) {
         readCache(context, getFileName(), false);
 
-        return cache.getAnswers().get(getId(articleId, questionId));
+        return getValue().getAnswers().get(getId(articleId, questionId));
     }
 
     public void addAnswer(long articleId, long questionId, long answerId) {
         readCache(context, getFileName(), false);
 
-        cache.getAnswers().put(getId(articleId, questionId), answerId);
+        getValue().getAnswers().put(getId(articleId, questionId), answerId);
     }
 
     @Override

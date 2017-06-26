@@ -114,7 +114,7 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
 
         FiveMarksVoteResult averageVoteResult = amount == 0 ?
                 FiveMarksVoteResult.VOTE_3 :
-                FiveMarksVoteResult.getVoteResult((int) (average / amount));
+                FiveMarksVoteResult.getVoteResult((int) (average / amount) - 1);
 
         averageVoteSegmentedOvalView.setPercents(20 * averageVoteResult.getSegmentsAmount());
         averageVoteValueView.setText(getResources().getString(averageVoteResult.getVoteValueTextId()));

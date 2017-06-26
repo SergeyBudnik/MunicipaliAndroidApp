@@ -26,13 +26,13 @@ public class BackendInfoDao extends CommonDao<BackendInfoData> {
     public BackendInfo getBackendInfo() {
         readCache(context, getFileName(), false);
 
-        return cache.getBackendInfo();
+        return getValue().getBackendInfo();
     }
 
     public void setBackendInfo(BackendInfo backendInfo) {
         readCache(context, getFileName(), false);
 
-        cache.setBackendInfo(backendInfo);
+        getValue().setBackendInfo(backendInfo);
 
         persist(context);
     }

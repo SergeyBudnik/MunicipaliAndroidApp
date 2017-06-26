@@ -30,27 +30,27 @@ public class UserDao extends CommonDao<UserData> {
     public User getUser() {
         readCache(context, getFileName(), false);
 
-        return cache.getUser();
+        return getValue().getUser();
     }
 
     public String getAuthToken() {
         readCache(context, getFileName(), false);
 
-        return cache.getAuthToken();
+        return getValue().getAuthToken();
     }
 
     public byte [] getIcon() {
         readCache(context, getFileName(), false);
 
-        return cache.getUserIcon();
+        return getValue().getUserIcon();
     }
 
     public void setUser(User user, String authToken, byte [] icon) {
         readCache(context, getFileName(), false);
 
-        cache.setUser(user);
-        cache.setAuthToken(authToken);
-        cache.setUserIcon(icon);
+        getValue().setUser(user);
+        getValue().setAuthToken(authToken);
+        getValue().setUserIcon(icon);
 
         persist(context);
     }

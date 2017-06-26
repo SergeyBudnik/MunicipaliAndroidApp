@@ -28,13 +28,13 @@ public class AppSettingsDao extends CommonDao<AppSettingsData> {
     public Language getLanguage() {
         readCache(context, getFileName(), false);
 
-        return cache.getLanguage();
+        return getValue().getLanguage();
     }
 
     public void setLanguage(Language language) {
         readCache(context, getFileName(), false);
 
-        cache.setLanguage(language);
+        getValue().setLanguage(language);
 
         persist(context);
     }
