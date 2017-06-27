@@ -75,7 +75,7 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
 
         questionTextView.setText(question.getText());
 
-        FiveMarksVoteResult voteResult = getVoteResult(question, userAnswerService.getAnswer(articleId, questionId));
+        final FiveMarksVoteResult voteResult = getVoteResult(question, userAnswerService.getAnswer(articleId, questionId));
 
         yourVoteSegmentedOvalView.setPercents(20 * voteResult.getSegmentsAmount());
         yourVoteValueView.setText(getResources().getString(voteResult.getVoteValueTextId()));
@@ -85,7 +85,7 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
         articlesRestWrapper.getAnswer(article.getId(), question.getId(), new RestListener<Map<Long,Long>>() {
             @Override
             public void onSuccess(Map<Long, Long> answerStatistics) {
-                onGetStatisticsSuccessful(answerStatistics);
+                onGetStatisticsSuccessful(answerStatistics, voteResult);
             }
 
             @Override
@@ -96,12 +96,12 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
     }
 
     @UiThread
-    void onGetStatisticsSuccessful(Map<Long, Long> answerStatistics) {
+    void onGetStatisticsSuccessful(Map<Long, Long> answerStatistics, FiveMarksVoteResult voteResult) {
         averageVoteLoadingSpinner.clearAnimation();
         averageVoteLoadingSpinner.setVisibility(View.GONE);
 
-        long amount = 0;
-        long average = 0;
+        long amount = 1;
+        long average = voteResult.getIndex() + 1;
 
         int answerIndex = 1;
 

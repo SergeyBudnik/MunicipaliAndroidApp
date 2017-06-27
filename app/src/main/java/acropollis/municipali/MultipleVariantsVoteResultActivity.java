@@ -96,7 +96,7 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
 
     @UiThread
     void populateList(TranslatedArticle article, TranslatedQuestion question, Map<Long, Long> results, long currentAnswer) {
-        List<AnswerResult> answers = getAnswers(question.getAnswers(), results);
+        List<AnswerResult> answers = getAnswers(question.getAnswers(), results, currentAnswer);
 
         answersListView.setElements(
                 answerBootstrapAdapter.getAnswersRows(article.getId(), question.getId(), answers),
@@ -116,20 +116,24 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
         }
     }
 
-    private List<AnswerResult> getAnswers(List<TranslatedAnswer> answers, Map<Long, Long> results) {
+    private List<AnswerResult> getAnswers(List<TranslatedAnswer> answers, Map<Long, Long> results, long currentAnswer) {
         List<AnswerResult> answerResults = new ArrayList<>();
 
-        long totalVotes = 0;
+        long totalVotes = 1;
 
         for (long answerId : results.keySet()) {
             totalVotes += results.get(answerId);
         }
 
         for (TranslatedAnswer answer : answers) {
+            long resultsAmount = answer.getId() == currentAnswer ?
+                    results.get(answer.getId()) + 1 :
+                    results.get(answer.getId());
+
             AnswerResult answerResult = new AnswerResult(); {
                 answerResult.setAnswerId(answer.getId());
                 answerResult.setText(answer.getText());
-                answerResult.setPercents(100 * results.get(answer.getId()) / totalVotes);
+                answerResult.setPercents(100 * resultsAmount / totalVotes);
             }
 
             answerResults.add(answerResult);
