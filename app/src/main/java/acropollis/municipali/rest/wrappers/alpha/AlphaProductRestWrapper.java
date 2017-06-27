@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.alpha;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.rest.RestService;
@@ -35,6 +37,8 @@ public class AlphaProductRestWrapper {
 
             products.onSuccess(filteredProducts);
         } catch (Exception e) {
+            Log.e("AlphaProductRestWrapper", "Get demo products failed", e);
+
             products.onFailure();
         }
     }

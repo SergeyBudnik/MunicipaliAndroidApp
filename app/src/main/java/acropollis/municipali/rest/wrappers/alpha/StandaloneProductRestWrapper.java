@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.alpha;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -30,6 +32,7 @@ public class StandaloneProductRestWrapper {
     @RestService
     StandaloneProductRestService standaloneProductRestService;
 
+    /* ToDo: code duplication */
     @Background
     public void getBackendInfoWithHighQualityBranding(String productId, RestListener<BackendInfo> listener) {
         @Data
@@ -75,6 +78,8 @@ public class StandaloneProductRestWrapper {
 
             listener.onSuccess(backendInfo);
         } catch (Exception e) {
+            Log.e("SProductRestWrapper", "City icon loading failed", e);
+
             listener.onFailure();
         }
     }

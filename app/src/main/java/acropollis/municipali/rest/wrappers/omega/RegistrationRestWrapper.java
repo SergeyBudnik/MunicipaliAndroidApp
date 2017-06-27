@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.omega;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -30,6 +32,8 @@ public class RegistrationRestWrapper {
 
             listener.onSuccess(authToken);
         } catch (Exception e) {
+            Log.e("RegistrationRestWrapper", "Registration failed", e);
+
             listener.onFailure();
         }
     }

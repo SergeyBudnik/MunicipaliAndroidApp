@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.omega;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -17,6 +19,7 @@ import acropollis.municipali.rest.raw.omega.ArticlesRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.service.ArticlesService;
 import acropollis.municipali.service.BackendInfoService;
+import acropollis.municipali.utls.IconUtils;
 
 @EBean
 public class ArticlesRestWrapper {
@@ -29,6 +32,9 @@ public class ArticlesRestWrapper {
     BackendInfoService backendInfoService;
     @Bean
     ArticlesService articlesService;
+
+    @Bean
+    IconUtils iconUtils;
 
     @Background
     public void loadArticles(RestListener<Void> listener) {
@@ -43,6 +49,8 @@ public class ArticlesRestWrapper {
 
             listener.onSuccess(null);
         } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Articles loading failed", e);
+
             listener.onFailure();
         }
     }
@@ -66,6 +74,8 @@ public class ArticlesRestWrapper {
 
             listener.onSuccess(null);
         } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Answer failed", e);
+
             listener.onFailure();
         }
     }
@@ -83,6 +93,8 @@ public class ArticlesRestWrapper {
 
             listener.onSuccess(response);
         } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Answers loading loading failed", e);
+
             listener.onFailure();
         }
     }
@@ -94,7 +106,7 @@ public class ArticlesRestWrapper {
 
             byte [] icon = imageRestService.getImage(
                     backendInfoService.getBackendInfo().getRootEndpoint() +
-                            "/article/" + articleId + "/icon/" + 300 // ToDo: size
+                            "/article/" + articleId + "/icon/" + iconUtils.getIconSize()
             );
 
             listener.onSuccess(icon);
@@ -105,6 +117,8 @@ public class ArticlesRestWrapper {
 
             listener.onFailure();
         } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Article icon loading failed", e);
+
             listener.onFailure();
         }
     }
@@ -116,7 +130,7 @@ public class ArticlesRestWrapper {
 
             byte [] icon = imageRestService.getImage(
                     backendInfoService.getBackendInfo().getRootEndpoint() +
-                            "/article/" + articleId + "/question/" + questionId + "/answer/" + answerid + "/icon/" + 300 // ToDo: size
+                            "/article/" + articleId + "/question/" + questionId + "/answer/" + answerid + "/icon/" + iconUtils.getIconSize()
             );
 
             listener.onSuccess(icon);
@@ -127,6 +141,8 @@ public class ArticlesRestWrapper {
 
             listener.onFailure();
         } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Answer icon loading failed", e);
+
             listener.onFailure();
         }
     }

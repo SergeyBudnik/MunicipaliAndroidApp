@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.omega;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -46,6 +48,8 @@ public class ReportRestWrapper {
 
             listener.onSuccess(null);
         } catch (Exception e) {
+            Log.e("ReportRestWrapper", "Report upload failed", e);
+
             listener.onFailure();
         }
     }

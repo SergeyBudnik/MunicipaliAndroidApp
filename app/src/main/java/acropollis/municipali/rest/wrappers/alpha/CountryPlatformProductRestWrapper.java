@@ -1,5 +1,7 @@
 package acropollis.municipali.rest.wrappers.alpha;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -23,6 +25,7 @@ import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.utls.ScreenUtils;
 import lombok.Data;
 
+/* ToDo: remove  duplication */
 @EBean
 public class CountryPlatformProductRestWrapper {
     @Bean
@@ -42,6 +45,8 @@ public class CountryPlatformProductRestWrapper {
 
             listener.onSuccess(country);
         } catch (Exception e) {
+            Log.e("CPProductRestWrapper", "Country icon loading failed", e);
+
             listener.onFailure();
         }
     }
@@ -63,6 +68,8 @@ public class CountryPlatformProductRestWrapper {
 
             listener.onSuccess(icon);
         } catch (Exception e) {
+            Log.e("CPProductRestWrapper", "City icon loading failed", e);
+
             listener.onFailure();
         }
     }
@@ -108,6 +115,8 @@ public class CountryPlatformProductRestWrapper {
 
             listener.onSuccess(backendInfo);
         } catch (Exception e) {
+            Log.e("CPProductRestWrapper", "Background loading failed", e);
+
             listener.onFailure();
         }
     }

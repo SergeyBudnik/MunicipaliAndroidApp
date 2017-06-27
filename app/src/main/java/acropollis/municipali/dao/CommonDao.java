@@ -1,6 +1,7 @@
 package acropollis.municipali.dao;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
@@ -23,8 +24,7 @@ abstract class CommonDao <T> {
             try {
                 StorageUtils.writeData(context, getFileName(), cache.get());
             } catch (IOException e) {
-                /* ToDo: ex handling */
-                /* Do nothing */
+                Log.e("CommonDao", "Persist failed", e);
             }
         }
     }
@@ -34,8 +34,7 @@ abstract class CommonDao <T> {
             try {
                 cache.set((T) StorageUtils.readData(context, fileName));
             } catch (IOException e) {
-                /* ToDo: ex handling */
-                /* Do nothing */
+                Log.e("CommonDao", "Reading failed", e);
             }
         }
 
