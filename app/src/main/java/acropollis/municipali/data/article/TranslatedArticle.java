@@ -1,5 +1,6 @@
 package acropollis.municipali.data.article;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,7 @@ import acropollis.municipali.data.article.question.TranslatedQuestion;
 import lombok.Data;
 
 @Data
-public class TranslatedArticle {
+public class TranslatedArticle implements Serializable {
     private long id;
     private ArticleType type;
     private String title;

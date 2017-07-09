@@ -1,5 +1,6 @@
 package acropollis.municipali.data.article;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import acropollis.municipali.data.common.Language;
 import lombok.Data;
 
 @Data
-public class Article {
+public class Article implements Serializable {
     private long id;
     private ArticleType type;
     private Map<Language, ArticleTranslationInfo> translatedArticle;

@@ -1,5 +1,6 @@
 package acropollis.municipali.data.article.question;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import acropollis.municipali.data.common.Language;
 import lombok.Data;
 
 @Data
-public class Question {
+public class Question implements Serializable {
     private long id;
     private QuestionAnswerType answerType;
     private boolean showResult;

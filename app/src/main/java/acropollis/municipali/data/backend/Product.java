@@ -1,9 +1,11 @@
 package acropollis.municipali.data.backend;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 @Data
-public class Product {
+public class Product implements Serializable {
     private String id;
     private ProductTier tier;
     private ProductComponent component;

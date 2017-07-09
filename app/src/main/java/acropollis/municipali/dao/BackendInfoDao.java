@@ -6,12 +6,14 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.io.Serializable;
+
 import acropollis.municipali.data.backend.BackendInfo;
 import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
-class BackendInfoData {
+class BackendInfoData implements Serializable {
     private BackendInfo backendInfo;
 }
 

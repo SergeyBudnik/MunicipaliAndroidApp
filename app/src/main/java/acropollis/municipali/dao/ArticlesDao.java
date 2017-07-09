@@ -6,6 +6,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 
 @Data
-class ArticlesData {
+class ArticlesData implements Serializable {
     private Map<Long, Article> allArticles = new HashMap<>();
     private Map<Language, Map<Long, TranslatedArticle>> allTranslatedArticles = new HashMap<>();
 
