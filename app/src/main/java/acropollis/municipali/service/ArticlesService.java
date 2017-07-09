@@ -6,11 +6,15 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import acropollis.municipali.R;
+import acropollis.municipali.comparators.ArticlesComparator;
 import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.dao.AnswersIconDao;
 import acropollis.municipali.dao.ArticlesDao;
@@ -34,7 +38,12 @@ public class ArticlesService {
     AnswersIconDao answersIconDao;
 
     public Collection<TranslatedArticle> getArticles() {
-        return articlesDao.getTranslatedArticles(getCurrentLanguage()).values();
+        List<TranslatedArticle> translatedArticles =
+                new ArrayList<>(articlesDao.getTranslatedArticles(getCurrentLanguage()).values());
+
+        Collections.sort(translatedArticles, new ArticlesComparator());
+
+        return translatedArticles;
     }
 
     public TranslatedArticle getArticle(long id) {

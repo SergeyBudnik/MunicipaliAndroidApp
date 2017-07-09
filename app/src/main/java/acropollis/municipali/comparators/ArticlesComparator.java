@@ -2,14 +2,14 @@ package acropollis.municipali.comparators;
 
 import java.util.Comparator;
 
-import acropollis.municipali.data.article.Article;
+import acropollis.municipali.data.article.TranslatedArticle;
 
-public class ArticlesComparator implements Comparator<Article> {
+public class ArticlesComparator implements Comparator<TranslatedArticle> {
     @Override
-    public int compare(Article a1, Article a2) {
-        if (a1.getLastUpdateDate() > a2.getLastUpdateDate()) {
+    public int compare(TranslatedArticle a1, TranslatedArticle a2) {
+        if (a1.getReleaseDate() > a2.getReleaseDate()) {
             return -1;
-        } else if (a1.getLastUpdateDate() < a2.getLastUpdateDate()) {
+        } else if (a1.getReleaseDate() < a2.getReleaseDate()) {
             return 1;
         } else {
             return 0;
