@@ -124,6 +124,30 @@ public class ArticlesRestWrapper {
     }
 
     @Background
+    public void loadArticleImage(long articleId, RestListener<byte []> listener) {
+        try {
+            listener.onStart();
+
+            byte [] icon = imageRestService.getImage(
+                    backendInfoService.getBackendInfo().getRootEndpoint() +
+                            "/article/" + articleId + "/image/" + 300
+            );
+
+            listener.onSuccess(icon);
+        } catch (HttpStatusCodeException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                listener.onSuccess(new byte [0]);
+            }
+
+            listener.onFailure();
+        } catch (Exception e) {
+            Log.e("ArticlesRestWrapper", "Article image loading failed", e);
+
+            listener.onFailure();
+        }
+    }
+
+    @Background
     public void loadAnswerIcon(long articleId, long questionId, long answerid, RestListener<byte []> listener) {
         try {
             listener.onStart();

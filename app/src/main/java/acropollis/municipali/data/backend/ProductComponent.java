@@ -1,5 +1,5 @@
 package acropollis.municipali.data.backend;
 
 public enum ProductComponent {
-    ADMIN, USER
+    ADMIN, USER, USER_NOTIFICATION
 }

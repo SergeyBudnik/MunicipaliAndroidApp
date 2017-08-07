@@ -2,9 +2,17 @@ package acropollis.municipali;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -24,9 +32,11 @@ import acropollis.municipali.bootstrap_adapter.QuestionBootstrapAdapter;
 import acropollis.municipali.data.AnswerStatus;
 import acropollis.municipali.data.article.TranslatedArticle;
 import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
 import acropollis.municipali.service.ArticlesService;
 import acropollis.municipali.service.UserAnswerService;
+import acropollis.municipali.utls.BitmapUtils;
 import acropollis.municipali.view.question.ArticleCategoriesView;
 
 @EActivity(R.layout.activity_article_questions_list)
@@ -40,10 +50,15 @@ public class ArticleQuestionsListActivity extends BaseActivity {
     MunicipaliRowView articleInfoView;
     @ViewById(R.id.article_categories)
     ArticleCategoriesView articleCategoriesView;
+    @ViewById(R.id.article_image)
+    ImageView articleImageView;
     @ViewById(R.id.article_text)
     TextView articleTextView;
     @ViewById(R.id.questions_list)
     MunicipaliLayoutListView questionsListView;
+
+    @ViewById(R.id.article_video)
+    WebView aricleVideoView;
 
     @Extra("articleId")
     Long articleId;
@@ -83,6 +98,41 @@ public class ArticleQuestionsListActivity extends BaseActivity {
                     }
                 }
         );
+
+        if (article.getVideo() == null) {
+            loadIcon();
+        } else {
+            aricleVideoView.setVisibility(View.VISIBLE);
+            aricleVideoView.getSettings().setJavaScriptEnabled(true);
+            aricleVideoView.getSettings().setPluginState(WebSettings.PluginState.ON);
+            aricleVideoView.loadUrl(article.getVideo());
+            aricleVideoView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;
+                }
+            });
+        }
+
+    }
+
+    @Background
+    void loadIcon() {
+        articlesRestWrapper.loadArticleImage(articleId, new RestListener<byte[]>() {
+            @Override
+            public void onSuccess(final byte [] icon) {
+                articleImageView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (icon.length != 0) {
+                            articleImageView.setVisibility(View.VISIBLE);
+                            articleImageView.setImageBitmap(BitmapUtils.iconFromBytes(icon));
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Click(R.id.back_button)

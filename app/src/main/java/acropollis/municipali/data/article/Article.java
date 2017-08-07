@@ -16,6 +16,7 @@ public class Article implements Serializable {
     private ArticleType type;
     private Map<Language, ArticleTranslationInfo> translatedArticle;
     private List<Question> questions;
+    private String video;
     private boolean sendPushOnRelease;
     private long releaseDate;
     private long expirationDate;
@@ -34,6 +35,7 @@ public class Article implements Serializable {
         res.setTitle(translatedArticle.get(language).getTitle());
         res.setText(translatedArticle.get(language).getText());
         res.setCategories(translatedArticle.get(language).getCategories());
+        res.setVideo(video);
         res.setQuestions(convertQuestions(language, questions));
         res.setReleaseDate(releaseDate);
         res.setExpirationDate(expirationDate);

@@ -14,6 +14,7 @@ public class TranslatedArticle implements Serializable {
     private String title;
     private String text;
     private List<String> categories;
+    private String video;
     private Map<Long, TranslatedQuestion> questions;
     private long releaseDate;
     private long expirationDate;

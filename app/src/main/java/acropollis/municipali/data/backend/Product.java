@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class Product implements Serializable {
     private String id;
+    private String groupId;
     private ProductTier tier;
     private ProductComponent component;
     private ProductType type;

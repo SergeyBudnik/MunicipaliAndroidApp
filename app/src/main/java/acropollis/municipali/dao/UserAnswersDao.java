@@ -36,6 +36,8 @@ public class UserAnswersDao extends CommonDao<UserAnswersData> {
         readCache(context, getFileName(), false);
 
         getValue().getAnswers().put(getId(articleId, questionId), answerId);
+
+        persist(context);
     }
 
     @Override

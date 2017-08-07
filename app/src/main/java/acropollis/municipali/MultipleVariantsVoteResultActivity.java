@@ -126,9 +126,15 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
         }
 
         for (TranslatedAnswer answer : answers) {
-            long resultsAmount = answer.getId() == currentAnswer ?
-                    results.get(answer.getId()) + 1 :
-                    results.get(answer.getId());
+            long resultsAmount;
+
+            if (results.containsKey(answer.getId())) {
+                resultsAmount = answer.getId() == currentAnswer ?
+                        results.get(answer.getId()) + 1 :
+                        results.get(answer.getId());
+            } else {
+                resultsAmount = 0;
+            }
 
             AnswerResult answerResult = new AnswerResult(); {
                 answerResult.setAnswerId(answer.getId());
