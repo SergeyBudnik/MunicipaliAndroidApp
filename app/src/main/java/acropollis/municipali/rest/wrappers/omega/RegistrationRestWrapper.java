@@ -11,11 +11,14 @@ import acropollis.municipali.data.user.User;
 import acropollis.municipali.rest.raw.omega.UserRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.service.BackendInfoService;
+import acropollis.municipali.service.ProductConfigurationService;
 
 @EBean
 public class RegistrationRestWrapper {
     @Bean
     BackendInfoService backendInfoService;
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @RestService
     UserRestService userRestService;
@@ -32,9 +35,13 @@ public class RegistrationRestWrapper {
 
             listener.onSuccess(authToken);
         } catch (Exception e) {
-            Log.e("RegistrationRestWrapper", "Registration failed", e);
+            if (productConfigurationService.getProductConfiguration().isQa()) {
+                throw new RuntimeException(e);
+            } else {
+                Log.e("RegistrationRestWrapper", "Registration failed", e);
 
-            listener.onFailure();
+                listener.onFailure();
+            }
         }
     }
 }

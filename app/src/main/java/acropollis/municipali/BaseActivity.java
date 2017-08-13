@@ -8,14 +8,27 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
 
+import acropollis.municipali.configuration.ProductConfiguration;
+import acropollis.municipali.service.LanguageService;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.view.common.PopupMessageView_;
 
+@EActivity
 public abstract class BaseActivity extends FragmentActivity {
     private int currentTheme;
+
+    @Bean
+    LanguageService languageService;
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +37,15 @@ public abstract class BaseActivity extends FragmentActivity {
         setTheme(currentTheme);
 
         super.onCreate(savedInstanceState);
+    }
+
+    @AfterViews
+    protected void onInit() {
+        languageService.setLanguage(getCurrentProductConfiguration().getUiLanguage());
+    }
+
+    protected ProductConfiguration getCurrentProductConfiguration() {
+        return productConfigurationService.getProductConfiguration();
     }
 
     public void setCurrentTheme(int currentTheme) {

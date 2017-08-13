@@ -56,7 +56,7 @@ public class ArticlesRestWrapper {
     }
 
     @Background
-    public void answerQuestion(String userId, long articleId, long questionId, long answerId, RestListener<Void> listener) {
+    public void answerQuestion(String userId, long articleId, long questionId, long answerId, RestListener<Map<Long, Long>> listener) {
         try {
             listener.onStart();
 
@@ -67,12 +67,12 @@ public class ArticlesRestWrapper {
                 request.setAnswerId(answerId);
             }
 
-            articlesRestService.answerQuestion(
+            Map<Long, Long> results = articlesRestService.answerQuestion(
                     backendInfoService.getBackendInfo().getRootEndpoint(),
                     request
             );
 
-            listener.onSuccess(null);
+            listener.onSuccess(results);
         } catch (Exception e) {
             Log.e("ArticlesRestWrapper", "Answer failed", e);
 

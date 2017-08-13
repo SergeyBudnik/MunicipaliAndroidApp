@@ -103,8 +103,8 @@
     <string name="report_description">Испратете ни фотографија или опис на проблемот што се среќаваат во нашиот град. Ние ќе реагираме што е можно поскоро</string>
     <string name="report_terms">Со испраќањето на извештајот, ќе им даде на вашиот договор за да ги чуваат и да ги користат содржините на нашите потреби.</string>
 
-    <string name="report_from_camera">Сфотографировать</string>
-    <string name="report_from_gallery">Выбрать из галереи</string>
+    <string name="report_from_camera">Прикачи слика</string>
+    <string name="report_from_gallery">Одбери од галериja</string>
     <string name="report_without_photo">Без фото</string>
 
     <string name="write_comment">Напиши коментар</string>

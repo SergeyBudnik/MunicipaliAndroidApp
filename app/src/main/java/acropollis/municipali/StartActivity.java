@@ -12,8 +12,6 @@ import org.androidannotations.annotations.res.AnimationRes;
 import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.configuration.ProductTier;
 import acropollis.municipali.service.BackendInfoService;
-import acropollis.municipali.service.LanguageService;
-import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.service.UserService;
 
 @EActivity(R.layout.activity_loading)
@@ -25,21 +23,15 @@ public class StartActivity extends BaseActivity {
     Animation spinnerAnimation;
 
     @Bean
-    LanguageService languageService;
-    @Bean
     BackendInfoService backendInfoService;
     @Bean
     UserService userService;
-    @Bean
-    ProductConfigurationService productConfigurationService;
 
     @AfterViews
     void init() {
         spinnerView.startAnimation(spinnerAnimation);
 
-        ProductConfiguration currentProductConfiguration = productConfigurationService.getProductConfiguration();
-
-        languageService.setLanguage(currentProductConfiguration.getUiLanguage());
+        ProductConfiguration currentProductConfiguration = getCurrentProductConfiguration();
 
         ProductTier productTier = currentProductConfiguration.getProductTier();
 

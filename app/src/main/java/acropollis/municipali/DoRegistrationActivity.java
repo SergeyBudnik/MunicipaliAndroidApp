@@ -12,7 +12,6 @@ import acropollis.municipali.data.user.User;
 import acropollis.municipali.push.MunicipaliGcmMessages;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.RegistrationRestWrapper;
-import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.service.UserService;
 import acropollis.municipali.utls.ScreenUtils;
 
@@ -29,8 +28,6 @@ public abstract class DoRegistrationActivity extends BaseActivity {
 
     @Bean
     UserService userService;
-    @Bean
-    ProductConfigurationService productConfigurationService;
 
     @Bean
     ScreenUtils screenUtils;

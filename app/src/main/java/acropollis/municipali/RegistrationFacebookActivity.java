@@ -92,14 +92,27 @@ public class RegistrationFacebookActivity extends DoRegistrationActivity {
                             user.getUserId().setUserId(jsonObject.getString("id"));
                             user.getUserId().setLoginType(UserId.LoginType.FACEBOOK);
 
-                            user.getUserDetailsInfo().setName(jsonObject.getString("name"));
-                            user.getUserDetailsInfo().setGender(parseGender(jsonObject.getString("gender")));
+                            if (jsonObject.has("name")) {
+                                user.getUserDetailsInfo().setName(jsonObject.getString("name"));
+                            }
+
+                            if (jsonObject.has("gender")) {
+                                user.getUserDetailsInfo().setGender(parseGender(jsonObject.getString("gender")));
+                            }
+
                             user.getUserDetailsInfo().setDateOfBirth(-1L);
-                            user.getUserDetailsInfo().setEmail(jsonObject.getString("email"));
+
+                            if (jsonObject.has("email")) {
+                                user.getUserDetailsInfo().setEmail(jsonObject.getString("email"));
+                            }
 
                             loadUserImage(user);
                         } catch (Exception e) {
-                            finishRedirectForResult(0, 0, RESULT_CANCELED);
+                            if (productConfigurationService.getProductConfiguration().isQa()) {
+                                throw new RuntimeException(e);
+                            } else {
+                                finishRedirectForResult(0, 0, RESULT_CANCELED);
+                            }
                         }
                     }
                 });
@@ -125,7 +138,11 @@ public class RegistrationFacebookActivity extends DoRegistrationActivity {
                     iconToBytes(scale(centeredCrop(src, size, size), 200, 200))
             );
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            if (productConfigurationService.getProductConfiguration().isQa()) {
+                throw new RuntimeException(e);
+            } else {
+                finishRedirectForResult(0, 0, RESULT_CANCELED);
+            }
         }
     }
 
@@ -136,12 +153,13 @@ public class RegistrationFacebookActivity extends DoRegistrationActivity {
 
     private UserDetailsInfo.Gender parseGender(String gender) {
         if (gender != null) {
-            if (gender.equals("male")) {
-                return UserDetailsInfo.Gender.MALE;
-            } else if (gender.equals("female")) {
-                return UserDetailsInfo.Gender.FEMALE;
-            } else {
-                return UserDetailsInfo.Gender.UNKNOWN;
+            switch (gender) {
+                case "male":
+                    return UserDetailsInfo.Gender.MALE;
+                case "female":
+                    return UserDetailsInfo.Gender.FEMALE;
+                default:
+                    return UserDetailsInfo.Gender.UNKNOWN;
             }
         } else {
             return UserDetailsInfo.Gender.UNKNOWN;
