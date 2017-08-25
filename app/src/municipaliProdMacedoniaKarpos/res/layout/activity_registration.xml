@@ -68,6 +68,6 @@
         android:gravity="center"
         android:text="@string/registration_skip"
         android:textColor="@color/primary_white"
-        android:background="@drawable/primary_button_enabled"/>
+        android:background="?primary_button_enabled"/>
 
 </RelativeLayout>

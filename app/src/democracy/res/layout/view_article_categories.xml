@@ -24,7 +24,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@color/primary_white"
-        android:background="@drawable/category"/>
+        android:background="?category"/>
 
     <TextView
         android:id="@+id/category_2"
@@ -40,7 +40,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@color/primary_white"
-        android:background="@drawable/category"/>
+        android:background="?category"/>
 
     <TextView
         android:id="@+id/category_3"
@@ -54,6 +54,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@color/primary_white"
-        android:background="@drawable/category"/>
+        android:background="?category"/>
 
 </LinearLayout>

@@ -104,9 +104,11 @@ public class ArticlesRestWrapper {
         try {
             listener.onStart();
 
+            int iconSize = iconUtils.getIconSize();
+
             byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getRootEndpoint() +
-                            "/article/" + articleId + "/icon/" + iconUtils.getIconSize()
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
+                            "/articles/icons/" +  + articleId + "/" + iconSize + "x" + iconSize + ".png"
             );
 
             listener.onSuccess(icon);
@@ -129,8 +131,8 @@ public class ArticlesRestWrapper {
             listener.onStart();
 
             byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getRootEndpoint() +
-                            "/article/" + articleId + "/image/" + 300
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
+                            "/articles/images/" +  + articleId + "/" + 300 + "x" + 300 + ".png"
             );
 
             listener.onSuccess(icon);
@@ -148,13 +150,15 @@ public class ArticlesRestWrapper {
     }
 
     @Background
-    public void loadAnswerIcon(long articleId, long questionId, long answerid, RestListener<byte []> listener) {
+    public void loadAnswerIcon(long articleId, long questionId, long answerId, RestListener<byte []> listener) {
         try {
             listener.onStart();
 
+            int iconSize = iconUtils.getIconSize();
+
             byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getRootEndpoint() +
-                            "/article/" + articleId + "/question/" + questionId + "/answer/" + answerid + "/icon/" + iconUtils.getIconSize()
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
+                            "/answers/icons/" +  + answerId + "/" + iconSize + "x" + iconSize + ".png"
             );
 
             listener.onSuccess(icon);

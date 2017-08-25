@@ -15,9 +15,11 @@ import java.util.Map;
 import acropollis.municipali.data.ScreenDensity;
 import acropollis.municipali.data.backend.BackendInfo;
 import acropollis.municipali.data.backend.CountryPlatformFullBackendInfo;
+import acropollis.municipali.data.backend.ImageHostingInfo;
 import acropollis.municipali.data.backend.StandaloneFullBackendInfo;
 import acropollis.municipali.rest.raw.alpha.StandaloneProductRestService;
 import acropollis.municipali.rest.raw.common.ImageRestService;
+import acropollis.municipali.rest.raw.omega.ConfigurationRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.utls.ScreenUtils;
 import lombok.Data;
@@ -31,6 +33,8 @@ public class StandaloneProductRestWrapper {
     ImageRestService imageRestService;
     @RestService
     StandaloneProductRestService standaloneProductRestService;
+    @RestService
+    ConfigurationRestService configurationRestService;
 
     /* ToDo: code duplication */
     @Background
@@ -62,16 +66,21 @@ public class StandaloneProductRestWrapper {
 
             StandaloneFullBackendInfo fullBackendInfo = standaloneProductRestService.getBackendInfo(productId);
 
+            ImageHostingInfo imageHostingInfo = configurationRestService.getImageHostingInfo(
+                    fullBackendInfo.getRootEndpoint()
+            );
+
             byte [] background = getBrandingBackground(
-                    fullBackendInfo.getRootEndpoint(),
+                    imageHostingInfo.getUrl(),
                     backgroundSize.getW(),
                     backgroundSize.getH()
             );
 
-            byte [] icon = getBrandingIcon(fullBackendInfo.getRootEndpoint(), 300);
+            byte [] icon = getBrandingIcon(imageHostingInfo.getUrl(), 300);
 
             BackendInfo backendInfo = new BackendInfo(); {
                 backendInfo.setRootEndpoint(fullBackendInfo.getRootEndpoint());
+                backendInfo.setImageHostingRootEndpoint(imageHostingInfo.getUrl());
                 backendInfo.setBackground(background);
                 backendInfo.setIcon(icon);
             }
@@ -86,7 +95,7 @@ public class StandaloneProductRestWrapper {
 
     private byte [] getBrandingBackground(String rootEndpoint, int w, int h) {
         try {
-            return imageRestService.getImage(rootEndpoint + "/branding/background/" + w + "/" + h);
+            return imageRestService.getImage(rootEndpoint + "/branding/background/" + w + "x" + h + ".png");
         } catch (HttpStatusCodeException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 return null;
@@ -98,7 +107,7 @@ public class StandaloneProductRestWrapper {
 
     private byte [] getBrandingIcon(String rootEndpoint, int size) {
         try {
-            return imageRestService.getImage(rootEndpoint + "/branding/icon/" + size);
+            return imageRestService.getImage(rootEndpoint + "/branding/icon/" + size + "x" + size + ".png");
         } catch (HttpStatusCodeException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 return null;

@@ -83,7 +83,7 @@
                     android:text="@string/button_send"
                     android:textColor="@color/primary_white"
                     android:textSize="18sp"
-                    android:background="@drawable/primary_button_enabled"/>
+                    android:background="?primary_button_enabled"/>
 
                 <RelativeLayout
                     android:id="@+id/photo_layout"

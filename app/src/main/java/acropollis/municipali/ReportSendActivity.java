@@ -1,7 +1,9 @@
 package acropollis.municipali;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -265,7 +267,14 @@ public class ReportSendActivity extends BaseActivity {
         spinnerView.clearAnimation();
         spinnerLayoutView.setVisibility(View.INVISIBLE);
 
-        sendButtonView.setBackgroundResource(R.drawable.primary_button_enabled);
+        Drawable primaryButtonDrawable; {
+            int [] attrs = new int[] { R.attr.primary_button_enabled };
+            TypedArray ta = obtainStyledAttributes(attrs);
+            primaryButtonDrawable = ta.getDrawable(0);
+            ta.recycle();
+        }
+
+        sendButtonView.setBackground(primaryButtonDrawable);
         rotateButtonView.setVisibility(View.VISIBLE);
 
         photoView.setImageBitmap(bitmap);

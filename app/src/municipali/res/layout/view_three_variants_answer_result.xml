@@ -24,7 +24,7 @@
         <View
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:background="@drawable/five_marks_vote_result_oval"/>
+            android:background="?five_marks_vote_result_oval"/>
 
         <acropollis.municipali.view.common.SegmentedView_
             android:id="@+id/result_circle"

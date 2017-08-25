@@ -65,7 +65,7 @@
                     android:textColor="@color/primary_white"
                     android:textSize="18sp"
                     android:text="@string/button_continue"
-                    android:background="@drawable/primary_button_enabled"/>
+                    android:background="?primary_button_enabled"/>
 
                 <ScrollView
                     android:layout_width="match_parent"

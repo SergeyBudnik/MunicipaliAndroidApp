@@ -26,6 +26,8 @@
 
         <item name="text_secondary_color">@color/black</item>
         <item name="text_support_color">@color/gray</item>
+
+        <item name="primary_button_enabled">@drawable/primary_button_enabled_blue</item>
     </style>
 
     <style name="RedAppTheme" parent="AppTheme">
@@ -55,6 +57,13 @@
         <!-- Text -->
 
         <item name="text_primary_color">@color/red</item>
+
+        <item name="primary_button_enabled">@drawable/primary_button_enabled_red</item>
+        <item name="article_counter_inner_cirtcle">@drawable/article_counter_inner_cirtcle_red</item>
+        <item name="article_missing_icon_outer_circle">@drawable/article_missing_icon_outer_circle_red</item>
+        <item name="category">@drawable/category_red</item>
+        <item name="five_marks_answer_marker_outer_circle">@drawable/five_marks_answer_marker_outer_circle_red</item>
+        <item name="five_marks_vote_result_oval">@drawable/five_marks_vote_result_oval_red</item>
     </style>
 
     <style name="BlueAppTheme" parent="AppTheme">
@@ -84,6 +93,13 @@
         <!-- Text -->
 
         <item name="text_primary_color">@color/blue</item>
+
+        <item name="primary_button_enabled">@drawable/primary_button_enabled_blue</item>
+        <item name="article_counter_inner_cirtcle">@drawable/article_counter_inner_cirtcle_blue</item>
+        <item name="article_missing_icon_outer_circle">@drawable/article_missing_icon_outer_circle_blue</item>
+        <item name="category">@drawable/category_blue</item>
+        <item name="five_marks_answer_marker_outer_circle">@drawable/five_marks_answer_marker_outer_circle_blue</item>
+        <item name="five_marks_vote_result_oval">@drawable/five_marks_vote_result_oval_blue</item>
     </style>
 
 </resources>
