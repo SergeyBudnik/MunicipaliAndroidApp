@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import acropollis.municipali.data.article.Article;
@@ -106,10 +107,14 @@ public class ArticlesRestWrapper {
 
             int iconSize = iconUtils.getIconSize();
 
-            byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
-                            "/articles/icons/" +  + articleId + "/" + iconSize + "x" + iconSize + ".png"
-            );
+            byte [] icon = imageRestService.getImage(String.format(
+                    Locale.ENGLISH,
+                    "%s/articles/icons/%d/%dx%d.png",
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint(),
+                    articleId,
+                    iconSize,
+                    iconSize
+            ));
 
             listener.onSuccess(icon);
         } catch (HttpStatusCodeException e) {
@@ -130,10 +135,16 @@ public class ArticlesRestWrapper {
         try {
             listener.onStart();
 
-            byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
-                            "/articles/images/" +  + articleId + "/" + 300 + "x" + 300 + ".png"
-            );
+            int imageSize = iconUtils.getArticleImageSize();
+
+            byte [] icon = imageRestService.getImage(String.format(
+                    Locale.ENGLISH,
+                    "%s/articles/images/%d/%dx%d.png",
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint(),
+                    articleId,
+                    imageSize,
+                    imageSize
+            ));
 
             listener.onSuccess(icon);
         } catch (HttpStatusCodeException e) {
@@ -156,10 +167,14 @@ public class ArticlesRestWrapper {
 
             int iconSize = iconUtils.getIconSize();
 
-            byte [] icon = imageRestService.getImage(
-                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint() +
-                            "/answers/icons/" +  + answerId + "/" + iconSize + "x" + iconSize + ".png"
-            );
+            byte [] icon = imageRestService.getImage(String.format(
+                    Locale.ENGLISH,
+                    "%s/answers/icons/%d/%dx%d.png",
+                    backendInfoService.getBackendInfo().getImageHostingRootEndpoint(),
+                    articleId,
+                    iconSize,
+                    iconSize
+            ));
 
             listener.onSuccess(icon);
         } catch (HttpStatusCodeException e) {

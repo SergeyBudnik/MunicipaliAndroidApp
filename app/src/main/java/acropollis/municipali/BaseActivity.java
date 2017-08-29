@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
@@ -20,6 +22,7 @@ import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.service.LanguageService;
 import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.view.common.PopupMessageView_;
+import io.fabric.sdk.android.Fabric;
 
 @EActivity
 public abstract class BaseActivity extends FragmentActivity {
@@ -37,6 +40,8 @@ public abstract class BaseActivity extends FragmentActivity {
         setTheme(currentTheme);
 
         super.onCreate(savedInstanceState);
+
+        Fabric.with(this, new Crashlytics());
     }
 
     @AfterViews

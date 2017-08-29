@@ -12,8 +12,31 @@ public class IconUtils {
     @Bean
     ScreenUtils screenUtils;
 
-    // ToDo: use correct pixel-perfect sizes after fix on server
     public int getIconSize() {
+        ScreenDensity screenDensity = screenUtils.getScreenDensity();
+
+        switch (screenDensity) {
+            case LDPI:
+                return 50;
+            case MDPI:
+                return 50;
+            case HDPI:
+                return 75;
+            case XHDPI:
+                return 100;
+            case XXHDPI:
+                return 150;
+            case XXXHDPI:
+                return 200;
+            default: {
+                Log.e("IconUtils", "Unexpected density " + screenDensity);
+
+                return 200;
+            }
+        }
+    }
+
+    public int getArticleImageSize() {
         ScreenDensity screenDensity = screenUtils.getScreenDensity();
 
         switch (screenDensity) {
@@ -22,7 +45,7 @@ public class IconUtils {
             case MDPI:
                 return 100;
             case HDPI:
-                return 200;
+                return 150;
             case XHDPI:
                 return 200;
             case XXHDPI:

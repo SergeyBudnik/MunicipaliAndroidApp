@@ -14,7 +14,6 @@ import java.util.Map;
 
 import acropollis.municipali.data.ScreenDensity;
 import acropollis.municipali.data.backend.BackendInfo;
-import acropollis.municipali.data.backend.CountryPlatformFullBackendInfo;
 import acropollis.municipali.data.backend.ImageHostingInfo;
 import acropollis.municipali.data.backend.StandaloneFullBackendInfo;
 import acropollis.municipali.rest.raw.alpha.StandaloneProductRestService;
@@ -36,7 +35,6 @@ public class StandaloneProductRestWrapper {
     @RestService
     ConfigurationRestService configurationRestService;
 
-    /* ToDo: code duplication */
     @Background
     public void getBackendInfoWithHighQualityBranding(String productId, RestListener<BackendInfo> listener) {
         @Data
@@ -52,12 +50,12 @@ public class StandaloneProductRestWrapper {
 
         try {
             Map<ScreenDensity, BackgroundSize> backgroundSizes = new HashMap<>(); {
-                backgroundSizes.put(ScreenDensity.LDPI, new BackgroundSize(240, 320));
-                backgroundSizes.put(ScreenDensity.MDPI, new BackgroundSize(320, 480));
-                backgroundSizes.put(ScreenDensity.HDPI, new BackgroundSize(1440, 2560));
-                backgroundSizes.put(ScreenDensity.XHDPI, new BackgroundSize(768, 1280));
-                backgroundSizes.put(ScreenDensity.XXHDPI, new BackgroundSize(1080, 1920));
-                backgroundSizes.put(ScreenDensity.XXXHDPI, new BackgroundSize(1440, 2560));
+                backgroundSizes.put(ScreenDensity.LDPI,    new BackgroundSize(120, 160));
+                backgroundSizes.put(ScreenDensity.MDPI,    new BackgroundSize(160, 240));
+                backgroundSizes.put(ScreenDensity.HDPI,    new BackgroundSize(240, 400));
+                backgroundSizes.put(ScreenDensity.XHDPI,   new BackgroundSize(384, 640));
+                backgroundSizes.put(ScreenDensity.XXHDPI,  new BackgroundSize(540, 960));
+                backgroundSizes.put(ScreenDensity.XXXHDPI, new BackgroundSize(720, 1280));
             }
 
             BackgroundSize backgroundSize = backgroundSizes.get(screenUtils.getScreenDensity());
