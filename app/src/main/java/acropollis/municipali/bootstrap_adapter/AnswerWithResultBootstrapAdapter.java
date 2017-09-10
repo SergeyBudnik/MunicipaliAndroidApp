@@ -8,7 +8,7 @@ import java.util.List;
 
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
-import acropollis.municipali.data.article.question.answer.AnswerResult;
+import acropollis.municipalidata.dto.article.question.answer.AnswerResult;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
 import acropollis.municipali.service.ArticlesService;

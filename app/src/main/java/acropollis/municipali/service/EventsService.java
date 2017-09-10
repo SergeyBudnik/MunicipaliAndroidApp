@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import acropollis.municipali.comparators.EventsComparator;
-import acropollis.municipali.data.article.ArticleType;
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.ArticleType;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.utls.DateUtils;
 
 @EBean

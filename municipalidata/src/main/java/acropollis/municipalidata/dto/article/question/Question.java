@@ -1,13 +1,13 @@
-package acropollis.municipali.data.article.question;
+package acropollis.municipalidata.dto.article.question;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import acropollis.municipali.data.article.question.answer.Answer;
-import acropollis.municipali.data.article.question.answer.TranslatedAnswer;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.article.question.answer.Answer;
+import acropollis.municipalidata.dto.article.question.answer.TranslatedAnswer;
+import acropollis.municipalidata.dto.common.Language;
 import lombok.Data;
 
 @Data
@@ -38,9 +38,7 @@ public class Question implements Serializable {
         List<TranslatedAnswer> res = new ArrayList<>();
 
         for (Answer answer : answers) {
-            if (answer != null) { // ToDo: remove
-                res.add(answer.translate(language));
-            }
+            res.add(answer.translate(language));
         }
 
         return res;

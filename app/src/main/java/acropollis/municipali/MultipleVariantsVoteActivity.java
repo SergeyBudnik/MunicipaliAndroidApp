@@ -15,8 +15,8 @@ import acropollis.municipali.bootstrap.view.MunicipaliLayoutListView;
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.AnswerBootstrapAdapter;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.fragments.question.vote.QuestionVoteButtonsFragment;
 import acropollis.municipali.service.ArticlesService;
 

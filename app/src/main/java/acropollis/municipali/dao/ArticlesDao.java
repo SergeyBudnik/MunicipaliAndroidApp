@@ -10,9 +10,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import acropollis.municipali.data.article.Article;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.article.Article;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 

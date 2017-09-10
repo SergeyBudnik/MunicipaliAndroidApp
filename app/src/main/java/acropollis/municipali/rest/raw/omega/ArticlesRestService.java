@@ -8,7 +8,7 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import java.util.List;
 import java.util.Map;
 
-import acropollis.municipali.data.article.Article;
+import acropollis.municipalidata.dto.article.Article;
 import acropollis.municipali.data.rest.request.AnswerRequest;
 
 @Rest(converters = MappingJacksonHttpMessageConverter.class)

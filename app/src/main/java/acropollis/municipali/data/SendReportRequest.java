@@ -1,6 +1,6 @@
 package acropollis.municipali.data;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import lombok.Data;
 
 @Data

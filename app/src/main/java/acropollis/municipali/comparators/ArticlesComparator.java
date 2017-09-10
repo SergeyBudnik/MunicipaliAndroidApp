@@ -2,7 +2,7 @@ package acropollis.municipali.comparators;
 
 import java.util.Comparator;
 
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 
 public class ArticlesComparator implements Comparator<TranslatedArticle> {
     @Override

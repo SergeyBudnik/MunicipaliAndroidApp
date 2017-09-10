@@ -1,10 +1,10 @@
-package acropollis.municipali.data.article;
+package acropollis.municipalidata.dto.article;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import lombok.Data;
 
 @Data

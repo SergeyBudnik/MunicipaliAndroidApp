@@ -1,11 +1,11 @@
-package acropollis.municipali.data.article;
+package acropollis.municipalidata.dto.article;
+
+import java.io.Serializable;
+import java.util.List;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
-import java.io.Serializable;
-import java.util.List;
 
 @NoArgsConstructor
 @Data

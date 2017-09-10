@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import acropollis.municipali.R;
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.utls.DateUtils;
 
 @EFragment(R.layout.fragment_calendar_month)

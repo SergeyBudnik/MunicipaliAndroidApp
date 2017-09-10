@@ -1,4 +1,4 @@
-package acropollis.municipali.data.common;
+package acropollis.municipalidata.dto.common;
 
 import java.util.Locale;
 

@@ -1,4 +1,4 @@
-package acropollis.municipali.data.article.question;
+package acropollis.municipalidata.dto.article.question;
 
 import java.io.Serializable;
 

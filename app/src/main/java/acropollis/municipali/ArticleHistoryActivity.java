@@ -18,7 +18,7 @@ import java.util.Date;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.drawers.history.HistoryData;
 import acropollis.municipali.drawers.history.HistoryDrawer;
 import acropollis.municipali.service.ArticlesService;

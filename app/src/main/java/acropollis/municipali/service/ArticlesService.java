@@ -2,15 +2,15 @@ package acropollis.municipali.service;
 
 import android.content.Context;
 
+import com.annimon.stream.Stream;
+
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import acropollis.municipali.R;
@@ -19,11 +19,11 @@ import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.dao.AnswersIconDao;
 import acropollis.municipali.dao.ArticlesDao;
 import acropollis.municipali.dao.ArticlesIconDao;
-import acropollis.municipali.data.article.Article;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.Question;
-import acropollis.municipali.data.article.question.answer.Answer;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.article.Article;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.Question;
+import acropollis.municipalidata.dto.article.question.answer.Answer;
+import acropollis.municipalidata.dto.common.Language;
 
 @EBean
 public class ArticlesService {
@@ -38,12 +38,10 @@ public class ArticlesService {
     AnswersIconDao answersIconDao;
 
     public Collection<TranslatedArticle> getArticles() {
-        List<TranslatedArticle> translatedArticles =
-                new ArrayList<>(articlesDao.getTranslatedArticles(getCurrentLanguage()).values());
-
-        Collections.sort(translatedArticles, new ArticlesComparator());
-
-        return translatedArticles;
+        return Stream
+                .of(new ArrayList<>(articlesDao.getTranslatedArticles(getCurrentLanguage()).values()))
+                .sorted(new ArticlesComparator())
+                .toList();
     }
 
     public TranslatedArticle getArticle(long id) {
@@ -86,11 +84,11 @@ public class ArticlesService {
         }
     }
 
-    public byte [] getArticleIcon(long id) {
+    public byte [] getArticleImage(long id) {
         return articlesIconDao.getIcon(id);
     }
 
-    public void saveArticleIcon(long id, byte [] icon) {
+    public void saveArticleImage(long id, byte [] icon) {
         articlesIconDao.addIcon(id, icon);
     }
 

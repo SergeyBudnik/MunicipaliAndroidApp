@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.utls.DateUtils;
 import lombok.Getter;
 import lombok.Setter;

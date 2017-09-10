@@ -17,9 +17,8 @@ import acropollis.municipali.ArticleInformationActivity_;
 import acropollis.municipali.BaseActivity;
 import acropollis.municipali.R;
 import acropollis.municipali.configuration.ProductConfiguration;
-import acropollis.municipali.configuration.ProductTier;
 import acropollis.municipali.configuration.ProductType;
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 
 @EViewGroup(R.layout.view_article_categories)
 public class ArticleCategoriesView extends LinearLayout {

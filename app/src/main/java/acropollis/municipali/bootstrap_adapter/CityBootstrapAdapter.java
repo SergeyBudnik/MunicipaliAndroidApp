@@ -14,7 +14,7 @@ import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.data.city.City;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.data.country.Country;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.alpha.CountryPlatformProductRestWrapper;

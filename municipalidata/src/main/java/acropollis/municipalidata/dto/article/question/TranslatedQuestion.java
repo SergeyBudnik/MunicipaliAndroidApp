@@ -1,9 +1,9 @@
-package acropollis.municipali.data.article.question;
+package acropollis.municipalidata.dto.article.question;
 
 import java.io.Serializable;
 import java.util.List;
 
-import acropollis.municipali.data.article.question.answer.TranslatedAnswer;
+import acropollis.municipalidata.dto.article.question.answer.TranslatedAnswer;
 import lombok.Data;
 
 @Data

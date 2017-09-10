@@ -9,10 +9,9 @@ import java.util.List;
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.data.AnswerStatus;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.Question;
-import acropollis.municipali.data.article.question.TranslatedQuestion;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.Question;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.service.UserAnswerService;
 
 @EBean

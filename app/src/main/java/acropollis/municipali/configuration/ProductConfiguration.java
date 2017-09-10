@@ -1,6 +1,6 @@
 package acropollis.municipali.configuration;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import lombok.Getter;
 
 public enum ProductConfiguration {

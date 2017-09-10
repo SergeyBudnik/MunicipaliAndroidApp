@@ -18,8 +18,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import acropollis.municipali.BaseActivity;
 import acropollis.municipali.R;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
 import acropollis.municipali.service.UserAnswerService;

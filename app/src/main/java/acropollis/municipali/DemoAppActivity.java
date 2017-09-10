@@ -8,7 +8,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.service.LanguageService;
 
 @EActivity(R.layout.activity_demo_app)

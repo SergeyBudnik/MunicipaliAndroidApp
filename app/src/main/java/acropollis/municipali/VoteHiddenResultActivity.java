@@ -11,8 +11,8 @@ import org.androidannotations.annotations.ViewById;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.service.ArticlesService;
 
 @EActivity(R.layout.activity_vote_hidden_result)

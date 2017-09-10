@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.data.city.City;
 import lombok.Data;
 

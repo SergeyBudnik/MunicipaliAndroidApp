@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 
 @EBean(scope = EBean.Scope.Singleton)
 public class LanguageService {

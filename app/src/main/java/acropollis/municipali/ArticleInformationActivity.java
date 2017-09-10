@@ -17,7 +17,7 @@ import java.util.Map;
 import acropollis.municipali.binders.MenuBinder;
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.service.ArticlesService;
 
 @EActivity(R.layout.activity_article_information)

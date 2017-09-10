@@ -9,8 +9,8 @@ import java.util.List;
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.data.AnswerStatus;
-import acropollis.municipali.data.article.TranslatedArticle;
-import acropollis.municipali.data.article.question.TranslatedQuestion;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
 import acropollis.municipali.service.ArticlesService;
@@ -59,7 +59,7 @@ public class ArticleBootstrapAdapter {
         return new MunicipaliLoadableIconData.IconFromCacheLoader() {
             @Override
             public byte[] load() {
-                return articlesService.getArticleIcon(article.getId());
+                return articlesService.getArticleImage(article.getId());
             }
         };
     }
@@ -68,10 +68,10 @@ public class ArticleBootstrapAdapter {
         return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
             @Override
             public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
-                articlesRestWrapper.loadArticleIcon(article.getId(), new RestListener<byte[]>() {
+                articlesRestWrapper.loadArticleImage(article.getId(), new RestListener<byte[]>() {
                     @Override
                     public void onSuccess(byte [] icon) {
-                        articlesService.saveArticleIcon(article.getId(), icon);
+                        articlesService.saveArticleImage(article.getId(), icon);
 
                         listener.onSuccess(icon);
                     }

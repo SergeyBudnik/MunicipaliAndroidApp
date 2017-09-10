@@ -8,7 +8,7 @@ import org.androidannotations.annotations.RootContext;
 
 import java.io.Serializable;
 
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.service.ProductConfigurationService;
 import lombok.Data;
 

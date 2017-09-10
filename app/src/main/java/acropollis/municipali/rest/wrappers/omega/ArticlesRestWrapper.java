@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import acropollis.municipali.data.article.Article;
+import acropollis.municipalidata.dto.article.Article;
 import acropollis.municipali.data.rest.request.AnswerRequest;
 import acropollis.municipali.rest.raw.common.ImageRestService;
 import acropollis.municipali.rest.raw.omega.ArticlesRestService;

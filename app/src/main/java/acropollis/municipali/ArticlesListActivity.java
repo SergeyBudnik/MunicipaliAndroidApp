@@ -66,33 +66,30 @@ public class ArticlesListActivity extends BaseActivity {
     @ItemClick(R.id.list)
     void onArticleRowClick(MunicipaliRowData articleRow) {
         redirectForResult(ArticleQuestionsListActivity_.class, 0, 0, REDIRECT_FOR_QUESTION,
-                Collections.singletonMap("articleId", (Serializable) articleRow.getId()));
+                Collections.singletonMap("articleId", articleRow.getId()));
     }
 
     private MunicipaliRefreshableListView.RowsLoader getArticlesLoader() {
-        return new MunicipaliRefreshableListView.RowsLoader() {
-            @Override
-            public void load(final MunicipaliRefreshableListView.LoadingListener listener) {
-                listener.onReadingFromCache(articleBootstrapAdapter.getArticlesRows(
-                        new ArrayList<>(articlesService.getArticles())
-                ));
+        return listener -> {
+            listener.onReadingFromCache(articleBootstrapAdapter.getArticlesRows(
+                    new ArrayList<>(articlesService.getArticles())
+            ));
 
-                articlesRestWrapper.loadArticles(new RestListener<Void>() {
-                    @Override
-                    public void onSuccess(Void o) {
-                        listener.onSuccess(articleBootstrapAdapter.getArticlesRows(
-                                new ArrayList<>(articlesService.getArticles())
-                        ));
-                    }
+            articlesRestWrapper.loadArticles(new RestListener<Void>() {
+                @Override
+                public void onSuccess(Void o) {
+                    listener.onSuccess(articleBootstrapAdapter.getArticlesRows(
+                            new ArrayList<>(articlesService.getArticles())
+                    ));
+                }
 
-                    @Override
-                    public void onFailure() {
-                        listener.onFailure();
+                @Override
+                public void onFailure() {
+                    listener.onFailure();
 
-                        showLoadingFailedMessage();
-                    }
-                });
-            }
+                    showLoadingFailedMessage();
+                }
+            });
         };
     }
 

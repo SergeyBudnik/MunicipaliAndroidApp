@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import acropollis.municipali.binders.MenuBinder;
 import acropollis.municipali.configuration.ProductConfiguration;
-import acropollis.municipali.data.common.Language;
+import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ReportRestWrapper;
 import acropollis.municipali.service.UserService;

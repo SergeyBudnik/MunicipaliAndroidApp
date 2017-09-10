@@ -41,21 +41,21 @@ public class IconUtils {
 
         switch (screenDensity) {
             case LDPI:
-                return 100;
-            case MDPI:
-                return 100;
-            case HDPI:
                 return 150;
-            case XHDPI:
-                return 200;
-            case XXHDPI:
+            case MDPI:
+                return 225;
+            case HDPI:
                 return 300;
+            case XHDPI:
+                return 450;
+            case XXHDPI:
+                return 600;
             case XXXHDPI:
-                return 400;
+                return 600;
             default: {
                 Log.e("IconUtils", "Unexpected density " + screenDensity);
 
-                return 400;
+                return 300;
             }
         }
     }
