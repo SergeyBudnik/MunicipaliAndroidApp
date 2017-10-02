@@ -13,10 +13,10 @@ import java.util.Collections;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.bootstrap.view.MunicipaliRefreshableListView;
 import acropollis.municipali.bootstrap_adapter.CityBootstrapAdapter;
-import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.data.country.Country;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.alpha.CountryPlatformProductRestWrapper;
+import acropollis.municipalidata.configuration.ProductConfiguration;
 
 @EActivity(R.layout.activity_choose_city)
 public class CountryPlatformChooseCityActivity extends BaseActivity {

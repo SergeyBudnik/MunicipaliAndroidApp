@@ -16,8 +16,8 @@ import java.util.Collections;
 import acropollis.municipali.ArticleInformationActivity_;
 import acropollis.municipali.BaseActivity;
 import acropollis.municipali.R;
-import acropollis.municipali.configuration.ProductConfiguration;
-import acropollis.municipali.configuration.ProductType;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.configuration.ProductType;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 
 @EViewGroup(R.layout.view_article_categories)

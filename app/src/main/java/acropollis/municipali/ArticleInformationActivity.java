@@ -17,8 +17,9 @@ import java.util.Map;
 import acropollis.municipali.binders.MenuBinder;
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_article_information)
 public class ArticleInformationActivity extends BaseActivity {
@@ -36,7 +37,7 @@ public class ArticleInformationActivity extends BaseActivity {
     Long articleId;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
 
     @Bean
     ArticleBootstrapAdapter articleBootstrapAdapter;
@@ -48,7 +49,10 @@ public class ArticleInformationActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        article = articlesService.getArticle(articleId);
+        article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
         articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
         articleCategory1View.setText(article.getCategories().get(0));

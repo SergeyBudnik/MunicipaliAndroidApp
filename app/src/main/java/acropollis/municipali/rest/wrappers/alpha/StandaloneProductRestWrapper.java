@@ -20,7 +20,9 @@ import acropollis.municipali.rest.raw.alpha.StandaloneProductRestService;
 import acropollis.municipali.rest.raw.common.ImageRestService;
 import acropollis.municipali.rest.raw.omega.ConfigurationRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.utls.ScreenUtils;
+import acropollis.municipalidata.service.configuration.ConfigurationService;
 import lombok.Data;
 
 @EBean
@@ -34,6 +36,12 @@ public class StandaloneProductRestWrapper {
     StandaloneProductRestService standaloneProductRestService;
     @RestService
     ConfigurationRestService configurationRestService;
+
+    @Bean
+    ConfigurationService configurationService;
+
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @Background
     public void getBackendInfoWithHighQualityBranding(String productId, RestListener<BackendInfo> listener) {
@@ -82,6 +90,16 @@ public class StandaloneProductRestWrapper {
                 backendInfo.setBackground(background);
                 backendInfo.setIcon(icon);
             }
+
+            configurationService.setServerRootUrl(
+                    productConfigurationService.getProductConfiguration(),
+                    fullBackendInfo.getRootEndpoint()
+            );
+
+            configurationService.setImageHostingRootUrl(
+                    productConfigurationService.getProductConfiguration(),
+                    imageHostingInfo.getUrl()
+            );
 
             listener.onSuccess(backendInfo);
         } catch (Exception e) {

@@ -7,7 +7,10 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
+import java.util.Collections;
+
 import acropollis.municipali.service.UserService;
+import acropollis.municipalidata.dto.article.ArticleType;
 
 @EActivity(R.layout.activity_registration)
 public class RegistrationActivity extends BaseActivity {
@@ -21,7 +24,10 @@ public class RegistrationActivity extends BaseActivity {
     @AfterViews
     void init() {
         if (userService.getCurrentUserAuthToken() != null) {
-            redirect(ArticlesListActivity_.class, 0, 0, true);
+            redirect(
+                    ArticlesListActivity_.class, 0, 0, true,
+                    Collections.singletonMap("articlesType", ArticleType.NEWS)
+            );
         }
     }
 
@@ -59,7 +65,10 @@ public class RegistrationActivity extends BaseActivity {
 
     private void onLoginResult(boolean successful, int loginFailureMessage) {
         if (successful) {
-            redirect(ArticlesListActivity_.class, 0, 0, true);
+            redirect(
+                    ArticlesListActivity_.class, 0, 0, true,
+                    Collections.singletonMap("articlesType", ArticleType.NEWS)
+            );
         } else {
             showMessage(getResources().getString(loginFailureMessage));
         }

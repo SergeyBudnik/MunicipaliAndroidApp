@@ -18,10 +18,11 @@ import java.util.Date;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.drawers.history.HistoryData;
 import acropollis.municipali.drawers.history.HistoryDrawer;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_article_history)
 public class ArticleHistoryActivity extends BaseActivity {
@@ -42,7 +43,7 @@ public class ArticleHistoryActivity extends BaseActivity {
     CardView monthView;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
 
     @Bean
     ArticleBootstrapAdapter articleBootstrapAdapter;
@@ -55,7 +56,10 @@ public class ArticleHistoryActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        TranslatedArticle article = articlesService.getArticle(articleId);
+        TranslatedArticle article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
         articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
 

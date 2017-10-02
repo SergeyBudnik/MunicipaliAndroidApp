@@ -4,19 +4,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:background="@drawable/list_item">
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
         android:id="@+id/image"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:riv_corner_radius_top_left="10dp"
-        app:riv_corner_radius_top_right="10dp"/>
+        app:riv_corner_radius_top_right="10dp"
+        app:widthRatio="3"
+        app:heightRatio="1"
+        app:ratioBasis="width"
+        android:src="#eeeeee"/>
 
     <LinearLayout
         android:orientation="vertical"

@@ -11,9 +11,10 @@ import org.androidannotations.annotations.ViewById;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_vote_hidden_result)
 public class VoteHiddenResultActivity extends BaseActivity {
@@ -23,10 +24,13 @@ public class VoteHiddenResultActivity extends BaseActivity {
     TextView questionTextView;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
 
     @Bean
     ArticleBootstrapAdapter articleBootstrapAdapter;
+
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @Extra("articleId")
     long articleId;
@@ -35,7 +39,10 @@ public class VoteHiddenResultActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        TranslatedArticle article = articlesService.getArticle(articleId);
+        TranslatedArticle article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
         articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
 

@@ -13,7 +13,7 @@ import acropollis.municipali.utls.DateUtils;
 import lombok.Getter;
 import lombok.Setter;
 
-class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
+public class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
     @Getter @Setter
     private static class MonthAndYear {
         private int month;
@@ -29,7 +29,7 @@ class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
 
     private CalendarMonthFragment [] calendarMonthsFragments = new CalendarMonthFragment [0];
 
-    EventCalendarViewPagerAdapter(
+    public EventCalendarViewPagerAdapter(
             FragmentManager fm,
             Date today,
             DateUtils dateUtils,

@@ -13,20 +13,22 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Collections;
+
 import acropollis.municipali.ArticlesListActivity_;
 import acropollis.municipali.BaseActivity;
-import acropollis.municipali.CityEventsListActivity_;
 import acropollis.municipali.CountryPlatformChooseCityActivity_;
 import acropollis.municipali.R;
 import acropollis.municipali.RegistrationActivity_;
 import acropollis.municipali.ReportStartActivity_;
-import acropollis.municipali.configuration.ProductConfiguration;
-import acropollis.municipali.configuration.ProductTier;
 import acropollis.municipali.data.user.User;
 import acropollis.municipali.data.user.UserId;
 import acropollis.municipali.service.BackendInfoService;
 import acropollis.municipali.service.UserService;
 import acropollis.municipali.utls.BitmapUtils;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.configuration.ProductTier;
+import acropollis.municipalidata.dto.article.ArticleType;
 
 @EFragment(R.layout.fragment_menu)
 public class MenuFragment extends Fragment {
@@ -83,12 +85,18 @@ public class MenuFragment extends Fragment {
 
     @Click(R.id.news)
     void onNewsClick() {
-        ((BaseActivity) getActivity()).redirect(ArticlesListActivity_.class, 0, 0, true);
+        ((BaseActivity) getActivity()).redirect(
+                ArticlesListActivity_.class, 0, 0, true,
+                Collections.singletonMap("articlesType", ArticleType.NEWS)
+        );
     }
 
     @Click(R.id.events)
     void onEventsClick() {
-        ((BaseActivity) getActivity()).redirect(CityEventsListActivity_.class, 0, 0, true);
+        ((BaseActivity) getActivity()).redirect(
+                ArticlesListActivity_.class, 0, 0, true,
+                Collections.singletonMap("articlesType", ArticleType.EVENT)
+        );
     }
 
     @Click(R.id.report)

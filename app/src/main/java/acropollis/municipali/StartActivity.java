@@ -9,10 +9,13 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 
-import acropollis.municipali.configuration.ProductConfiguration;
-import acropollis.municipali.configuration.ProductTier;
+import java.util.Collections;
+
 import acropollis.municipali.service.BackendInfoService;
 import acropollis.municipali.service.UserService;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.configuration.ProductTier;
+import acropollis.municipalidata.dto.article.ArticleType;
 
 @EActivity(R.layout.activity_loading)
 public class StartActivity extends BaseActivity {
@@ -40,7 +43,10 @@ public class StartActivity extends BaseActivity {
         } else {
             if (backendInfoService.getBackendInfo() != null) {
                 if (userService.getCurrentUserAuthToken() != null) {
-                    redirect(ArticlesListActivity_.class, 0, 0, true);
+                    redirect(
+                            ArticlesListActivity_.class, 0, 0, true,
+                            Collections.singletonMap("articlesType", ArticleType.NEWS)
+                    );
                 } else {
                     redirect(RegistrationActivity_.class, 0, 0, true);
                 }

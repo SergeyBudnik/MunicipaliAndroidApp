@@ -13,11 +13,15 @@ import acropollis.municipali.comparators.EventsComparator;
 import acropollis.municipalidata.dto.article.ArticleType;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.utls.DateUtils;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EBean
 public class EventsService {
     @Bean
-    ArticlesService articlesService;
+    ProductConfigurationService productConfigurationService;
+
+    @Bean
+    ArticleService articlesService;
 
     @Bean
     DateUtils dateUtils;
@@ -27,7 +31,7 @@ public class EventsService {
 
         Date currentDate = new Date();
 
-        for (TranslatedArticle article : articlesService.getArticles()) {
+        for (TranslatedArticle article : articlesService.getArticles(productConfigurationService.getProductConfiguration())) {
             if (article.getType() == ArticleType.EVENT) {
                 Date expirationDate = new Date(article.getExpirationDate());
 
@@ -51,7 +55,7 @@ public class EventsService {
 
         Date currentDate = new Date();
 
-        for (TranslatedArticle article : articlesService.getArticles()) {
+        for (TranslatedArticle article : articlesService.getArticles(productConfigurationService.getProductConfiguration())) {
             if (article.getType() == ArticleType.EVENT) {
                 Date expirationDate = new Date(article.getExpirationDate());
 
@@ -73,7 +77,7 @@ public class EventsService {
 
         Date currentDate = new Date();
 
-        for (TranslatedArticle article : articlesService.getArticles()) {
+        for (TranslatedArticle article : articlesService.getArticles(productConfigurationService.getProductConfiguration())) {
             if (article.getType() == ArticleType.EVENT) {
                 Date expirationDate = new Date(article.getExpirationDate());
 

@@ -19,14 +19,15 @@ import acropollis.municipali.bootstrap.view.MunicipaliLayoutListView;
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.AnswerWithResultBootstrapAdapter;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipalidata.dto.article.question.answer.AnswerResult;
 import acropollis.municipalidata.dto.article.question.answer.TranslatedAnswer;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
 import acropollis.municipali.service.UserAnswerService;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_multiple_variants_vote_result)
 public class MultipleVariantsVoteResultActivity extends BaseActivity {
@@ -43,11 +44,13 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
     long questionId;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articlesRestWrapper;
     @Bean
     UserAnswerService userAnswerService;
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @Bean
     ArticleBootstrapAdapter articleBootstrapAdapter;
@@ -56,7 +59,10 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        final TranslatedArticle article = articlesService.getArticle(articleId);
+        final TranslatedArticle article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
         articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
 
@@ -66,17 +72,17 @@ public class MultipleVariantsVoteResultActivity extends BaseActivity {
 
         final long currentAnswer = userAnswerService.getAnswer(articleId, questionId);
 
-        articlesRestWrapper.getAnswer(articleId, questionId, new RestListener<Map<Long, Long>>() {
-            @Override
-            public void onSuccess(Map<Long, Long> answers) {
-                populateList(article, question, answers, currentAnswer);
-            }
-
-            @Override
-            public void onFailure() {
-                onAnswersLoadingFailed();
-            }
-        });
+//        articlesRestWrapper.getAnswer(articleId, questionId, new RestListener<Map<Long, Long>>() {
+//            @Override
+//            public void onSuccess(Map<Long, Long> answers) {
+//                populateList(article, question, answers, currentAnswer);
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//                onAnswersLoadingFailed();
+//            }
+//        });
     }
 
     @UiThread

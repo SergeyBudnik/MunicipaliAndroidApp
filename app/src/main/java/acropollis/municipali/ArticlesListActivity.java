@@ -2,37 +2,56 @@ package acropollis.municipali;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.AnimationRes;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
+import acropollis.municipali.adapter.ArticlesListAdapter;
 import acropollis.municipali.binders.MenuBinder;
-import acropollis.municipali.bootstrap.data.MunicipaliRowData;
-import acropollis.municipali.bootstrap.view.MunicipaliRefreshableListView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipali.view.calendar.CalendarView;
+import acropollis.municipalidata.dto.article.Article;
+import acropollis.municipalidata.dto.article.ArticleType;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
+import acropollis.municipalidata.rest_wrapper.article.RestResult;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_articles_list)
-public class ArticlesListActivity extends BaseActivity {
+public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private static final int REDIRECT_FOR_QUESTION = 1;
 
     @ViewById(R.id.root)
     DrawerLayout rootView;
 
+    @ViewById(R.id.articles_list_refresh)
+    SwipeRefreshLayout articlesListRefreshView;
     @ViewById(R.id.articles_list)
-    MunicipaliRefreshableListView articlesListView;
+    ListView articlesListView;
+
+    @ViewById(R.id.calendar)
+    CalendarView calendarView;
+
+    @AnimationRes(R.anim.calendar_appear_anim)
+    Animation calendarAppearAnim;
+    @AnimationRes(R.anim.calendar_disappear_anim)
+    Animation calendarDisappearAnim;
 
     @Bean
     MenuBinder menuBinder;
@@ -41,16 +60,47 @@ public class ArticlesListActivity extends BaseActivity {
     ArticleBootstrapAdapter articleBootstrapAdapter;
 
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articlesRestWrapper;
 
     @Bean
-    ArticlesService articlesService;
+    ArticlesListAdapter articlesListAdapter;
+
+    @Bean
+    ArticleService articlesService;
+
+    @Extra("articlesType")
+    ArticleType articlesType;
 
     @AfterViews
     void init() {
         menuBinder.bind(rootView);
 
-        articlesListView.init(getArticlesLoader());
+        articlesListRefreshView.setOnRefreshListener(this);
+
+        articlesListView.setAdapter(articlesListAdapter);
+
+        setArticles();
+
+        onRefresh();
+    }
+
+    @Override
+    public void onRefresh() {
+        articlesListRefreshView.setRefreshing(true);
+
+        loadArticles();
+    }
+
+    @Background
+    void loadArticles() {
+        RestResult<List<Article>> articles = articlesRestWrapper
+                .loadArticles(productConfigurationService.getProductConfiguration());
+
+        if (articles.isSuccessfull()) {
+            onArticlesLoadSuccessful();
+        } else {
+            onArticlesLoadFailed();
+        }
     }
 
     @Click(R.id.menu_button)
@@ -58,39 +108,42 @@ public class ArticlesListActivity extends BaseActivity {
         rootView.openDrawer(Gravity.START);
     }
 
+    @Click(R.id.calendar_button)
+    void onCalendarButtonClick() {
+        calendarView.setVisibility(
+                calendarView.getVisibility() == View.GONE ?
+                View.VISIBLE :
+                View.GONE
+        );
+    }
+
     @UiThread
-    void showLoadingFailedMessage() {
+    void onArticlesLoadSuccessful() {
+        articlesListRefreshView.setRefreshing(false);
+        setArticles();
+    }
+
+    @UiThread
+    void onArticlesLoadFailed() {
         showMessage(getResources().getString(R.string.loading_failed));
+
+        articlesListRefreshView.setRefreshing(false);
     }
 
-    @ItemClick(R.id.list)
-    void onArticleRowClick(MunicipaliRowData articleRow) {
-        redirectForResult(ArticleQuestionsListActivity_.class, 0, 0, REDIRECT_FOR_QUESTION,
-                Collections.singletonMap("articleId", articleRow.getId()));
+    @UiThread
+    void setArticles() {
+        articlesListAdapter.setElements(
+                articlesType,
+                articlesService.getArticles(getCurrentProductConfiguration())
+
+        );
+        articlesListAdapter.notifyDataSetChanged();
     }
 
-    private MunicipaliRefreshableListView.RowsLoader getArticlesLoader() {
-        return listener -> {
-            listener.onReadingFromCache(articleBootstrapAdapter.getArticlesRows(
-                    new ArrayList<>(articlesService.getArticles())
-            ));
-
-            articlesRestWrapper.loadArticles(new RestListener<Void>() {
-                @Override
-                public void onSuccess(Void o) {
-                    listener.onSuccess(articleBootstrapAdapter.getArticlesRows(
-                            new ArrayList<>(articlesService.getArticles())
-                    ));
-                }
-
-                @Override
-                public void onFailure() {
-                    listener.onFailure();
-
-                    showLoadingFailedMessage();
-                }
-            });
-        };
+    @ItemClick(R.id.articles_list)
+    void onArticleRowClick(TranslatedArticle article) {
+        redirectForResult(ArticleActivity_.class, 0, 0, REDIRECT_FOR_QUESTION,
+                Collections.singletonMap("articleId", article.getId()));
     }
 
     @Override
@@ -98,7 +151,7 @@ public class ArticlesListActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REDIRECT_FOR_QUESTION) {
-            articlesListView.reinit();
+            //articlesListView.reinit();
         }
     }
 }

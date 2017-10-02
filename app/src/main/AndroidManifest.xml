@@ -64,9 +64,8 @@
         <activity android:name=".RegistrationFacebookActivity_" android:screenOrientation="sensorPortrait"/>
 
         <activity android:name=".ArticlesListActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".CityEventsListActivity_" android:screenOrientation="sensorPortrait"/>
 
-        <activity android:name=".ArticleQuestionsListActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".ArticleActivity_" android:screenOrientation="sensorPortrait"/>
 
         <activity android:name=".ArticleInformationActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".ArticleHistoryActivity_" android:screenOrientation="sensorPortrait"/>
@@ -74,7 +73,7 @@
         <activity android:name=".FiveMarksVoteActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".FiveMarksVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
 
-        <activity android:name=".MultipleVariantsVoteActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".QuestionMultipleVariantsActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".MultipleVariantsVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
 
         <activity android:name=".VoteHiddenResultActivity_" android:screenOrientation="sensorPortrait"/>

@@ -38,6 +38,19 @@
                 android:textColor="?header_title_color"
                 android:textSize="?header_title_size"/>
 
+            <ImageView
+                android:id="@+id/calendar_button"
+                android:layout_width="?header_button_width"
+                android:layout_height="?header_button_height"
+                android:paddingTop="?header_button_vertical_padding"
+                android:paddingBottom="?header_button_vertical_padding"
+                android:paddingLeft="?header_button_vertical_padding"
+                android:paddingRight="?header_button_vertical_padding"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/calendar_button"
+                android:contentDescription="@string/img_description"/>
+
         </RelativeLayout>
 
         <android.support.v4.widget.DrawerLayout
@@ -45,10 +58,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <acropollis.municipali.bootstrap.view.MunicipaliRefreshableListView_
-                android:id="@+id/articles_list"
+            <RelativeLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+                <android.support.v4.widget.SwipeRefreshLayout
+                    android:id="@+id/articles_list_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ListView
+                        android:id="@+id/articles_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:dividerHeight="5dp"
+                        android:divider="@null"/>
+
+                </android.support.v4.widget.SwipeRefreshLayout>
+
+                <acropollis.municipali.view.calendar.CalendarView_
+                    android:id="@+id/calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
 
             <fragment
                 tools:layout="@layout/fragment_menu"

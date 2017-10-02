@@ -8,17 +8,20 @@ import java.util.List;
 
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
-import acropollis.municipalidata.dto.article.question.answer.TranslatedAnswer;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipali.service.ProductConfigurationService;
+import acropollis.municipalidata.dto.article.question.answer.TranslatedAnswer;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
+import acropollis.municipalidata.service.article.ArticleAnswerIconService;
 
 @EBean
 public class AnswerBootstrapAdapter {
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articlesRestWrapper;
     @Bean
-    ArticlesService articlesService;
+    ArticleAnswerIconService articleAnswerIconService;
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     public List<MunicipaliRowData> getAnswersRows(long articleId, long questionId, List<TranslatedAnswer> answers) {
         List<MunicipaliRowData> municipaliRowDataList = new ArrayList<>();
@@ -48,29 +51,34 @@ public class AnswerBootstrapAdapter {
         return new MunicipaliLoadableIconData.IconFromCacheLoader() {
             @Override
             public byte[] load() {
-                return articlesService.getAnswerIcon(answer.getId());
+                return articleAnswerIconService.getAnswerIcon(
+                        productConfigurationService.getProductConfiguration(),
+                        answer.getId()
+                ).orElse(null);
             }
         };
     }
 
     private MunicipaliLoadableIconData.IconFromNetworkLoader getAnswerIconLoader(final long articleId, final long questionId, final TranslatedAnswer answer) {
-        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
-            @Override
-            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
-                articlesRestWrapper.loadAnswerIcon(articleId, questionId, answer.getId(), new RestListener<byte []>() {
-                    @Override
-                    public void onSuccess(byte [] icon) {
-                        articlesService.saveAnswerIcon(answer.getId(), icon);
+//        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
+//            @Override
+//            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
+//                articlesRestWrapper.loadAnswerIcon(articleId, questionId, answer.getId(), new RestListener<byte []>() {
+//                    @Override
+//                    public void onSuccess(byte [] icon) {
+//                        articleAnswerIconService.saveAnswerIcon(productConfigurationService.getProductConfiguration(), answer.getId(), icon);
+//
+//                        listener.onSuccess(icon);
+//                    }
+//
+//                    @Override
+//                    public void onFailure() {
+//                        listener.onFailure();
+//                    }
+//                });
+//            }
+//        };
 
-                        listener.onSuccess(icon);
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        listener.onFailure();
-                    }
-                });
-            }
-        };
+        return null;
     }
 }

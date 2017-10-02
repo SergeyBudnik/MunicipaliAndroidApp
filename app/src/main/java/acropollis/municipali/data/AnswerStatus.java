@@ -1,5 +1,5 @@
 package acropollis.municipali.data;
 
-public enum  AnswerStatus {
+public enum AnswerStatus {
     UNANSWERED, SKIPPED, ANSWERED
 }

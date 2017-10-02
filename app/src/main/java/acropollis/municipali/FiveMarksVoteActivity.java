@@ -13,11 +13,12 @@ import org.androidannotations.annotations.ViewById;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.FiveMarksVoteResult;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.fragments.question.vote.QuestionVoteButtonsFragment;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipali.data.FiveMarksVoteResult;
+import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_five_marks_vote)
 public class FiveMarksVoteActivity extends BaseActivity {
@@ -85,7 +86,7 @@ public class FiveMarksVoteActivity extends BaseActivity {
     long questionId;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
 
     @Bean
     ArticleBootstrapAdapter articleBootstrapAdapter;
@@ -95,7 +96,10 @@ public class FiveMarksVoteActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        TranslatedArticle article = articlesService.getArticle(articleId);
+        TranslatedArticle article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
         articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
 

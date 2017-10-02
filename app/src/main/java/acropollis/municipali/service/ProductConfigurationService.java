@@ -6,7 +6,7 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import acropollis.municipali.R;
-import acropollis.municipali.configuration.ProductConfiguration;
+import acropollis.municipalidata.configuration.ProductConfiguration;
 
 @EBean
 public class ProductConfigurationService {

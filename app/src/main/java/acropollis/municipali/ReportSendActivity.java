@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import acropollis.municipali.binders.MenuBinder;
-import acropollis.municipali.configuration.ProductConfiguration;
+import acropollis.municipalidata.configuration.ProductConfiguration;
 import acropollis.municipalidata.dto.common.Language;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.omega.ReportRestWrapper;

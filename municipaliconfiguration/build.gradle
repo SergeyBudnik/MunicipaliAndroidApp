@@ -1,0 +1,147 @@
+apply plugin: 'com.android.library'
+apply plugin: 'android-apt'
+
+def final appId = 'acropollis.municipaliconfiguration'
+
+def AAVersion = '3.3'
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName 'acropollis.municipaliconfiguration'
+    }
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 27
+        versionName "1.0.1"
+
+        buildConfigField "String", "ACCOUNT_TYPE", "\"${applicationId}.account\""
+        buildConfigField "String", "AUTHORITY", "\"${applicationId}.provider\""
+
+        resValue "string", "account_type", "${applicationId}.account"
+        resValue "string", "authority", "${applicationId}.provider"
+    }
+
+    flavorDimensions 'product', 'tier'
+
+    productFlavors {
+        municipali {
+            flavorDimension 'product'
+        }
+
+        democracy {
+            flavorDimension 'product'
+        }
+
+        QA {
+            flavorDimension 'tier'
+        }
+
+        Demo {
+            flavorDimension 'tier'
+        }
+
+        ProdMacedoniaKarpos {
+            flavorDimension 'tier'
+        }
+
+        Arad {
+            flavorDimension 'tier'
+        }
+    }
+
+    def allowedFlavors = [
+            [product: 'democracy',  tier: 'QA'],
+            [product: 'municipali', tier: 'QA'],
+            [product: 'municipali', tier: 'Demo'],
+            [product: 'municipali', tier: 'ProdMacedoniaKarpos'],
+            [product: 'municipali', tier: 'Arad']
+    ];
+
+    variantFilter {
+        variant ->
+            def product = variant.getFlavors().get(0).name
+            def tier = variant.getFlavors().get(1).name
+
+            def flavorVariant = allowedFlavors.find {it['product'] == product && it.tier == tier};
+
+            if (flavorVariant == null) {
+                variant.setIgnore(true)
+            }
+    }
+
+    libraryVariants.all { variant ->
+        println("Iterating variant: " + variant.getName())
+
+        def flavorVariant = allowedFlavors.find {
+            variant.name.contains(it.product) &&
+                    variant.name.contains(it.tier)
+        };
+
+        def applicationId = appId + "." + flavorVariant.product + flavorVariant.tier;
+
+        variant.mergedFlavor.setApplicationId(applicationId);
+
+        variant.buildConfigField "String", "ACCOUNT_TYPE", "\"${applicationId}.account\""
+        variant.buildConfigField "String", "AUTHORITY", "\"${applicationId}.provider\""
+
+        variant.resValue "string", "account_type", "${applicationId}.account"
+        variant.resValue "string", "authority", "${applicationId}.provider"
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+
+        exclude 'META-INF/ASL2.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral();
+    }
+
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    provided 'org.projectlombok:lombok:1.12.6'
+    apt "org.projectlombok:lombok:1.12.6"
+
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+}

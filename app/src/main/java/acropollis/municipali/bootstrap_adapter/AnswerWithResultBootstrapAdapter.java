@@ -8,17 +8,19 @@ import java.util.List;
 
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.question.answer.AnswerResult;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
+import acropollis.municipalidata.service.article.ArticleAnswerIconService;
 
 @EBean
 public class AnswerWithResultBootstrapAdapter {
+//    @Bean
+//    ArticleRestWrapper articlesRestWrapper;
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleAnswerIconService articleAnswerIconService;
     @Bean
-    ArticlesService articlesService;
+    ProductConfigurationService productConfigurationService;
 
     public List<MunicipaliRowData> getAnswersRows(long articleId, long questionId, List<AnswerResult> answers) {
         List<MunicipaliRowData> municipaliRowDataList = new ArrayList<>();
@@ -48,29 +50,36 @@ public class AnswerWithResultBootstrapAdapter {
         return new MunicipaliLoadableIconData.IconFromCacheLoader() {
             @Override
             public byte[] load() {
-                return articlesService.getAnswerIcon(answer.getAnswerId());
+                return articleAnswerIconService.getAnswerIcon(
+                        productConfigurationService.getProductConfiguration(),
+                        answer.getAnswerId()
+                ).orElse(null);
             }
         };
     }
 
     private MunicipaliLoadableIconData.IconFromNetworkLoader getAnswerIconLoader(final long articleId, final long questionId, final AnswerResult answer) {
-        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
-            @Override
-            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
-                articlesRestWrapper.loadAnswerIcon(articleId, questionId, answer.getAnswerId(), new RestListener<byte []>() {
-                    @Override
-                    public void onSuccess(byte [] icon) {
-                        articlesService.saveAnswerIcon(answer.getAnswerId(), icon);
+//        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
+//            @Override
+//            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
+//                articlesRestWrapper.loadAnswerIcon(articleId, questionId, answer.getAnswerId(), new RestListener<byte []>() {
+//                    @Override
+//                    public void onSuccess(byte [] icon) {
+//                        articleAnswerIconService.saveAnswerIcon(
+//                                productConfigurationService.getProductConfiguration(),
+//                                answer.getAnswerId(), icon);
+//
+//                        listener.onSuccess(icon);
+//                    }
+//
+//                    @Override
+//                    public void onFailure() {
+//                        listener.onFailure();
+//                    }
+//                });
+//            }
+//        };
 
-                        listener.onSuccess(icon);
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        listener.onFailure();
-                    }
-                });
-            }
-        };
+        return null;
     }
 }

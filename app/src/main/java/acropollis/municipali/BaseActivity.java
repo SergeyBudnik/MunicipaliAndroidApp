@@ -18,10 +18,10 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
 
-import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.service.LanguageService;
 import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.view.common.PopupMessageView_;
+import acropollis.municipalidata.configuration.ProductConfiguration;
 import io.fabric.sdk.android.Fabric;
 
 @EActivity
@@ -31,7 +31,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Bean
     LanguageService languageService;
     @Bean
-    ProductConfigurationService productConfigurationService;
+    protected ProductConfigurationService productConfigurationService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

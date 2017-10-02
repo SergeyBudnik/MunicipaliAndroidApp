@@ -18,11 +18,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import acropollis.municipali.binders.MenuBinder;
+import acropollis.municipalidata.dto.article.ArticleType;
 
 @EActivity(R.layout.activity_report_start)
 public class ReportStartActivity extends BaseActivity {
@@ -111,7 +113,10 @@ public class ReportStartActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        redirect(ArticlesListActivity_.class, 0, 0, true);
+        redirect(
+                ArticlesListActivity_.class, 0, 0, true,
+                Collections.singletonMap("articlesType", ArticleType.NEWS)
+        );
     }
 
     private File createImageFile() throws IOException {

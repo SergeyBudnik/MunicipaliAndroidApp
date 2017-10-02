@@ -7,7 +7,6 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import acropollis.municipali.bootstrap.view.MunicipaliLoadingView;
-import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.data.backend.BackendInfo;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.alpha.StandaloneProductRestWrapper;

@@ -11,11 +11,11 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 
-import acropollis.municipali.configuration.ProductConfiguration;
 import acropollis.municipali.data.backend.BackendInfo;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.rest.wrappers.alpha.CountryPlatformProductRestWrapper;
 import acropollis.municipali.service.BackendInfoService;
+import acropollis.municipalidata.configuration.ProductConfiguration;
 
 @EActivity(R.layout.activity_loading)
 public class CountryPlatformCustomerLoadingActivity extends BaseActivity {

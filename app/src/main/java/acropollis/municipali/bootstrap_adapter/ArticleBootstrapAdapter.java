@@ -9,22 +9,25 @@ import java.util.List;
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
 import acropollis.municipali.data.AnswerStatus;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
 import acropollis.municipali.service.UserAnswerService;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
+import acropollis.municipalidata.service.article.ArticleImageService;
 
 @EBean
 public class ArticleBootstrapAdapter {
     @Bean
-    ArticlesService articlesService;
+    ArticleImageService articlesService;
     @Bean
     UserAnswerService userAnswerService;
+    @Bean
+    ProductConfigurationService productConfigurationService;
 
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articlesRestWrapper;
 
     public List<MunicipaliRowData> getArticlesRows(List<TranslatedArticle> articles) {
         List<MunicipaliRowData> municipaliRowDataList = new ArrayList<>();
@@ -59,30 +62,37 @@ public class ArticleBootstrapAdapter {
         return new MunicipaliLoadableIconData.IconFromCacheLoader() {
             @Override
             public byte[] load() {
-                return articlesService.getArticleImage(article.getId());
+                return articlesService.getArticleImage(
+                        productConfigurationService.getProductConfiguration(),
+                        article.getId()
+                ).orElse(null);
             }
         };
     }
 
     private MunicipaliLoadableIconData.IconFromNetworkLoader getArticleIconLoader(final TranslatedArticle article) {
-        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
-            @Override
-            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
-                articlesRestWrapper.loadArticleImage(article.getId(), new RestListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte [] icon) {
-                        articlesService.saveArticleImage(article.getId(), icon);
+//        return new MunicipaliLoadableIconData.IconFromNetworkLoader() {
+//            @Override
+//            public void load(final MunicipaliLoadableIconData.IconLoadingListener listener) {
+//                articlesRestWrapper.loadArticleImage(article.getId(), new RestListener<byte[]>() {
+//                    @Override
+//                    public void onSuccess(byte [] icon) {
+//                        articlesService.saveArticleImage(
+//                                productConfigurationService.getProductConfiguration(),
+//                                article.getId(), icon);
+//
+//                        listener.onSuccess(icon);
+//                    }
+//
+//                    @Override
+//                    public void onFailure() {
+//                        listener.onFailure();
+//                    }
+//                });
+//            }
+//        };
 
-                        listener.onSuccess(icon);
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        listener.onFailure();
-                    }
-                });
-            }
-        };
+        return null;
     }
 
     private MunicipaliRowData.CounterInfo getCounterInfo(final TranslatedArticle article) {

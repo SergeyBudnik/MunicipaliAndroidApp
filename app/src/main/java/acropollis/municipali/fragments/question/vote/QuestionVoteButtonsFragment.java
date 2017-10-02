@@ -20,10 +20,9 @@ import acropollis.municipali.BaseActivity;
 import acropollis.municipali.R;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
-import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
 import acropollis.municipali.service.UserAnswerService;
 import acropollis.municipali.service.UserService;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
 
 @EFragment(R.layout.fragment_question_vote_buttons)
 public class QuestionVoteButtonsFragment extends Fragment {
@@ -43,7 +42,7 @@ public class QuestionVoteButtonsFragment extends Fragment {
     UserService userService;
 
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articlesRestWrapper;
 
     @AnimationRes(R.anim.spinner)
     Animation spinnerAnimation;
@@ -101,19 +100,19 @@ public class QuestionVoteButtonsFragment extends Fragment {
                             userService.getCurrentUserAuthToken() :
                             "";
 
-            articlesRestWrapper.answerQuestion(
-                    authToken, article.getId(), question.getId(), answerId,
-                    new RestListener<Void>() {
-                        @Override
-                        public void onSuccess(Void o) {
-                            onVoteSuccess();
-                        }
-
-                        @Override
-                        public void onFailure() {
-                            onVoteFail();
-                        }
-                    });
+//            articlesRestWrapper.answerQuestion(
+//                    authToken, article.getId(), question.getId(), answerId,
+//                    new RestListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void o) {
+//                            onVoteSuccess();
+//                        }
+//
+//                        @Override
+//                        public void onFailure() {
+//                            onVoteFail();
+//                        }
+//                    });
         }
     }
 

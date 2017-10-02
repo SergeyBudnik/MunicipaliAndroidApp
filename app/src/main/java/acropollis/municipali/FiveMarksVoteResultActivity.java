@@ -5,6 +5,7 @@ import android.view.animation.Animation;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -17,14 +18,16 @@ import java.util.Map;
 
 import acropollis.municipali.bootstrap.view.MunicipaliRowView;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
-import acropollis.municipali.data.FiveMarksVoteResult;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipalidata.dto.article.question.TranslatedQuestion;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.rest.wrappers.omega.ArticlesRestWrapper;
-import acropollis.municipali.service.ArticlesService;
 import acropollis.municipali.service.UserAnswerService;
 import acropollis.municipali.view.common.SegmentedView;
+import acropollis.municipalidata.rest_wrapper.answer.AnswerRestWrapper;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
+import acropollis.municipalidata.rest_wrapper.article.RestResult;
+import acropollis.municipalidata.service.article.ArticleService;
+import acropollis.municipali.data.FiveMarksVoteResult;
 
 @EActivity(R.layout.activity_five_marks_vote_result)
 public class FiveMarksVoteResultActivity extends BaseActivity {
@@ -55,21 +58,24 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
     long questionId;
 
     @Bean
-    ArticleBootstrapAdapter articleBootstrapAdapter;
+    AnswerRestWrapper answerRestWrapper;
 
     @Bean
-    ArticlesService articlesService;
+    ArticleService articlesService;
     @Bean
     UserAnswerService userAnswerService;
 
     @Bean
-    ArticlesRestWrapper articlesRestWrapper;
+    ArticleRestWrapper articleRestWrapper;
 
     @AfterViews
     void init() {
-        TranslatedArticle article = articlesService.getArticle(articleId);
+        TranslatedArticle article = articlesService.getArticle(
+                productConfigurationService.getProductConfiguration(),
+                articleId
+        ).get();
 
-        articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
+        //articleInfoView.bind(articleBootstrapAdapter.getArticleRowInfo(article, false));
 
         TranslatedQuestion question = article.getQuestions().get(questionId);
 
@@ -82,17 +88,22 @@ public class FiveMarksVoteResultActivity extends BaseActivity {
 
         averageVoteLoadingSpinner.startAnimation(spinnerAnimation);
 
-        articlesRestWrapper.getAnswer(article.getId(), question.getId(), new RestListener<Map<Long,Long>>() {
-            @Override
-            public void onSuccess(Map<Long, Long> answerStatistics) {
-                onGetStatisticsSuccessful(answerStatistics, voteResult);
-            }
+        getAnswer(article.getId(), question.getId(), voteResult);
+    }
 
-            @Override
-            public void onFailure() {
-                onGetStatisticsFail();
-            }
-        });
+    @Background
+    void getAnswer(long articleId, long questionId, FiveMarksVoteResult voteResult) {
+        RestResult<Map<Long, Long>> result = answerRestWrapper.getAnswer(
+                productConfigurationService.getProductConfiguration(),
+                articleId,
+                questionId
+        );
+
+        if (result.isSuccessfull()) {
+            onGetStatisticsSuccessful(result.getData(), voteResult);
+        } else {
+            onGetStatisticsFail();
+        }
     }
 
     @UiThread

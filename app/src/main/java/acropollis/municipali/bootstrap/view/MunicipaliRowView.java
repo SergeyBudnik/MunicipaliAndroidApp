@@ -1,18 +1,15 @@
 package acropollis.municipali.bootstrap.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
@@ -20,6 +17,8 @@ import org.androidannotations.annotations.ViewById;
 import acropollis.municipali.R;
 import acropollis.municipali.bootstrap.data.MunicipaliLoadableIconData;
 import acropollis.municipali.bootstrap.data.MunicipaliRowData;
+import acropollis.municipalibootstrap.views.MunicipaliLoadableImageView;
+import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
 
 import static acropollis.municipali.utls.BitmapUtils.iconFromBytes;
 
@@ -31,7 +30,7 @@ public class MunicipaliRowView extends RelativeLayout {
     @ViewById(R.id.text)
     TextView textView;
     @ViewById(R.id.image)
-    ImageView imageView;
+    MunicipaliLoadableImageView imageView;
 //    @ViewById(R.id.loadable_icon)
 //    MunicipaliLoadableIconView loadableIconView;
 
@@ -39,6 +38,9 @@ public class MunicipaliRowView extends RelativeLayout {
 //    View unansweredQuestionsCounterContainerView;
 //    @ViewById(R.id.unanswered_questions_counter)
 //    TextView unansweredQuestionsCounterView;
+
+    @Bean
+    ArticleRestWrapper articlesRestWrapper;
 
     private MunicipaliRowData rowData;
 
@@ -54,6 +56,17 @@ public class MunicipaliRowView extends RelativeLayout {
         this.rowData = rowData;
 
         textView.setText(rowData.getText());
+
+        imageView.configure(
+                String.valueOf(rowData.getId()),
+                R.color.light_gray,
+                () -> rowData.getLoadableIconData().getIconFromCacheLoader() != null ? rowData.getLoadableIconData().getIconFromCacheLoader().load() : null,
+                () -> {
+                    articlesRestWrapper.loadArticleImage(null, rowData.getId());
+
+                    return null;
+                }
+        );
 
         setIcon();
 //        if (rowData.getLoadableIconData() != null) {
