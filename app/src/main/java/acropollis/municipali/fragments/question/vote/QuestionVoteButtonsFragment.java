@@ -134,7 +134,7 @@ public class QuestionVoteButtonsFragment extends Fragment {
 
         isVoting.set(false);
 
-        ((BaseActivity) getActivity()).showMessage(getResources().getString(R.string.voting_failed));
+        //((BaseActivity) getActivity()).showMessage(getResources().getString(R.string.voting_failed));
     }
 
     @Click(R.id.skip_button)
@@ -150,6 +150,6 @@ public class QuestionVoteButtonsFragment extends Fragment {
             extras.put("questionId", question.getId());
         }
 
-        ((BaseActivity) getActivity()).redirect(redirectTo, 0, 0, true, extras);
+        //((BaseActivity) getActivity()).redirect(redirectTo, 0, 0, true, extras);
     }
 }

@@ -67,9 +67,6 @@
 
         <activity android:name=".ArticleActivity_" android:screenOrientation="sensorPortrait"/>
 
-        <activity android:name=".ArticleInformationActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".ArticleHistoryActivity_" android:screenOrientation="sensorPortrait"/>
-
         <activity android:name=".FiveMarksVoteActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".FiveMarksVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
 

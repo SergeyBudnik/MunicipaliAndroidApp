@@ -182,6 +182,8 @@ dependencies {
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.5.1'
     compile 'com.annimon:stream:1.1.8'
 
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+
     compile project(':municipalidata')
     compile project(':municipalibootstrap')
 }

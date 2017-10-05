@@ -55,25 +55,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <fragment
-                    android:id="@+id/vote_buttons_layout"
-                    android:name="acropollis.municipali.fragments.question.vote.QuestionVoteButtonsFragment_"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_alignParentBottom="true"
-                    tools:layout="@layout/fragment_question_vote_buttons"/>
+                <!--<fragment-->
+                    <!--android:id="@+id/vote_buttons_layout"-->
+                    <!--android:name="acropollis.municipali.fragments.question.vote.QuestionVoteButtonsFragment_"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:layout_marginBottom="30dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--tools:layout="@layout/fragment_question_vote_buttons"/>-->
 
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_below="@id/article_info"
-                    android:layout_above="@id/vote_buttons_layout">
+                    android:layout_below="@id/article_info">
 
                     <LinearLayout
                         android:orientation="vertical"

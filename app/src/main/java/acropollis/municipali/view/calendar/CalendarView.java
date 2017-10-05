@@ -2,7 +2,6 @@ package acropollis.municipali.view.calendar;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -21,9 +20,6 @@ import java.util.List;
 
 import acropollis.municipali.R;
 import acropollis.municipali.utls.DateUtils;
-import acropollis.municipali.view.events.CalendarMonthFragment;
-import acropollis.municipali.view.events.EventCalendarFragment;
-import acropollis.municipali.view.events.EventCalendarViewPagerAdapter;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 
 @EViewGroup(R.layout.view_calendar)
@@ -52,18 +48,17 @@ public class CalendarView extends LinearLayout {
 
     @AfterViews
     void init() {
-        setEvents(new ArrayList<TranslatedArticle>(), null);
+        setEvents(new ArrayList<>());
     }
 
-    public void setEvents(List<TranslatedArticle> events, EventCalendarFragment.SpecialDateOnClickListener specialClickDateListener) {
+    public void setEvents(List<TranslatedArticle> events) {
         final Date today = new Date();
 
         final EventCalendarViewPagerAdapter eventCalendarViewPagerAdapter = new EventCalendarViewPagerAdapter(
-                ((FragmentActivity) getContext()).getSupportFragmentManager(),
+                getContext(),
                 today,
                 dateUtils,
-                events,
-                specialClickDateListener
+                events
         );
 
         setMonthAndYearText(today, dateUtils.getMonth(today), dateUtils.getYear(today));

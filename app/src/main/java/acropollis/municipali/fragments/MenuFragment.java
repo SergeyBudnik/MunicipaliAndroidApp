@@ -85,26 +85,26 @@ public class MenuFragment extends Fragment {
 
     @Click(R.id.news)
     void onNewsClick() {
-        ((BaseActivity) getActivity()).redirect(
-                ArticlesListActivity_.class, 0, 0, true,
-                Collections.singletonMap("articlesType", ArticleType.NEWS)
-        );
+//        ((BaseActivity) getActivity()).redirect(
+//                ArticlesListActivity_.class, 0, 0, true,
+//                Collections.singletonMap("articlesType", ArticleType.NEWS)
+//        );
     }
 
     @Click(R.id.events)
     void onEventsClick() {
-        ((BaseActivity) getActivity()).redirect(
-                ArticlesListActivity_.class, 0, 0, true,
-                Collections.singletonMap("articlesType", ArticleType.EVENT)
-        );
+//        ((BaseActivity) getActivity()).redirect(
+//                ArticlesListActivity_.class, 0, 0, true,
+//                Collections.singletonMap("articlesType", ArticleType.EVENT)
+//        );
     }
 
     @Click(R.id.report)
     void onReportClick() {
-        BaseActivity activity = (BaseActivity) getActivity();
+        //BaseActivity activity = (BaseActivity) getActivity();
 
         if (hasPermissionsToOpenReports()) {
-            activity.redirect(ReportStartActivity_.class, 0, 0, true);
+            //activity.redirect(ReportStartActivity_.class, 0, 0, true);
         } else {
             requestPermissions(
                     new String[] {
@@ -121,14 +121,14 @@ public class MenuFragment extends Fragment {
     void onLoginClick() {
         userService.removeUser();
 
-        ((BaseActivity) getActivity()).redirect(RegistrationActivity_.class, 0, 0, true);
+        //((BaseActivity) getActivity()).redirect(RegistrationActivity_.class, 0, 0, true);
     }
 
     @Click(R.id.logout)
     void onLogoutClick() {
         userService.removeUser();
 
-        ((BaseActivity) getActivity()).redirect(RegistrationActivity_.class, 0, 0, true);
+        //((BaseActivity) getActivity()).redirect(RegistrationActivity_.class, 0, 0, true);
     }
 
     @Click(R.id.change_city)
@@ -136,34 +136,34 @@ public class MenuFragment extends Fragment {
         userService.removeUser();
         backendInfoService.setBackendInfo(null);
 
-        ((BaseActivity) getActivity()).redirect(CountryPlatformChooseCityActivity_.class, 0, 0, true);
+        //((BaseActivity) getActivity()).redirect(CountryPlatformChooseCityActivity_.class, 0, 0, true);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions [], int [] grantResults) {
-        BaseActivity activity = (BaseActivity) getActivity();
-
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_CODE: {
-                if (hasPermissionsToOpenReports()) {
-                    activity.redirect(ReportStartActivity_.class, 0, 0, true);
-                } else {
-                    ((BaseActivity) getActivity())
-                            .showMessage(getResources().getString(R.string.report_no_permissions));
-                }
-                break;
-            }
-        }
+//        BaseActivity activity = (BaseActivity) getActivity();
+//
+//        switch (requestCode) {
+//            case PERMISSIONS_REQUEST_CODE: {
+//                if (hasPermissionsToOpenReports()) {
+//                    activity.redirect(ReportStartActivity_.class, 0, 0, true);
+//                } else {
+////                    ((BaseActivity) getActivity())
+////                            .showMessage(getResources().getString(R.string.report_no_permissions));
+//                }
+//                break;
+//            }
+//        }
     }
 
     private boolean hasPermissionsToOpenReports() {
-        BaseActivity activity = (BaseActivity) getActivity();
+        //BaseActivity activity = (BaseActivity) getActivity();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return
-                    activity.hasPermission(Manifest.permission.CAMERA) &&
-                    activity.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) &&
-                    activity.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            return true;
+//                    activity.hasPermission(Manifest.permission.CAMERA) &&
+//                    activity.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) &&
+//                    activity.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         } else {
             return true;
         }

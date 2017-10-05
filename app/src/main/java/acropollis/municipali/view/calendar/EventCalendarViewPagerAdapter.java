@@ -1,19 +1,22 @@
-package acropollis.municipali.view.events;
+package acropollis.municipali.view.calendar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.content.Context;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.annimon.stream.Stream;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import acropollis.municipalidata.dto.article.TranslatedArticle;
 import acropollis.municipali.utls.DateUtils;
+import acropollis.municipalidata.dto.article.TranslatedArticle;
 import lombok.Getter;
 import lombok.Setter;
 
-public class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
+public class EventCalendarViewPagerAdapter extends PagerAdapter {
     @Getter @Setter
     private static class MonthAndYear {
         private int month;
@@ -27,18 +30,17 @@ public class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
 
     public static final int MONTHS_AMOUNT = 5;
 
+    private Date startDateSelected = null;
+    private Date endDateSelected = null;
+
     private CalendarMonthFragment [] calendarMonthsFragments = new CalendarMonthFragment [0];
 
     public EventCalendarViewPagerAdapter(
-            FragmentManager fm,
+            Context context,
             Date today,
             DateUtils dateUtils,
-            List<TranslatedArticle> events,
-            EventCalendarFragment.SpecialDateOnClickListener specialDateOnClickListener) {
-
-        super(fm);
-
-
+            List<TranslatedArticle> events
+    ) {
         MonthAndYear current = new MonthAndYear(
                 dateUtils.getMonth(today),
                 dateUtils.getYear(today)
@@ -56,24 +58,62 @@ public class EventCalendarViewPagerAdapter extends FragmentPagerAdapter {
         calendarMonthsFragments = new CalendarMonthFragment [MONTHS_AMOUNT];
 
         for (int i = 0; i < MONTHS_AMOUNT; i++) {
-            calendarMonthsFragments[i] = CalendarMonthFragment_.builder().build();
+            calendarMonthsFragments[i] = CalendarMonthFragment_.build(context);
 
-            calendarMonthsFragments[i].setEvents(
+            calendarMonthsFragments[i].init(
+                    context,
+                    this,
                     monthAndYears[i].getMonth(),
                     monthAndYears[i].getYear(),
-                    events,
-                    specialDateOnClickListener);
+                    events
+            );
         }
     }
 
-    @Override
-    public Fragment getItem(int position) {
+    public View getItem(int position) {
         return calendarMonthsFragments[position];
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        View v = calendarMonthsFragments[position];
+
+        container.addView(v, 0);
+
+        return v;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object view) {
+        container.removeView((View) view);
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
     }
 
     @Override
     public int getCount() {
         return MONTHS_AMOUNT;
+    }
+
+    public void onDateClicked(Date date) {
+        boolean intervalNotSelected = startDateSelected == null && endDateSelected == null;
+        boolean intervalSelected = startDateSelected != null && endDateSelected != null;
+        boolean beforeInterval = startDateSelected != null && startDateSelected.after(date);
+
+        if (intervalNotSelected || intervalSelected) {
+            endDateSelected = null;
+            startDateSelected = date;
+        } else if (beforeInterval) {
+            endDateSelected = startDateSelected;
+            startDateSelected = date;
+        } else {
+            endDateSelected = date;
+        }
+
+        Stream.of(calendarMonthsFragments).forEach(it -> it.setSelectedDates(startDateSelected, endDateSelected));
     }
 
     private MonthAndYear getPrevMonthAndYear(MonthAndYear current, int depth) {

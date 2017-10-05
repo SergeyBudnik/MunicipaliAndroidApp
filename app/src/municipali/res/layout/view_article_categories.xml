@@ -20,8 +20,8 @@
         android:paddingRight="20dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/primary_white"
-        android:background="?category"/>
+        android:textColor="@color/red"
+        android:background="@drawable/article_category"/>
 
     <TextView
         android:id="@+id/category_2"
@@ -36,8 +36,8 @@
         android:paddingRight="20dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/primary_white"
-        android:background="?category"/>
+        android:textColor="@color/red"
+        android:background="@drawable/article_category"/>
 
     <TextView
         android:id="@+id/category_3"
@@ -50,7 +50,7 @@
         android:paddingRight="20dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/primary_white"
-        android:background="?category"/>
+        android:textColor="@color/red"
+        android:background="@drawable/article_category"/>
 
 </LinearLayout>

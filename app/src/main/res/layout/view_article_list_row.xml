@@ -8,39 +8,76 @@
     android:layout_marginRight="10dp"
     android:background="@drawable/list_item">
 
-    <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
-        android:id="@+id/image"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:riv_corner_radius_top_left="10dp"
-        app:riv_corner_radius_top_right="10dp"
-        app:widthRatio="3"
-        app:heightRatio="1"
-        app:ratioBasis="width"
-        android:src="#eeeeee"/>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_margin="1dp">
+
+        <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
+            android:id="@+id/image"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:riv_corner_radius_top_left="10dp"
+            app:riv_corner_radius_top_right="10dp"
+            app:widthRatio="3"
+            app:heightRatio="1"
+            app:ratioBasis="width"
+            android:src="#eeeeee"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="18.08.2017"
-            android:textColor="@color/primary_gray"/>
+            android:paddingTop="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="3dp"
+            android:layout_gravity="bottom"
+            android:text="News"
+            android:textColor="@color/white"
+            android:background="@color/red"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18.08.2017"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:text="Sukkot Dance Festival"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:text="Sukkot Dance Festival"
-            android:textColor="@color/primary_red"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="end|bottom"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@color/white"
+            android:background="@drawable/article_counter"/>
 
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

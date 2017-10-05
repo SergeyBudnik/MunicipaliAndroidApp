@@ -6,18 +6,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import java.io.Serializable;
-import java.util.Collections;
-
-import acropollis.municipali.ArticleInformationActivity_;
-import acropollis.municipali.BaseActivity;
 import acropollis.municipali.R;
-import acropollis.municipalidata.configuration.ProductConfiguration;
-import acropollis.municipalidata.configuration.ProductType;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 
 @EViewGroup(R.layout.view_article_categories)
@@ -31,8 +23,6 @@ public class ArticleCategoriesView extends LinearLayout {
     @ViewById(R.id.category_3)
     TextView categoryView3;
 
-    private long articleId;
-
     public ArticleCategoriesView(Context context) {
         super(context);
     }
@@ -41,24 +31,7 @@ public class ArticleCategoriesView extends LinearLayout {
         super(context, attrs);
     }
 
-    @Click(R.id.category_1)
-    void onCategoryClick() {
-        ProductType productType = ProductConfiguration
-                .getProductConfiguration(getResources().getString(R.string.product_id))
-                .getProductType();
-
-        if (productType == ProductType.DEMOCRACY) {
-            ((BaseActivity) getContext()).redirect(
-                    ArticleInformationActivity_.class,
-                    0, 0, false,
-                    Collections.<String, Serializable>singletonMap("articleId", articleId)
-            );
-        }
-    }
-
     public void bind(TranslatedArticle article) {
-        articleId = article.getId();
-
         if (article.getCategories().size() == 0) {
             setVisibility(GONE);
         } else {

@@ -12,10 +12,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
-import acropollis.municipali.bootstrap.view.MunicipaliLayoutListView;
-import acropollis.municipali.bootstrap.view.MunicipaliRowView;
-import acropollis.municipali.bootstrap_adapter.AnswerBootstrapAdapter;
-import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
 import acropollis.municipali.view.AnswerListRowView;
 import acropollis.municipali.view.AnswerListRowView_;
 import acropollis.municipalibootstrap.views.MunicipaliLoadableImageView;
@@ -53,11 +49,6 @@ public class QuestionMultipleVariantsActivity extends BaseActivity {
 
     @Bean
     ArticleImageService articleImageService;
-
-    @Bean
-    ArticleBootstrapAdapter articleBootstrapAdapter;
-    @Bean
-    AnswerBootstrapAdapter answerBootstrapAdapter;
 
     private long currentAnswer = -1;
 

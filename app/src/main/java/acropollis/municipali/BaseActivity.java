@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -25,7 +26,7 @@ import acropollis.municipalidata.configuration.ProductConfiguration;
 import io.fabric.sdk.android.Fabric;
 
 @EActivity
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends YouTubeBaseActivity {
     private int currentTheme;
 
     @Bean

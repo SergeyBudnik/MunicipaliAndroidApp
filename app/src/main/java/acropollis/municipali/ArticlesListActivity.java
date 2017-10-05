@@ -4,20 +4,16 @@ import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
-import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
-import org.androidannotations.annotations.res.AnimationRes;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +21,7 @@ import java.util.List;
 import acropollis.municipali.adapter.ArticlesListAdapter;
 import acropollis.municipali.binders.MenuBinder;
 import acropollis.municipali.bootstrap_adapter.ArticleBootstrapAdapter;
+import acropollis.municipali.view.HeaderView;
 import acropollis.municipali.view.calendar.CalendarView;
 import acropollis.municipalidata.dto.article.Article;
 import acropollis.municipalidata.dto.article.ArticleType;
@@ -33,6 +30,9 @@ import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
 import acropollis.municipalidata.rest_wrapper.article.RestResult;
 import acropollis.municipalidata.service.article.ArticleService;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 @EActivity(R.layout.activity_articles_list)
 public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private static final int REDIRECT_FOR_QUESTION = 1;
@@ -40,6 +40,8 @@ public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLa
     @ViewById(R.id.root)
     DrawerLayout rootView;
 
+    @ViewById(R.id.header)
+    HeaderView headerView;
     @ViewById(R.id.articles_list_refresh)
     SwipeRefreshLayout articlesListRefreshView;
     @ViewById(R.id.articles_list)
@@ -47,11 +49,6 @@ public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLa
 
     @ViewById(R.id.calendar)
     CalendarView calendarView;
-
-    @AnimationRes(R.anim.calendar_appear_anim)
-    Animation calendarAppearAnim;
-    @AnimationRes(R.anim.calendar_disappear_anim)
-    Animation calendarDisappearAnim;
 
     @Bean
     MenuBinder menuBinder;
@@ -74,6 +71,13 @@ public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLa
     @AfterViews
     void init() {
         menuBinder.bind(rootView);
+
+        headerView.setStyle(HeaderView.Style.DEFAULT);
+        headerView.setTitle(articlesType == ArticleType.NEWS ? R.string.city_news : R.string.city_events);
+        headerView.setLeftButton(R.drawable.menu_button, it -> rootView.openDrawer(Gravity.START));
+        headerView.setRightButton(R.drawable.calendar_button, it ->
+            calendarView.setVisibility(calendarView.getVisibility() == GONE ? VISIBLE : GONE)
+        );
 
         articlesListRefreshView.setOnRefreshListener(this);
 
@@ -101,20 +105,6 @@ public class ArticlesListActivity extends BaseActivity implements SwipeRefreshLa
         } else {
             onArticlesLoadFailed();
         }
-    }
-
-    @Click(R.id.menu_button)
-    void onMenuButtonClick() {
-        rootView.openDrawer(Gravity.START);
-    }
-
-    @Click(R.id.calendar_button)
-    void onCalendarButtonClick() {
-        calendarView.setVisibility(
-                calendarView.getVisibility() == View.GONE ?
-                View.VISIBLE :
-                View.GONE
-        );
     }
 
     @UiThread

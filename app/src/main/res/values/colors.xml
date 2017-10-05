@@ -14,6 +14,7 @@
     <color name="primary_white_semi_transparent">#EEFFFFFF</color>
     <color name="primary_white_transparent">#55FFFFFF</color>
     <color name="primary_black">#000000</color>
+    <color name="primary_black_transparent">#55000000</color>
     <color name="primary_gray">#999999</color>
     <color name="primary_light_gray">#CCCCCC</color>
 

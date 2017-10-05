@@ -77,8 +77,8 @@ public class FiveMarksVoteActivity extends BaseActivity {
     @ViewById(R.id.vote_5_selected_circle)
     View voteSelectedCircleView5;
 
-    @FragmentById(R.id.vote_buttons_layout)
-    QuestionVoteButtonsFragment questionVoteButtonsFragment;
+//    @FragmentById(R.id.vote_buttons_layout)
+//    QuestionVoteButtonsFragment questionVoteButtonsFragment;
 
     @Extra("articleId")
     long articleId;
@@ -110,7 +110,7 @@ public class FiveMarksVoteActivity extends BaseActivity {
         negativeAnswerView.setText(question.getAnswers().get(0).getText());
         positiveAnswerView.setText(question.getAnswers().get(4).getText());
 
-        questionVoteButtonsFragment.init(article, question, FiveMarksVoteResultActivity_.class, VoteHiddenResultActivity_.class);
+        //questionVoteButtonsFragment.init(article, question, FiveMarksVoteResultActivity_.class, VoteHiddenResultActivity_.class);
     }
 
     @Click(R.id.back_button)
@@ -174,7 +174,7 @@ public class FiveMarksVoteActivity extends BaseActivity {
         voteSelectedUnderscoreView.setVisibility(View.VISIBLE);
         voteSelectedCircleView.setVisibility(View.VISIBLE);
 
-        questionVoteButtonsFragment.setAnswer(question.getAnswers().get(voteResult.getIndex()).getId());
+        //questionVoteButtonsFragment.setAnswer(question.getAnswers().get(voteResult.getIndex()).getId());
     }
 
     private void unselectAllVoteResults() {
@@ -195,6 +195,6 @@ public class FiveMarksVoteActivity extends BaseActivity {
         voteSelectedUnderscoreView5.setVisibility(View.GONE);
         voteSelectedCircleView5.setVisibility(View.GONE);
 
-        questionVoteButtonsFragment.removeAnswer();
+        //questionVoteButtonsFragment.removeAnswer();
     }
 }
