@@ -52,6 +52,7 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="18.08.2017"
@@ -63,18 +64,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="16sp"
-                android:text="Sukkot Dance Festival"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/questions_amount"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:layout_gravity="end|bottom"
             android:gravity="center"
-            android:text="6"
             android:textColor="@color/white"
             android:background="@drawable/article_counter"/>
 

@@ -3,6 +3,9 @@
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
 
+    <string name="article_news">News</string>
+    <string name="article_events">Events</string>
+
     <string name="demo_header" translatable="false">Demo Settings</string>
 
     <string name="server_client_id" translatable="false">175632774293-mf924v8fuik18qekvthjdjg6dojqghae.apps.googleusercontent.com</string>

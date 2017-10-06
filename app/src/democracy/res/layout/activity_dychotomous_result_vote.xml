@@ -203,10 +203,8 @@
 
             </RelativeLayout>
 
-            <fragment
-                tools:layout="@layout/fragment_menu"
+            <acropollis.municipali.view.MenuView_
                 android:id="@+id/menu"
-                android:name="acropollis.municipali.fragments.MenuFragment_"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"/>

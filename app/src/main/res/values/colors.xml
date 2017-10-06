@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#D80029</color>
+    <color name="red">#d3161d</color>
     <color name="blue">#0077D8</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#999999</color>
 
     <color name="primary_blue">#ff0000</color>
-    <color name="primary_red">#D80029</color>
-    <color name="primary_red_transparent">#66D80029</color>
+    <color name="primary_red">#d3161d</color>
+    <color name="primary_red_transparent">#66d3161d</color>
     <color name="primary_orange">#FE5805</color>
     <color name="primary_white">#FFFFFF</color>
     <color name="primary_white_semi_transparent">#EEFFFFFF</color>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_red">#D80029</color>
-    <color name="primary_red_transparent">#66D80029</color>
+    <color name="primary_red">#d3161d</color>
+    <color name="primary_red_transparent">#66d3161d</color>
     <color name="primary_blue">#09d0e8</color>
     <color name="primary_light_blue">#09d0e8</color>
     <color name="primary_orange">#ffb400</color>

@@ -39,7 +39,7 @@ public class StartActivity extends BaseActivity {
         ProductTier productTier = currentProductConfiguration.getProductTier();
 
         if (productTier == ProductTier.DEMO) {
-            redirect(DemoAppActivity_.class, 0, 0, true);
+            //redirect(DemoAppActivity_.class, 0, 0, true);
         } else {
             if (backendInfoService.getBackendInfo() != null) {
                 if (userService.getCurrentUserAuthToken() != null) {
@@ -53,7 +53,7 @@ public class StartActivity extends BaseActivity {
             } else {
                 switch (currentProductConfiguration.getProductTier()) {
                     case COUNTRY_PLATFORM:
-                        redirect(CountryPlatformChooseCityActivity_.class, 0, 0, true);
+//                        redirect(CountryPlatformChooseCityActivity_.class, 0, 0, true);
                         break;
                     case STANDALONE:
                         redirect(StandaloneCustomerLoadingActivity_.class, 0, 0, true);

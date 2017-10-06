@@ -21,7 +21,7 @@ import acropollis.municipali.data.FiveMarksVoteResult;
 import acropollis.municipalidata.service.article.ArticleService;
 
 @EActivity(R.layout.activity_five_marks_vote)
-public class FiveMarksVoteActivity extends BaseActivity {
+public class QuestionFiveMarksVoteActivity extends BaseActivity {
     @ViewById(R.id.article_info)
     MunicipaliRowView articleInfoView;
 

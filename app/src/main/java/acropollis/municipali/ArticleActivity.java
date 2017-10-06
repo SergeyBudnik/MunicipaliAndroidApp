@@ -12,7 +12,6 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
@@ -154,9 +153,9 @@ public class ArticleActivity extends BaseActivity implements YouTubePlayer.OnIni
         switch (question.getAnswerType()) {
             case FIVE_POINTS:
                 if (!isAnswered) {
-                    questionActivity = FiveMarksVoteActivity_.class;
+                    questionActivity = QuestionFiveMarksVoteActivity_.class;
                 } else if (!isHidden) {
-                    questionActivity = FiveMarksVoteResultActivity_.class;
+                    questionActivity = QuestionFiveMarksVoteResultActivity_.class;
                 } else {
                     questionActivity = VoteHiddenResultActivity_.class;
                 }

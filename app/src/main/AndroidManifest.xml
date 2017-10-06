@@ -51,12 +51,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DemoAppActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".DemoAppServerActivity_" android:screenOrientation="sensorPortrait"/>
-
-        <activity android:name=".CountryPlatformChooseCityActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".CountryPlatformCustomerLoadingActivity_" android:screenOrientation="sensorPortrait"/>
-
         <activity android:name=".StandaloneCustomerLoadingActivity_" android:screenOrientation="sensorPortrait"/>
 
         <activity android:name=".RegistrationActivity_" android:screenOrientation="sensorPortrait"/>
@@ -67,8 +61,8 @@
 
         <activity android:name=".ArticleActivity_" android:screenOrientation="sensorPortrait"/>
 
-        <activity android:name=".FiveMarksVoteActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".FiveMarksVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".QuestionFiveMarksVoteActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".QuestionFiveMarksVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
 
         <activity android:name=".QuestionMultipleVariantsActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".MultipleVariantsVoteResultActivity_" android:screenOrientation="sensorPortrait"/>
