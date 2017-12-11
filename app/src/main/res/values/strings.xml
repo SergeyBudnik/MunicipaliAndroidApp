@@ -1,4 +1,9 @@
 <resources>
+    <string name="youtube_api_key" translatable="false">AIzaSyATKNzuvv3uOz504VwHEtfU3Y6SAqaOcpk</string>
+    <string name="fabric_api_key" translatable="false">e603f0922335662fc79221cfa3d2fe87b4000d32</string>
+    <string name="server_client_id" translatable="false">175632774293-mf924v8fuik18qekvthjdjg6dojqghae.apps.googleusercontent.com</string>
+    <string name="facebook_app_id" translatable="false">1773266689662479</string>
+
     <string name="player_error">Error initializing YouTube player: %s</string>
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
@@ -7,10 +12,6 @@
     <string name="article_events">Events</string>
 
     <string name="demo_header" translatable="false">Demo Settings</string>
-
-    <string name="server_client_id" translatable="false">175632774293-mf924v8fuik18qekvthjdjg6dojqghae.apps.googleusercontent.com</string>
-
-    <string name="facebook_app_id" translatable="false">1773266689662479</string>
 
     <string name="app_name">Municipali</string>
 
@@ -98,6 +99,19 @@
     <string name="november">November</string>
     <string name="december">December</string>
 
+    <string name="january_short">JAN</string>
+    <string name="february_short">FEB</string>
+    <string name="march_short">MAR</string>
+    <string name="april_short">APR</string>
+    <string name="may_short">MAY</string>
+    <string name="june_short">JUN</string>
+    <string name="july_short">JUL</string>
+    <string name="august_short">AUG</string>
+    <string name="september_short">SEP</string>
+    <string name="october_short">OCT</string>
+    <string name="november_short">NOV</string>
+    <string name="december_short">DEC</string>
+
     <string name="date" translatable="false">%1$s %2$d, %3$d</string>
 
     <string name="today">Today</string>
@@ -149,4 +163,11 @@
 
     <string name="img_description" translatable="false">ImgContent</string>
     <string name="question_mark" translatable="false">\?</string>
+
+    <!-- Article -->
+
+    <string name="article_type_news">NEWS</string>
+    <string name="article_type_event">EVENT</string>
+
+    <string name="youtube_video_error">Please install YouTube app to watch video</string>
 </resources>

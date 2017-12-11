@@ -11,8 +11,10 @@ import acropollis.municipali.data.report.Report;
 import acropollis.municipali.rest.raw.omega.ReportRestService;
 import acropollis.municipali.rest.request.PostReportRequest;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.service.BackendInfoService;
+import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.service.UserService;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.service.configuration.ConfigurationService;
 
 @EBean
 public class ReportRestWrapper {
@@ -20,7 +22,9 @@ public class ReportRestWrapper {
     ReportRestService reportRestService;
 
     @Bean
-    BackendInfoService backendInfoService;
+    ProductConfigurationService productConfigurationService;
+    @Bean
+    ConfigurationService configurationService;
     @Bean
     UserService userService;
 
@@ -28,6 +32,8 @@ public class ReportRestWrapper {
     public void postReport(byte [] reportImage, String comments, double latitude, double longitude, RestListener<Void> listener) {
         try {
             listener.onStart();
+
+            ProductConfiguration productConfiguration = productConfigurationService.getProductConfiguration();
 
             Report report = new Report(); {
                 report.setUserId(userService.getCurrentUserAuthToken());
@@ -42,7 +48,7 @@ public class ReportRestWrapper {
             }
 
             reportRestService.postReport(
-                    backendInfoService.getBackendInfo().getRootEndpoint(),
+                    configurationService.getServerRootUrl(productConfiguration).get(),
                     postReportRequest
             );
 

@@ -16,8 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 import acropollis.municipali.comparators.ArticlesComparator;
-import acropollis.municipali.view.ArticlesListRowView;
-import acropollis.municipali.view.ArticlesListRowView_;
+import acropollis.municipali.view.rows.ArticlesListRowView;
+import acropollis.municipali.view.rows.ArticlesListRowView_;
 import acropollis.municipalidata.dto.article.ArticleType;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
 

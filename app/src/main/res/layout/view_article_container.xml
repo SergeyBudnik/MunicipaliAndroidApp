@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <acropollis.municipali.view.branding.BrandingBackground_
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
+                android:id="@+id/icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@color/gray_3"
+                app:ratioBasis="width"
+                app:widthRatio="1"
+                app:heightRatio="1"/>
+
+            <ScrollView
+                android:id="@+id/container_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <acropollis.municipali.view.ArticleInfoView_
+                        android:id="@+id/article_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:id="@+id/container"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <acropollis.municipali.view.HeaderView_
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <acropollis.municipali.view.MenuView_
+            android:id="@+id/menu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"/>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

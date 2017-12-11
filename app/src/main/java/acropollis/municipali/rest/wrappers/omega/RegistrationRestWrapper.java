@@ -10,15 +10,16 @@ import org.androidannotations.annotations.rest.RestService;
 import acropollis.municipali.data.user.User;
 import acropollis.municipali.rest.raw.omega.UserRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
-import acropollis.municipali.service.BackendInfoService;
 import acropollis.municipali.service.ProductConfigurationService;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.service.configuration.ConfigurationService;
 
 @EBean
 public class RegistrationRestWrapper {
     @Bean
-    BackendInfoService backendInfoService;
-    @Bean
     ProductConfigurationService productConfigurationService;
+    @Bean
+    ConfigurationService configurationService;
 
     @RestService
     UserRestService userRestService;
@@ -28,8 +29,10 @@ public class RegistrationRestWrapper {
         try {
             listener.onStart();
 
+            ProductConfiguration productConfiguration = productConfigurationService.getProductConfiguration();
+
             String authToken = userRestService.register(
-                    backendInfoService.getBackendInfo().getRootEndpoint(),
+                    configurationService.getServerRootUrl(productConfiguration).get(),
                     user
             ).getAuthToken();
 

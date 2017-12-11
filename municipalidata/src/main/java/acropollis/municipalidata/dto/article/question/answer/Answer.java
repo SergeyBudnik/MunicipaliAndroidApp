@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class Answer implements Serializable {
     private long id;
+    private boolean hasIcon;
     private Map<Language, AnswerTranslationInfo> translatedAnswer;
 
     public TranslatedAnswer translate(Language language) {

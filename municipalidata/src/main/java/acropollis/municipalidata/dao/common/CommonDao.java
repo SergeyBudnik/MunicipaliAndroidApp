@@ -20,7 +20,17 @@ public abstract class CommonDao<T> {
         return cache.get();
     }
 
-    public void persist(ProductConfiguration configuration, Context context) {
+    public void clear(ProductConfiguration configuration, Context context) {
+        try {
+            cache.set(null);
+
+            StorageUtils.clearData(context, getFileName(configuration));
+        } catch (IOException e) {
+            Log.e("CommonDao", "Clear data failed", e);
+        }
+    }
+
+    protected void persist(ProductConfiguration configuration, Context context) {
         if (cache.get() != null) {
             try {
                 StorageUtils.writeData(context, getFileName(configuration), cache.get());

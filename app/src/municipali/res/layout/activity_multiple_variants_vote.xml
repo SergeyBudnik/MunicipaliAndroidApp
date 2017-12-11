@@ -1,141 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<acropollis.municipali.view.article.ArticleContainerView_
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/article_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="?header_height"
-            android:background="?header_background">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_horizontal">
 
-            <ImageView
-                android:id="@+id/back_button"
-                android:layout_width="?header_button_width"
-                android:layout_height="?header_button_height"
-                android:paddingTop="?header_button_vertical_padding"
-                android:paddingBottom="?header_button_vertical_padding"
-                android:paddingLeft="?header_button_horizontal_padding"
-                android:paddingRight="?header_button_horizontal_padding"
-                android:src="@drawable/back_button"
-                android:contentDescription="@string/img_description"/>
+            <include
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                layout="@layout/view_question_mark"/>
 
             <TextView
+                android:id="@+id/question_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/question"
-                android:textColor="?header_title_color"
-                android:textSize="?header_title_size"/>
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/history"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:visibility="gone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/answers_list"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <acropollis.municipalibootstrap.views.MunicipaliButtonView_
+                android:id="@+id/vote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                app:text="Vote"
+                app:enabled="false"/>
 
         </RelativeLayout>
 
-        <android.support.v4.widget.DrawerLayout
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/list_item">
-
-                        <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
-                            android:id="@+id/icon"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:scaleType="centerCrop"
-                            app:riv_corner_radius_top_left="10dp"
-                            app:riv_corner_radius_top_right="10dp"
-                            app:widthRatio="1"
-                            app:heightRatio="1"
-                            app:ratioBasis="width"
-                            android:src="#eeeeee"/>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="18.08.2017"
-                                android:textColor="@color/primary_gray"/>
-
-                            <TextView
-                                android:id="@+id/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:textSize="16sp"
-                                android:text="Sukkot Dance Festival"
-                                android:textColor="@color/primary_red"/>
-
-                            <TextView
-                                android:id="@+id/question_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:textColor="@color/primary_black"/>
-
-                            <LinearLayout
-                                android:id="@+id/answers_list"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="20dp"
-                                android:layout_height="wrap_content"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-            </ScrollView>
-
-            <acropollis.municipali.view.MenuView_
-                android:id="@+id/menu"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"/>
-
-        </android.support.v4.widget.DrawerLayout>
-
     </LinearLayout>
 
-</RelativeLayout>
+</acropollis.municipali.view.article.ArticleContainerView_>

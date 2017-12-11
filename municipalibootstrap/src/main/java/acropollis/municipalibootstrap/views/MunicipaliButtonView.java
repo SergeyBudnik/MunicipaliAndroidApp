@@ -3,12 +3,15 @@ package acropollis.municipalibootstrap.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.View;
+import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.AnimationRes;
 
 import acropollis.municipalibootstrap.R;
 
@@ -34,12 +37,21 @@ public class MunicipaliButtonView extends RelativeLayout {
         }
     }
 
+    public enum State {
+        ENABLED, DISABLED, LOADING
+    }
+
     private String text;
-    private boolean enabled;
+    private State state;
     private Type type;
 
     @ViewById(resName = "text")
     TextView textView;
+    @ViewById(resName = "loading")
+    View loadingView;
+
+    @AnimationRes(resName = "loader")
+    Animation loaderAnim;
 
     public MunicipaliButtonView(Context context) {
         super(context);
@@ -50,7 +62,7 @@ public class MunicipaliButtonView extends RelativeLayout {
 
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.MunicipaliButtonView); {
             text = array.getString(R.styleable.MunicipaliButtonView_text);
-            enabled = array.getBoolean(R.styleable.MunicipaliButtonView_enabled, true);
+            state = array.getBoolean(R.styleable.MunicipaliButtonView_enabled, true) ? State.ENABLED : State.DISABLED;
             type = Type.fromCode(array.getInt(R.styleable.MunicipaliButtonView_type, 1));
 
             array.recycle();
@@ -70,6 +82,44 @@ public class MunicipaliButtonView extends RelativeLayout {
                 textView.setBackgroundResource(R.drawable.button_default);
                 textView.setTextColor(getResources().getColor(R.color.red));
                 break;
+        }
+
+        setEnabledStyle(state == State.ENABLED);
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.state = enabled ? State.ENABLED : State.DISABLED;
+
+        setEnabledStyle(enabled);
+        setLoadingStyle(false);
+    }
+
+    public void setLoading(boolean loading) {
+        this.state = loading ? State.ENABLED : State.LOADING;
+
+        setEnabledStyle(true);
+        setLoadingStyle(loading);
+    }
+
+    private void setEnabledStyle(boolean enabled) {
+        if (enabled) {
+            setAlpha(1.0f);
+        } else {
+            setAlpha(0.5f);
+        }
+    }
+
+    private void setLoadingStyle(boolean loading) {
+        if (loading) {
+            textView.setVisibility(GONE);
+
+            loadingView.setAnimation(loaderAnim);
+            loadingView.setVisibility(VISIBLE);
+        } else {
+            textView.setVisibility(VISIBLE);
+
+            loadingView.clearAnimation();
+            loadingView.setVisibility(INVISIBLE);
         }
     }
 }

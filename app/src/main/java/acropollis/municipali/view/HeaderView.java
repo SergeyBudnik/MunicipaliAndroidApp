@@ -37,7 +37,7 @@ public class HeaderView extends RelativeLayout {
     }
 
     public void setStyle(Style style) {
-        setBackgroundResource(style == Style.DEFAULT ? R.color.red : R.color.primary_black_transparent);
+        setBackgroundResource(style == Style.DEFAULT ? R.color.red : R.color.black_semi_transparent_3);
     }
 
     public void setTitle(int titleResource) {
@@ -50,6 +50,10 @@ public class HeaderView extends RelativeLayout {
 
     public void setRightButton(int imageResource, OnClickListener listener) {
         setButton(headerRightButtonView, imageResource, listener);
+    }
+
+    public void removeRightButton() {
+        headerRightButtonView.setVisibility(GONE);
     }
 
     private void setButton(ImageView buttonView, int imageResource, OnClickListener listener) {

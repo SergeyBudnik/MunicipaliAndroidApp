@@ -1,85 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<acropollis.municipali.view.article.ArticleContainerView_
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/article_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.DrawerLayout
-            android:id="@+id/root"
+        <TextView
+            android:id="@+id/article_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:background="@drawable/article_description"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/article_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/gray_1"/>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/article_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
-                    <acropollis.municipali.view.ArticleInfoView_
-                        android:id="@+id/article_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/article_video_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/youtube_video_error"
+            android:textColor="@color/red"
+            android:textSize="16sp"/>
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp">
-
-                        <TextView
-                            android:id="@+id/article_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary_black"/>
-
-                        <com.google.android.youtube.player.YouTubePlayerView
-                            android:id="@+id/youtube_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"/>
-
-                        <LinearLayout
-                            android:id="@+id/questions_list"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="20dp"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </ScrollView>
-
-            <acropollis.municipali.view.MenuView_
-                android:id="@+id/menu"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"/>
-
-        </android.support.v4.widget.DrawerLayout>
+        <LinearLayout
+            android:id="@+id/questions_list"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
     </LinearLayout>
 
-    <acropollis.municipali.view.HeaderView_
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</RelativeLayout>
+</acropollis.municipali.view.article.ArticleContainerView_>

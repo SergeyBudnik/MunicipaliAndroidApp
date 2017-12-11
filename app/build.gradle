@@ -51,10 +51,6 @@ android {
             flavorDimension 'product'
         }
 
-        democracy {
-            flavorDimension 'product'
-        }
-
         QA {
             flavorDimension 'tier'
         }
@@ -73,7 +69,6 @@ android {
     }
 
     def allowedFlavors = [
-            [product: 'democracy',  tier: 'QA'],
             [product: 'municipali', tier: 'QA'],
             [product: 'municipali', tier: 'Demo'],
             [product: 'municipali', tier: 'ProdMacedoniaKarpos'],

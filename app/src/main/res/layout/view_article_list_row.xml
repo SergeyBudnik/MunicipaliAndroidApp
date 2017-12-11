@@ -23,9 +23,10 @@
             app:widthRatio="3"
             app:heightRatio="1"
             app:ratioBasis="width"
-            android:src="#eeeeee"/>
+            android:src="@color/gray_3"/>
 
         <TextView
+            android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="3dp"
@@ -33,7 +34,6 @@
             android:paddingRight="10dp"
             android:paddingBottom="3dp"
             android:layout_gravity="bottom"
-            android:text="News"
             android:textColor="@color/white"
             android:background="@color/red"/>
 
@@ -55,8 +55,7 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="18.08.2017"
-                android:textColor="@color/gray"/>
+                android:textColor="@color/gray_2"/>
 
             <TextView
                 android:id="@+id/text"

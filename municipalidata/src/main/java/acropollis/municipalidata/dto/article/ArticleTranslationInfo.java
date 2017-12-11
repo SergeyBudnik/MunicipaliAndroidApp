@@ -11,6 +11,7 @@ import lombok.NonNull;
 @Data
 public class ArticleTranslationInfo implements Serializable {
     @NonNull private String title;
+    @NonNull private String description;
     @NonNull private String text;
     @NonNull private List<String> categories;
 }

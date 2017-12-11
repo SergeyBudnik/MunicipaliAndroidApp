@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#d3161d</color>
-    <color name="white">#FFFFFF</color>
+    <color name="red">#D3161D</color>
+    <color name="red_semi_transparent_1">#EED3161D</color>
+    <color name="red_semi_transparent_2">#AAD3161D</color>
+    <color name="red_semi_transparent_3">#66D3161D</color>
 
-    <color name="light_gray">#EEEEEE</color>
+    <color name="green">#1CC391</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_semi_transparent">#EEFFFFFF</color>
+    <color name="white_semi_transparent_2">#AAFFFFFF</color>
+    <color name="white_semi_transparent_3">#66FFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="black_semi_transparent_1">#EE000000</color>
+    <color name="black_semi_transparent_2">#AA000000</color>
+    <color name="black_semi_transparent_3">#66000000</color>
+
+    <color name="gray_1">#666666</color>
+    <color name="gray_2">#AAAAAA</color>
+    <color name="gray_3">#EEEEEE</color>
+
+    <color name="background_overlay">#99282529</color>
 </resources>

@@ -14,14 +14,15 @@ import org.androidannotations.annotations.EView;
 import org.androidannotations.annotations.UiThread;
 
 import acropollis.municipalibootstrap.R;
+import lombok.Setter;
 
 import static acropollis.municipalibootstrap.utils.BitmapUtils.iconFromBytes;
 
 @EView
 public class MunicipaliLoadableImageView extends RoundedImageView {
     private int ratioBasis;
-    private int widthRario;
-    private int heightRatio;
+    @Setter private int widthRario;
+    @Setter private int heightRatio;
 
     private String id;
 
@@ -76,7 +77,6 @@ public class MunicipaliLoadableImageView extends RoundedImageView {
             if (imageFromCache.length == 0) {
                 setImage(emptyResource);
             } else {
-                setImage(emptyResource);
                 setImage(iconFromBytes(imageFromCache));
             }
         } else {

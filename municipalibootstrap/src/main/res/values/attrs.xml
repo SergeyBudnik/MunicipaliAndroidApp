@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="widthRatio" format="integer"/>
+    <attr name="heightRatio" format="integer"/>
+    <attr name="ratioBasis" format="enum">
+        <enum name="width" value="1"/>
+        <enum name="height" value="2"/>
+    </attr>
+
+    <declare-styleable name="MunicipaliProportionsView">
+        <attr name="widthRatio"/>
+        <attr name="heightRatio"/>
+        <attr name="ratioBasis"/>
+    </declare-styleable>
+
     <declare-styleable name="MunicipaliLoadableImageView">
-        <attr name="widthRatio" format="integer"/>
-        <attr name="heightRatio" format="integer"/>
-        <attr name="ratioBasis" format="enum">
-            <enum name="width" value="1"/>
-            <enum name="height" value="2"/>
-        </attr>
+        <attr name="widthRatio"/>
+        <attr name="heightRatio"/>
+        <attr name="ratioBasis"/>
     </declare-styleable>
 
     <declare-styleable name="MunicipaliButtonView">

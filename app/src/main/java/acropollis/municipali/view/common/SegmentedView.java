@@ -37,7 +37,7 @@ public class SegmentedView extends View {
         int width = getWidth();
         int height = getHeight();
 
-        paint.setColor(getContext().getResources().getColor(R.color.primary_light_gray));
+        paint.setColor(getContext().getResources().getColor(R.color.gray_3));
         rect.set(0, 0, width, height);
 
         int drawAngle = 360 - 360 * percents / 100;

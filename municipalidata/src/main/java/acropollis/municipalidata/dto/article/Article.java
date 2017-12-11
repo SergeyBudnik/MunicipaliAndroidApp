@@ -18,10 +18,12 @@ public class Article implements Serializable {
     private List<Question> questions;
     private String video;
     private boolean sendPushOnRelease;
+    private long creationDate;
     private long releaseDate;
+    private long calendarStartDate;
+    private long calendarFinishDate;
     private long expirationDate;
     private long lastUpdateDate;
-    private long creationDate;
 
     public boolean isTranslateable(Language language) {
         return translatedArticle.containsKey(language);
@@ -33,6 +35,7 @@ public class Article implements Serializable {
         res.setId(id);
         res.setType(type);
         res.setTitle(translatedArticle.get(language).getTitle());
+        res.setDescription(translatedArticle.get(language).getDescription());
         res.setText(translatedArticle.get(language).getText());
         res.setCategories(translatedArticle.get(language).getCategories());
         res.setVideo(video);
@@ -40,6 +43,8 @@ public class Article implements Serializable {
         res.setReleaseDate(releaseDate);
         res.setExpirationDate(expirationDate);
         res.setLastUpdateDate(lastUpdateDate);
+        res.setCalendarStartDate(calendarStartDate);
+        res.setCalendarStartDate(calendarFinishDate);
 
         return res;
     }

@@ -1,459 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<acropollis.municipali.view.article.ArticleContainerView_
+    android:id="@+id/article_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <include
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                layout="@layout/view_question_mark"/>
+
+            <TextView
+                android:id="@+id/question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:weightSum="5">
+
+            <acropollis.municipali.view.question.five_marks.FiveMarksVariantView_
+                android:id="@+id/vote_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"/>
+
+            <acropollis.municipali.view.question.five_marks.FiveMarksVariantView_
+                android:id="@+id/vote_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <acropollis.municipali.view.question.five_marks.FiveMarksVariantView_
+                android:id="@+id/vote_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <acropollis.municipali.view.question.five_marks.FiveMarksVariantView_
+                android:id="@+id/vote_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <acropollis.municipali.view.question.five_marks.FiveMarksVariantView_
+                android:id="@+id/vote_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/negative_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="start"
+                android:textColor="@color/gray_2"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="4"/>
+
+            <TextView
+                android:id="@+id/positive_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="end"
+                android:textColor="@color/gray_2"/>
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?header_height"
-            android:background="?header_background">
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <ImageView
-                android:id="@+id/back_button"
-                android:layout_width="?header_button_width"
-                android:layout_height="?header_button_width"
-                android:paddingTop="?header_button_vertical_padding"
-                android:paddingBottom="?header_button_vertical_padding"
-                android:paddingLeft="?header_button_horizontal_padding"
-                android:paddingRight="?header_button_horizontal_padding"
-                android:src="@drawable/back_button"
-                android:contentDescription="@string/img_description"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+            <acropollis.municipalibootstrap.views.MunicipaliButtonView_
+                android:id="@+id/vote"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/question"
-                android:textColor="?header_title_color"
-                android:textSize="?header_title_size"/>
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:enabled="false"
+                app:text="@string/button_vote"/>
 
         </RelativeLayout>
 
-        <android.support.v4.widget.DrawerLayout
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <acropollis.municipali.bootstrap.view.MunicipaliRowView_
-                    android:id="@+id/article_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <!--<fragment-->
-                    <!--android:id="@+id/vote_buttons_layout"-->
-                    <!--android:name="acropollis.municipali.fragments.question.vote.QuestionVoteButtonsFragment_"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="15dp"-->
-                    <!--android:layout_marginBottom="30dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_marginRight="20dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--tools:layout="@layout/fragment_question_vote_buttons"/>-->
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_below="@id/article_info">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="20dp"
-                        android:paddingBottom="20dp"
-                        android:background="@drawable/white_layout">
-
-                        <TextView
-                            android:id="@+id/question_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp"
-                            android:textSize="15sp"
-                            android:textColor="?text_primary_color"/>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:baselineAligned="false"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:weightSum="5">
-
-                            <LinearLayout
-                                android:id="@+id/vote_1"
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:text="@string/five_marks_strongly_disagree_text"
-                                    android:textSize="18sp"
-                                    android:textColor="?text_primary_color"/>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="5dp">
-
-                                    <View
-                                        android:id="@+id/vote_1_unselected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@color/primary_gray"/>
-
-                                    <View
-                                        android:id="@+id/vote_1_selected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:visibility="invisible"
-                                        android:background="?text_primary_color"/>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal">
-
-                                    <include
-                                        android:id="@+id/vote_1_unselected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        layout="@layout/view_unselected_vote"/>
-
-                                    <include
-                                        android:id="@+id/vote_1_selected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:visibility="gone"
-                                        layout="@layout/view_selected_vote"/>
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/vote_2"
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:text="@string/five_marks_disagree_text"
-                                    android:textSize="18sp"
-                                    android:textColor="?text_primary_color"/>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="5dp">
-
-                                    <View
-                                        android:id="@+id/vote_2_unselected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@color/primary_gray"/>
-
-                                    <View
-                                        android:id="@+id/vote_2_selected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:visibility="invisible"
-                                        android:background="?text_primary_color"/>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal">
-
-                                    <include
-                                        android:id="@+id/vote_2_unselected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        layout="@layout/view_unselected_vote"/>
-
-                                    <include
-                                        android:id="@+id/vote_2_selected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:visibility="gone"
-                                        layout="@layout/view_selected_vote"/>
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/vote_3"
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:text="@string/five_marks_neutral_text"
-                                    android:textSize="18sp"
-                                    android:textColor="?text_primary_color"/>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="5dp">
-
-                                    <View
-                                        android:id="@+id/vote_3_unselected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@color/primary_gray"/>
-
-                                    <View
-                                        android:id="@+id/vote_3_selected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:visibility="invisible"
-                                        android:background="?text_primary_color"/>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal">
-
-                                    <include
-                                        android:id="@+id/vote_3_unselected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        layout="@layout/view_unselected_vote"/>
-
-                                    <include
-                                        android:id="@+id/vote_3_selected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:visibility="gone"
-                                        layout="@layout/view_selected_vote"/>
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/vote_4"
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:text="@string/five_marks_agree_text"
-                                    android:textSize="18sp"
-                                    android:textColor="?text_primary_color"/>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="5dp">
-
-                                    <View
-                                        android:id="@+id/vote_4_unselected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@color/primary_gray"/>
-
-                                    <View
-                                        android:id="@+id/vote_4_selected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:visibility="invisible"
-                                        android:background="?text_primary_color"/>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal">
-
-                                    <include
-                                        android:id="@+id/vote_4_unselected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        layout="@layout/view_unselected_vote"/>
-
-                                    <include
-                                        android:id="@+id/vote_4_selected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:visibility="gone"
-                                        layout="@layout/view_selected_vote"/>
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/vote_5"
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:text="@string/five_marks_strongly_agree_text"
-                                    android:textSize="18sp"
-                                    android:textColor="?text_primary_color"
-                                    android:id="@+id/textView" />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="5dp">
-
-                                    <View
-                                        android:id="@+id/vote_5_unselected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@color/primary_gray"/>
-
-                                    <View
-                                        android:id="@+id/vote_5_selected_underscore"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:visibility="invisible"
-                                        android:background="?text_primary_color"/>
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal">
-
-                                    <include
-                                        android:id="@+id/vote_5_unselected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        layout="@layout/view_unselected_vote"/>
-
-                                    <include
-                                        android:id="@+id/vote_5_selected_circle"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:visibility="gone"
-                                        layout="@layout/view_selected_vote"/>
-
-                                </RelativeLayout>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="10"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp">
-
-                            <TextView
-                                android:id="@+id/negative_answer"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:gravity="start"
-                                android:textColor="@color/primary_gray"/>
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="4"/>
-
-                            <TextView
-                                android:id="@+id/positive_answer"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:gravity="end"
-                                android:textColor="@color/primary_gray"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </ScrollView>
-
-            </RelativeLayout>
-
-            <acropollis.municipali.view.MenuView_
-                android:id="@+id/menu"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"/>
-
-        </android.support.v4.widget.DrawerLayout>
-
     </LinearLayout>
 
-</RelativeLayout>
+</acropollis.municipali.view.article.ArticleContainerView_>

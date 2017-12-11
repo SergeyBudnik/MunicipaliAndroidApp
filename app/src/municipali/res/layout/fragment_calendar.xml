@@ -31,7 +31,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:gravity="center"
-            android:textColor="@color/primary_black"/>
+            android:textColor="@color/black"/>
 
         <ImageView
             android:id="@+id/next_month"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_sunday"
             android:textSize="14sp"/>
 
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_monday"
             android:textSize="14sp"/>
 
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_tuesday"
             android:textSize="14sp"/>
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_wednesday"
             android:textSize="14sp"/>
 
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_thursday"
             android:textSize="14sp"/>
 
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_friday"
             android:textSize="14sp"/>
 
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="@color/primary_gray"
+            android:textColor="@color/gray_2"
             android:text="@string/short_saturday"
             android:textSize="14sp"/>
 

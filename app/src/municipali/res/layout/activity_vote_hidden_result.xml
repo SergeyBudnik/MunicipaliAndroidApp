@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
+    <acropollis.municipali.view.branding.BrandingBackground_
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/category_red">
+            android:background="@color/red">
 
             <ImageView
                 android:id="@+id/back_button"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/question"
-                android:textColor="@color/primary_white"
+                android:textColor="@color/white"
                 android:textSize="18sp"/>
 
         </RelativeLayout>
@@ -68,7 +68,7 @@
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="@string/button_continue"
-                    android:textColor="@color/primary_white"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:background="?primary_button_enabled"/>
 
@@ -104,7 +104,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginRight="20dp"
                             android:textSize="15sp"
-                            android:textColor="@color/primary_red"/>
+                            android:textColor="@color/red"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                             android:layout_marginTop="20dp"
                             android:gravity="center"
                             android:text="@string/no_vote_result"
-                            android:textColor="@color/primary_gray"
+                            android:textColor="@color/gray_2"
                             android:textSize="18sp"/>
 
                     </LinearLayout>

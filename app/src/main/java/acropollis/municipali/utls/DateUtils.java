@@ -5,8 +5,10 @@ import android.content.Context;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import acropollis.municipali.R;
@@ -47,36 +49,12 @@ public class DateUtils {
         return c.get(Calendar.DAY_OF_MONTH);
     }
 
-    public int getDayOfWeek(Date date) {
-        Calendar c = Calendar.getInstance();
+    public String getDateText(Date date) {
+        int monthDate = getDate(date);
+        String month = getMonthText(getMonth(date));
+        int year = getYear(date);
 
-        c.setTime(date);
-
-        return c.get(Calendar.DAY_OF_WEEK);
-    }
-
-    public int getDistanceInDays(Date d1, Date d2) {
-        return (int) TimeUnit.DAYS.convert(cropToDate(d2).getTime() - cropToDate(d1).getTime(), TimeUnit.MILLISECONDS);
-    }
-
-    public String getDayOfWeekText(int dayOfWeek) {
-        switch (dayOfWeek) {
-            case Calendar.MONDAY:
-                return context.getResources().getString(R.string.monday);
-            case Calendar.TUESDAY:
-                return context.getResources().getString(R.string.tuesday);
-            case Calendar.WEDNESDAY:
-                return context.getResources().getString(R.string.wednesday);
-            case Calendar.THURSDAY:
-                return context.getResources().getString(R.string.thursday);
-            case Calendar.FRIDAY:
-                return context.getResources().getString(R.string.friday);
-            case Calendar.SATURDAY:
-                return context.getResources().getString(R.string.saturday);
-            case Calendar.SUNDAY:
-            default:
-                return context.getResources().getString(R.string.sunday);
-        }
+        return String.format(Locale.ENGLISH, "%s %d, %d", month, monthDate, year);
     }
 
     public String getMonthText(int month) {
@@ -109,15 +87,46 @@ public class DateUtils {
         }
     }
 
-    private Date cropToDate(Date d) {
-        Calendar c = Calendar.getInstance();
+    public String getShortMonthText(int month) {
+        switch (month) {
+            case Calendar.JANUARY:
+                return context.getResources().getString(R.string.january_short);
+            case Calendar.FEBRUARY:
+                return context.getResources().getString(R.string.february_short);
+            case Calendar.MARCH:
+                return context.getResources().getString(R.string.march_short);
+            case Calendar.APRIL:
+                return context.getResources().getString(R.string.april_short);
+            case Calendar.MAY:
+                return context.getResources().getString(R.string.may_short);
+            case Calendar.JUNE:
+                return context.getResources().getString(R.string.june_short);
+            case Calendar.JULY:
+                return context.getResources().getString(R.string.july_short);
+            case Calendar.AUGUST:
+                return context.getResources().getString(R.string.august_short);
+            case Calendar.SEPTEMBER:
+                return context.getResources().getString(R.string.september_short);
+            case Calendar.OCTOBER:
+                return context.getResources().getString(R.string.october_short);
+            case Calendar.NOVEMBER:
+                return context.getResources().getString(R.string.november_short);
+            case Calendar.DECEMBER:
+            default:
+                return context.getResources().getString(R.string.december_short);
+        }
+    }
 
-        c.setTime(d);
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
+    public Date formatDate(Date date) {
+        Calendar calendar = Calendar.getInstance();
 
-        return c.getTime();
+        calendar.setTime(date);
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return calendar.getTime();
     }
 }

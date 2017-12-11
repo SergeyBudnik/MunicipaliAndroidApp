@@ -6,10 +6,10 @@
     android:orientation="vertical"
     android:layout_width="200dp"
     android:layout_height="match_parent"
-    android:background="@color/primary_white_semi_transparent">
+    android:background="@color/white_semi_transparent">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:id="@+id/user_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,21 +19,28 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/user_icon"
-            app:riv_corner_radius="25dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/no_profile_icon"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            app:riv_corner_radius="50dp"/>
+
+        <ImageView
+            android:id="@+id/no_user_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/img_description"
+            android:src="@drawable/menu_no_profile_icon"/>
 
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/primary_black"/>
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -51,8 +58,8 @@
         android:paddingEnd="20dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/menu_news"
             android:contentDescription="@string/img_description"/>
 
@@ -60,10 +67,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/menu_news"
-            android:textColor="@color/primary_black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -80,8 +88,8 @@
         android:paddingEnd="20dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/menu_events"
             android:contentDescription="@string/img_description"/>
 
@@ -89,10 +97,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/menu_events"
-            android:textColor="@color/primary_black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -109,8 +118,8 @@
         android:paddingEnd="20dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/menu_report"
             android:contentDescription="@string/img_description"/>
 
@@ -118,10 +127,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/menu_report"
-            android:textColor="@color/primary_black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -130,7 +140,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
@@ -139,8 +148,8 @@
         android:paddingEnd="20dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/menu_logout"
             android:contentDescription="@string/img_description"/>
 
@@ -148,10 +157,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/menu_logout"
-            android:textColor="@color/primary_black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -160,7 +170,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
@@ -169,8 +178,8 @@
         android:paddingEnd="20dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/menu_login"
             android:contentDescription="@string/img_description"/>
 
@@ -178,40 +187,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/menu_login"
-            android:textColor="@color/primary_black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/change_city"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <acropollis.municipalibootstrap.views.MunicipaliButtonView_
+        android:id="@+id/clear_app_data"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingStart="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="20dp">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/menu_change_city"
-            android:contentDescription="@string/img_description"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/menu_change_city"
-            android:textColor="@color/primary_black"/>
-
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical"
+        app:text="Clear app data"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

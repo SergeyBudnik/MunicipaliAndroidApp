@@ -16,6 +16,7 @@ import acropollis.municipalidata.configuration.ProductConfiguration;
 import acropollis.municipalidata.rest.omega.answer.AnswerRequest;
 import acropollis.municipalidata.rest.omega.answer.AnswerRest;
 import acropollis.municipalidata.rest_wrapper.article.RestResult;
+import acropollis.municipalidata.service.answer.UserAnswersService;
 import acropollis.municipalidata.service.configuration.ConfigurationService;
 import acropollis.municipalidata.utils.ScreenUtils;
 
@@ -23,6 +24,9 @@ import acropollis.municipalidata.utils.ScreenUtils;
 public class AnswerRestWrapper {
     @RestService
     AnswerRest answerRest;
+
+    @Bean
+    UserAnswersService userAnswersService;
 
     @Bean
     ConfigurationService configurationService;
@@ -47,6 +51,8 @@ public class AnswerRestWrapper {
             }
 
             answerRest.answerQuestion(serverRootUrl, request);
+
+            userAnswersService.addAnswer(configuration, articleId, questionId, answerId);
 
             return RestResult.success(null);
         } catch (Exception e) {

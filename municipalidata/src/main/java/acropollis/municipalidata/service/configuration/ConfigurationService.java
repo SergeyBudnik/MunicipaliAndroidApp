@@ -13,6 +13,12 @@ public class ConfigurationService {
     @Bean
     ConfigurationDao configurationDao;
 
+    public boolean isInitialized(ProductConfiguration configuration) {
+        return
+                configurationDao.getServerRootUrl(configuration).isPresent() &&
+                configurationDao.getImageHostingRootUrl(configuration).isPresent();
+    }
+
     public Optional<String> getImageHostingRootUrl(ProductConfiguration configuration) {
         return configurationDao.getImageHostingRootUrl(configuration);
     }

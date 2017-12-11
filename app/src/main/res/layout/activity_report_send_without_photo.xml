@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <acropollis.municipali.view.HeaderView_
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:padding="10dp"
+            android:gravity="top"
+            android:hint="@string/write_comment"
+            android:textColorHint="@color/gray_2"
+            android:textColor="@color/gray_1"
+            android:background="@color/gray_3"/>
+
+        <acropollis.municipalibootstrap.views.MunicipaliButtonView_
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:text="@string/button_send"/>
+
+        <RelativeLayout
+            android:id="@+id/progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_semi_transparent_2"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/progress_spinner"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/red_spinner"
+                android:contentDescription="@string/img_description"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

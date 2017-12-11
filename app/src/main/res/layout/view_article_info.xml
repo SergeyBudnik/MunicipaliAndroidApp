@@ -1,52 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <acropollis.municipalibootstrap.views.MunicipaliLoadableImageView_
-        android:id="@+id/icon"
+    <acropollis.municipalibootstrap.views.MunicipaliProportionsView_
+        android:id="@+id/icon_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="#eeeeee"
         app:heightRatio="1"
         app:ratioBasis="width"
-        app:widthRatio="1" />
+        app:widthRatio="1"
+        android:background="@color/red"
+        android:alpha="0"/>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/red"
-        android:orientation="vertical"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp">
+        android:layout_gravity="bottom">
 
         <TextView
+            android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="18.08.2017"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Sukkot Dance Festival"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:background="@color/red_semi_transparent_2"/>
 
-        <acropollis.municipali.view.question.ArticleCategoriesView_
-            android:id="@+id/article_categories"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/red_semi_transparent_2">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <acropollis.municipali.view.article.ArticleCategoriesView_
+                android:id="@+id/article_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

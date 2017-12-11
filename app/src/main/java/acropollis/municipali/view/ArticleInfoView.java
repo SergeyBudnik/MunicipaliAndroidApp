@@ -2,6 +2,7 @@ package acropollis.municipali.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -9,33 +10,30 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Date;
+
 import acropollis.municipali.R;
-import acropollis.municipali.service.ProductConfigurationService;
-import acropollis.municipali.view.question.ArticleCategoriesView;
-import acropollis.municipalibootstrap.views.MunicipaliLoadableImageView;
-import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipali.utls.DateUtils;
+import acropollis.municipali.view.article.ArticleCategoriesView;
+import acropollis.municipalibootstrap.views.MunicipaliProportionsView;
+import acropollis.municipalidata.dto.article.ArticleType;
 import acropollis.municipalidata.dto.article.TranslatedArticle;
-import acropollis.municipalidata.rest_wrapper.article.ArticleRestWrapper;
-import acropollis.municipalidata.rest_wrapper.article.RestResult;
-import acropollis.municipalidata.service.article.ArticleImageService;
 
 @EViewGroup(R.layout.view_article_info)
 public class ArticleInfoView extends RelativeLayout {
-    @ViewById(R.id.icon)
-    MunicipaliLoadableImageView iconView;
+    @ViewById(R.id.icon_top)
+    MunicipaliProportionsView iconTopView;
+    @ViewById(R.id.type)
+    TextView typeView;
+    @ViewById(R.id.date)
+    TextView dateView;
     @ViewById(R.id.title)
     TextView titleView;
     @ViewById(R.id.article_categories)
     ArticleCategoriesView articleCategoriesView;
 
     @Bean
-    protected ProductConfigurationService productConfigurationService;
-
-    @Bean
-    ArticleRestWrapper articlesRestWrapper;
-
-    @Bean
-    ArticleImageService articleImageService;
+    DateUtils dateUtils;
 
     public ArticleInfoView(Context context) {
         super(context);
@@ -45,25 +43,21 @@ public class ArticleInfoView extends RelativeLayout {
         super(context, attrs);
     }
 
-    public void setArticle(TranslatedArticle article) {
-        ProductConfiguration configuration = productConfigurationService.getProductConfiguration();
+    public void setArticle(TranslatedArticle article, boolean fullSizeImage) {
+        iconTopView.setWidthRario(fullSizeImage ? 1 : 3);
+        iconTopView.setHeightRatio(fullSizeImage ? 1 : 2);
 
-        iconView.configure(
-                String.valueOf(article.getId()),
-                R.color.light_gray,
-                () -> articleImageService.getArticleImage(configuration, article.getId()).orElse(null),
-                () -> {
-                    RestResult<byte []> image = articlesRestWrapper.loadArticleImage(configuration, article.getId());
-
-                    if (image.isSuccessfull()) {
-                        return image.getData() != null ? image.getData() : new byte [0];
-                    } else {
-                        return null;
-                    }
-                }
+        typeView.setText(article.getType() == ArticleType.EVENT ?
+                R.string.article_type_event :
+                R.string.article_type_news
         );
 
         titleView.setText(article.getTitle());
+        dateView.setText(dateUtils.getDateText(new Date(article.getCalendarStartDate())));
         articleCategoriesView.bind(article);
+    }
+
+    public void setScrollDistance(double distance) {
+        iconTopView.setAlpha(distance > 1 ? 1.0f : (float) distance);
     }
 }

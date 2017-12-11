@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#d3161d</color>
-    <color name="blue">#0077D8</color>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="gray">#999999</color>
-
-    <color name="primary_blue">#ff0000</color>
-    <color name="primary_red">#d3161d</color>
-    <color name="primary_red_transparent">#66d3161d</color>
-    <color name="primary_orange">#FE5805</color>
-    <color name="primary_white">#FFFFFF</color>
-    <color name="primary_white_semi_transparent">#EEFFFFFF</color>
-    <color name="primary_white_transparent">#55FFFFFF</color>
-    <color name="primary_black">#000000</color>
-    <color name="primary_black_transparent">#55000000</color>
-    <color name="primary_gray">#999999</color>
-    <color name="primary_light_gray">#CCCCCC</color>
-
-    <color name="colorPrimary">@color/primary_red</color>
-    <color name="colorPrimaryDark">@color/primary_red</color>
-    <color name="colorAccent">@color/primary_red</color>
-
-    <color name="background_overlay">#99282529</color>
-
     <color name="google_plus">#BE0907</color>
     <color name="facebook">#3055A1</color>
 </resources>

@@ -5,12 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import acropollis.municipali.R;
-import acropollis.municipali.StartActivity_;
+import acropollis.municipali.activities.StartActivity_;
 
 public class MunicipaliGcmListenerService extends FirebaseMessagingService {
     private static final int NOTIFICATION_ID = 435345;
@@ -42,7 +43,7 @@ public class MunicipaliGcmListenerService extends FirebaseMessagingService {
                 new Notification.Builder(this)
                         .setSmallIcon(R.drawable.launcher_icon)
                         .setContentTitle(title)
-                        .setContentText(text)
+                        .setContentText(Html.fromHtml(text))
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true)
                         .build();

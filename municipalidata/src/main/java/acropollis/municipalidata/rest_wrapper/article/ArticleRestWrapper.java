@@ -1,7 +1,5 @@
 package acropollis.municipalidata.rest_wrapper.article;
 
-import android.util.Log;
-
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.rest.RestService;
@@ -48,6 +46,19 @@ public class ArticleRestWrapper {
         }
     }
 
+    public RestResult<Void> addArticleView(ProductConfiguration configuration, long articleId) {
+        try {
+            String serverRootUrl = configurationService
+                    .getServerRootUrl(configuration).orElseThrow(RuntimeException::new);
+
+            articleRest.addArticleView(serverRootUrl, "gjggggjghgjgjg", articleId); // todo
+
+            return RestResult.success(null);
+        } catch (Exception e) {
+            return RestResult.failure();
+        }
+    }
+
     public RestResult<byte []> loadArticleImage(ProductConfiguration configuration, long articleId) {
         try {
             String imageHostingRootUrl = configurationService
@@ -63,6 +74,33 @@ public class ArticleRestWrapper {
         } catch (HttpStatusCodeException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 articleImageService.saveArticleImage(configuration, articleId, new byte [0]);
+
+                return RestResult.success(null);
+            }
+
+            return RestResult.failure();
+        } catch (Exception e) {
+            return RestResult.failure();
+        }
+    }
+
+    public RestResult<byte []> loadClippedArticleImage(ProductConfiguration configuration, long articleId) {
+        try {
+            String imageHostingRootUrl = configurationService
+                    .getImageHostingRootUrl(configuration)
+                    .orElseThrow(RuntimeException::new);
+
+            int w = getArticleImageSize();
+            int h = w / 3;
+
+            byte [] image = articleRest.getArticleClippedImage(imageHostingRootUrl, articleId, w, h);
+
+            articleImageService.saveArticleClippedImage(configuration, articleId, image);
+
+            return RestResult.success(image);
+        } catch (HttpStatusCodeException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                articleImageService.saveArticleClippedImage(configuration, articleId, new byte [0]);
 
                 return RestResult.success(null);
             }

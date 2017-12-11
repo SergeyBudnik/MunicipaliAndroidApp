@@ -6,20 +6,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 import acropollis.municipali.R;
 import acropollis.municipali.data.backend.BackendInfo;
-import acropollis.municipali.service.BackendInfoService;
 import acropollis.municipali.utls.BitmapUtils;
 
 @EViewGroup(R.layout.bootstrap_view_branding_icon)
 public class MunicipaliBrandingIconView extends RelativeLayout {
-    @Bean
-    BackendInfoService backendInfoService;
-
     @ViewById(R.id.icon)
     ImageView iconView;
 
@@ -38,7 +33,7 @@ public class MunicipaliBrandingIconView extends RelativeLayout {
 
     private void setBackground() {
         if (!isInEditMode()) {
-            final BackendInfo backendInfo = backendInfoService.getBackendInfo();
+            final BackendInfo backendInfo = null;
 
             if (backendInfo != null && backendInfo.getIcon() != null) {
                 iconView.post(new Runnable() {

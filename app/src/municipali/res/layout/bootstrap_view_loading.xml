@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <acropollis.municipali.bootstrap.view.MunicipaliBrandingBackgroundView_
+    <acropollis.municipali.view.branding.BrandingBackground_
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -19,7 +19,7 @@
         android:id="@+id/loading_failed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_white_transparent"
+        android:background="@color/white_semi_transparent_3"
         android:visibility="gone"
         android:clickable="true">
 
@@ -42,7 +42,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/loading_failed_tap_to_retry"
-                android:textColor="@color/primary_red"
+                android:textColor="@color/red"
                 android:textSize="15sp"/>
 
         </LinearLayout>
