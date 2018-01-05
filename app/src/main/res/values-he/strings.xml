@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="all_articles">כל הכתבות</string>
+    <string name="city_events">City events</string>
+    <string name="city_surveys">City surveys</string>
+
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
+
+    <string name="article_news">News</string>
+    <string name="article_events">Events</string>
+
     <string name="menu_login">התחבר</string>
     <string name="registration_sign_up_with_facebook">התחבר עם פייסבוק</string>
     <string name="registration_or">או</string>
@@ -43,6 +52,19 @@
     <string name="short_friday">FR</string>
     <string name="short_saturday">SA</string>
     <string name="short_sunday">SU</string>
+
+    <string name="january_short">JAN</string>
+    <string name="february_short">FEB</string>
+    <string name="march_short">MAR</string>
+    <string name="april_short">APR</string>
+    <string name="may_short">MAY</string>
+    <string name="june_short">JUN</string>
+    <string name="july_short">JUL</string>
+    <string name="august_short">AUG</string>
+    <string name="september_short">SEP</string>
+    <string name="october_short">OCT</string>
+    <string name="november_short">NOV</string>
+    <string name="december_short">DEC</string>
 
     <string name="lang_hebrew">עברית‎</string>
 
@@ -124,10 +146,17 @@
     <string name="menu_news">חדשות</string>
 
     <string name="menu_events">אירועים</string>
+    <string name="menu_surveys">Surveys</string>
 
     <string name="menu_report">דיווחים</string>
 
     <string name="menu_settings">הגדרות</string>
 
     <string name="menu_logout">התנתק</string>
+
+    <string name="article_type_news">NEWS</string>
+    <string name="article_type_event">EVENT</string>
+    <string name="article_type_survey">SURVEY</string>
+
+    <string name="youtube_video_error">Please install YouTube app to watch video</string>
 </resources>

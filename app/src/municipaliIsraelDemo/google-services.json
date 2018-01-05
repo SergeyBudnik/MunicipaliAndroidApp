@@ -36,6 +36,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518524695191:android:baab38c24e32bf98",
+        "android_client_info": {
+          "package_name": "acropollis.municipali.municipaliIsraelDemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518524695191-dpljm896ntangp61p17mc6tfg70i8pqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATKNzuvv3uOz504VwHEtfU3Y6SAqaOcpk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

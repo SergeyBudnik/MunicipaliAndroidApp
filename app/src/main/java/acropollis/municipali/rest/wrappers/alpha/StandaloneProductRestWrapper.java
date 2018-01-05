@@ -22,6 +22,8 @@ import acropollis.municipali.rest.raw.omega.ConfigurationRestService;
 import acropollis.municipali.rest.wrappers.RestListener;
 import acropollis.municipali.service.ProductConfigurationService;
 import acropollis.municipali.utls.ScreenUtils;
+import acropollis.municipalidata.configuration.ProductConfiguration;
+import acropollis.municipalidata.service.branding.BrandingService;
 import acropollis.municipalidata.service.configuration.ConfigurationService;
 import lombok.Data;
 
@@ -39,6 +41,8 @@ public class StandaloneProductRestWrapper {
 
     @Bean
     ConfigurationService configurationService;
+    @Bean
+    BrandingService brandingService;
 
     @Bean
     ProductConfigurationService productConfigurationService;
@@ -91,15 +95,18 @@ public class StandaloneProductRestWrapper {
                 backendInfo.setIcon(icon);
             }
 
-            configurationService.setServerRootUrl(
-                    productConfigurationService.getProductConfiguration(),
-                    fullBackendInfo.getRootEndpoint()
-            );
+            ProductConfiguration configuration = productConfigurationService.getProductConfiguration();
 
-            configurationService.setImageHostingRootUrl(
-                    productConfigurationService.getProductConfiguration(),
-                    imageHostingInfo.getUrl()
-            );
+            configurationService.setServerRootUrl(configuration, fullBackendInfo.getRootEndpoint());
+            configurationService.setImageHostingRootUrl(configuration, imageHostingInfo.getUrl());
+
+            if (icon != null) {
+                brandingService.setIcon(configuration, icon);
+            }
+
+            if (background != null) {
+                brandingService.setBackground(configuration, background);
+            }
 
             listener.onSuccess(backendInfo);
         } catch (Exception e) {

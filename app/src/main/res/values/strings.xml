@@ -17,7 +17,7 @@
 
     <string name="city_news">City news</string>
     <string name="city_events">City events</string>
-    <string name="all_articles">All articles</string>
+    <string name="city_surveys">City surveys</string>
     <string name="article">Article</string>
     <string name="question">Question</string>
 
@@ -153,6 +153,7 @@
     
     <string name="menu_news">News</string>
     <string name="menu_events">Events</string>
+    <string name="menu_surveys">Surveys</string>
     <string name="menu_report">Report</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_logout">Logout</string>
@@ -168,6 +169,7 @@
 
     <string name="article_type_news">NEWS</string>
     <string name="article_type_event">EVENT</string>
+    <string name="article_type_survey">SURVEY</string>
 
     <string name="youtube_video_error">Please install YouTube app to watch video</string>
 </resources>

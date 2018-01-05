@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_id" translatable="false">MunicipaliDemoIsrael-User</string>
+    <string name="app_name">חדשות הפסגה</string>
+
+    <string name="facebook_app_id" translatable="false">2269413669751542</string>
+</resources>

@@ -59,11 +59,11 @@ android {
             flavorDimension 'tier'
         }
 
-        ProdMacedoniaKarpos {
+        Israel {
             flavorDimension 'tier'
         }
 
-        Arad {
+        ProdMacedoniaKarpos {
             flavorDimension 'tier'
         }
     }
@@ -71,8 +71,8 @@ android {
     def allowedFlavors = [
             [product: 'municipali', tier: 'QA'],
             [product: 'municipali', tier: 'Demo'],
+            [product: 'municipali', tier: 'Israel'],
             [product: 'municipali', tier: 'ProdMacedoniaKarpos'],
-            [product: 'municipali', tier: 'Arad']
     ];
 
     variantFilter {

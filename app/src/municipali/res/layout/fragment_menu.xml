@@ -106,6 +106,36 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/surveys"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/menu_events"
+            android:contentDescription="@string/img_description"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/menu_surveys"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/report"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -206,5 +236,12 @@
         app:text="Clear app data"
         android:textSize="16sp"
         android:textColor="@color/black"/>
+
+    <acropollis.municipali.view.branding.BrandingIcon_
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 </LinearLayout>

@@ -14,7 +14,6 @@ import java.util.Collections;
 import acropollis.municipali.R;
 import acropollis.municipali.service.UserService;
 import acropollis.municipalidata.configuration.ProductConfiguration;
-import acropollis.municipalidata.configuration.ProductTier;
 import acropollis.municipalidata.dto.article.ArticleType;
 import acropollis.municipalidata.service.configuration.ConfigurationService;
 
@@ -37,29 +36,20 @@ public class StartActivity extends BaseActivity {
 
         ProductConfiguration currentProductConfiguration = getCurrentProductConfiguration();
 
-        ProductTier productTier = currentProductConfiguration.getProductTier();
-
-        if (productTier == ProductTier.DEMO) {
-            //redirect(DemoAppActivity_.class, 0, 0, true);
-        } else {
-            if (configurationService.isInitialized(currentProductConfiguration)) {
-                if (userService.getCurrentUserAuthToken() != null) {
-                    redirect(
-                            ArticlesListActivity_.class, 0, 0, true,
-                            Collections.singletonMap("articlesType", ArticleType.NEWS)
-                    );
-                } else {
-                    redirect(RegistrationActivity_.class, 0, 0, true);
-                }
+        if (configurationService.isInitialized(currentProductConfiguration)) {
+            if (userService.getCurrentUserAuthToken() != null) {
+                redirect(
+                        ArticlesListActivity_.class, 0, 0, true,
+                        Collections.singletonMap("articlesType", ArticleType.NEWS)
+                );
             } else {
-                switch (currentProductConfiguration.getProductTier()) {
-                    case COUNTRY_PLATFORM:
-//                        redirect(CountryPlatformChooseCityActivity_.class, 0, 0, true);
-                        break;
-                    case STANDALONE:
-                        redirect(StandaloneCustomerLoadingActivity_.class, 0, 0, true);
-                        break;
-                }
+                redirect(RegistrationActivity_.class, 0, 0, true);
+            }
+        } else {
+            switch (currentProductConfiguration.getProductTier()) {
+                case STANDALONE:
+                    redirect(StandaloneCustomerLoadingActivity_.class, 0, 0, true);
+                    break;
             }
         }
     }

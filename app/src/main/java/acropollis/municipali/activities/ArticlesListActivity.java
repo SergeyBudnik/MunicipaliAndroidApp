@@ -80,7 +80,19 @@ public class ArticlesListActivity extends BaseActivity
     @AfterViews
     void init() {
         headerView.setStyle(HeaderView.Style.DEFAULT);
-        headerView.setTitle(articlesType == ArticleType.NEWS ? R.string.city_news : R.string.city_events);
+
+        switch (articlesType) {
+            case NEWS:
+                headerView.setTitle(R.string.city_news);
+                break;
+            case EVENT:
+                headerView.setTitle(R.string.city_events);
+                break;
+            case SURVEY:
+                headerView.setTitle(R.string.city_surveys);
+                break;
+        }
+
         headerView.setLeftButton(R.drawable.menu_button, it -> rootView.openDrawer(Gravity.START));
         headerView.setRightButton(R.drawable.calendar_button, it ->
             calendarView.setVisibility(calendarView.getVisibility() == GONE ? VISIBLE : GONE)

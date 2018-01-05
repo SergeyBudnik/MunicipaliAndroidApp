@@ -92,9 +92,11 @@ public class MenuView extends LinearLayout {
             userNameView.setText(user.getUserDetailsInfo().getName());
         }
 
-        if (!productConfigurationService.getProductConfiguration().isQa()) {
-            clearAppDataView.setVisibility(GONE);
-        }
+        clearAppDataView.setVisibility(GONE);
+
+//        if (!productConfigurationService.getProductConfiguration().isQa()) {
+//            clearAppDataView.setVisibility(GONE);
+//        }
     }
 
     @Click(R.id.news)
@@ -107,6 +109,12 @@ public class MenuView extends LinearLayout {
     void onEventsClick() {
         ((BaseActivity) getContext()).redirect(ArticlesListActivity_.class, 0, 0, true,
                 Collections.singletonMap("articlesType", ArticleType.EVENT));
+    }
+
+    @Click(R.id.surveys)
+    void onSurveysClick() {
+        ((BaseActivity) getContext()).redirect(ArticlesListActivity_.class, 0, 0, true,
+                Collections.singletonMap("articlesType", ArticleType.SURVEY));
     }
 
     @Click(R.id.report)
